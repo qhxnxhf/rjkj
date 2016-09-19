@@ -69,6 +69,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<textarea id="brief" name="brief"  style="width:350px;height:80px;" ></textarea>
 			</td>
 		</tr>
+		
+		
 		<tr>
 			<td colspan="3">
                 <button type="button" onclick="save()" ><span class="icon_add">保  存</span></button>&nbsp;
