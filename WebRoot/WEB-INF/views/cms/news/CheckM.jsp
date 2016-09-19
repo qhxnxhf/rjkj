@@ -35,9 +35,6 @@
 <!-- 日期选择框start -->
 <script type="text/javascript" src="<%=path%>/resources/libs/js/form/datePicker/WdatePicker.js"></script>
 <!-- 日期选择框end -->
- 
- 
-
 
 <style>
 .l-layout-center{
