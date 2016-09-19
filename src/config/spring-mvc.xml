@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+
+	 <!-- mediaTypes集合 -->
+    <util:map id="mediaTypes">
+    	<entry key="json" value="application/json" />
+    	<entry key="xml" value="application/xml" />
+    </util:map>
+    
+	<!-- org.springframework.web.servlet.view.ContentNegotiatingViewResolver -->
+	<bean id="contentNegotiation" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="ignoreAcceptHeader" value="true" /><!--忽略Accept Header -->
+		<!-- favorPathExtension:根据扩展名判断数据类型，默认true,
+			例：/rest.json 对应 application/json 
+			  /rest.xml 对应 application/xml 
+		 -->
+		<property name="favorPathExtension" value="true" />
+		<!-- favorParameter 根据参数判断数据类型/rest?format=json -->
+		<property name="favorParameter" value="false" />
+		<!--<property name="parameterName" value="format" /> -->
+		<!-- mediaTypes映射,favorPathExtension或 favorParameter为true时用到该数据集合 -->
+		<property name="mediaTypes" ref="mediaTypes" />
+		<!-- 默认的内容类型 -->
+		<property name="defaultContentType" value="text/html" />
+	</bean>
+	
+	
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+		</mvc:message-converters>	
+	</mvc:annotation-driven>
+
+	<!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL-->
+	<mvc:default-servlet-handler/>
+	
+	<!-- 支持上传文件 同时解决与UEditor上传的冲突 -->
+	<bean id="multipartResolver" class="com.rjkj.web.interceptor.MyMultipartResolver">  
+		<property name="excludeUrls" value="uploadimage,uploadscrawl,catchimage,uploadvideo,uploadfile"/>  
+		<!-- url中带有example的http请求就不会被multipartResolver先解析-->  
+	</bean> 
+	
+	<!-- VIEW 设置
+		先匹配viewResolvers，如果无法提供的兼容视图则去defaultViews中匹配
+	 -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<!-- 内容协商管理器 用于决定media type -->
+		<property name="contentNegotiationManager" ref="contentNegotiation"/>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/><!-- 优先根据Bean ID查找视图 -->
+            	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            		<!-- 使用jstl视图类 -->
+            		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+                	<property name="prefix" value="/WEB-INF/views/"/>
+                	<property name="suffix" value=".jsp"/>
+            	</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+            	<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+        	</list>
+		</property>
+	</bean>
+	
+	<!-- MVC 相关的注解驱动 -->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiation" />
+    
+    <!-- 静态资源映射  cache-period：1年 (365.24 天) 31556926-->
+    <mvc:resources mapping="/resources/**" location="/resources/" cache-period="-1" />
+    
+	<!-- 该扫描器的目地是只加载controller相关的MVC组件  注：如果有Service组件并且有代理类(如：配置了aop)，则该组件代理类实例并不会加载到IOC容器中-->
+	<context:component-scan base-package="com.rjkj.web.*" />
+	
+	<!-- 防SQL注入拦截器 -->
+	<mvc:interceptors>
+		<bean class="com.rjkj.web.interceptor.CustomWebInterceptor" />
+	</mvc:interceptors> 
+
+	
+	<!-- 支持 Shiro对Controller的方法级AOP安全控制 begin-->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+	
+	<!-- 支持 Shiro对Controller的方法级AOP安全控制 end  -->   
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+    	<property name="securityManager" ref="securityManager"/>
+	</bean>
+	
+</beans>

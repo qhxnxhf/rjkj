@@ -1,0 +1,113 @@
+
+body,ul,li,p,h1,h2,h3,h4,h5,h6,form,span,input{ margin:0px; padding:0px;}
+li{ list-style:none;}
+img{ border:0px;}
+a{ text-decoration:none; cursor:pointer;}
+*{ font-family:"寰蒋闆呴粦";}
+
+/*涓棿鍐呭*/
+.center{ width:1030px; margin:0 auto;} 
+.span1{ width:85px; float:left; color:red; padding-left:10px;}
+.span2{ width:50px; float:left; text-align:center;} 
+.margin1{ margin-right:100px;}
+.margin2{ margin-left:175px; color:#f7941d;}
+/*鏍囬涓庣櫥褰�/
+.ti_msg{ width:100%; height:40px; line-height:40px; background:#ecf5fa;}
+.ti_msg img{ float:left; padding:10px 10px 0px 15px;}
+.ti_msg h4{ float:left;}
+.ti_msg input{ width:104px; height:30px; border:0px; margin-top:4px; float:right; margin-right:15px; font-size:14px; background:url(../image/new_bu.png) no-repeat; color:#2e2e2e; font-weight:700; cursor:pointer;}
+
+/*骞垮憡鍒囨崲涓庡叕鍛�/
+.menu{ width:1030px; height:247px; margin-top:15px;}
+.lenbo{ width:663px; height:247px; position:relative; top:0px; float:left;z-index:-10;}
+/*宸﹁竟骞垮憡鑷姩鍒囨崲*/
+.lenbo1{ width:663px; height:247px; position:absolute; top:0px; overflow:hidden;z-index:-10;}
+/*涓诲浘*/
+.lenbo1 div{ width:663px; height:247px;}
+.lenbo1 div img{ width:663px; height:247px;}
+/*鍒楄〃*/
+.lenbo2{ width:265px; position:absolute; top:218px; left:398px;}
+.lenbo2 li{ width:40px; height:10px; border:1px solid #fff; background:#c3c1c1; float:left; margin:0px 5px;}
+
+/*鍙宠竟鍏憡*/
+.gonggao{ width:340px; float:right; height:245px; border:1px solid #c1c1c1;}
+.gonggao1{ width:100%; height:39px; line-height:39px; background:url(../image/new_bei.png) repeat-x;}
+.gonggao1 img{ float:left; padding:6px 8px 0px 12px;}
+.gonggao1 h4{ float:left; color:#2e2e2e;}
+.gonggao1 a{ float:right; font-size:14px; color:#f7941d; display:block; margin-right:10px;}
+
+.gonggao2{ margin-top:10px;}
+.gonggao2 li{ width:100%; height:32px; vertical-align:bottom;}
+.gonggao2 li span{ width:20px; height:20px; font-size:13px; line-height:20px; color:#fff; background:#f46744; text-align:center; margin:6px 10px 0px 16px; float:left;}
+.gonggao2 li a{ border-bottom:1px dashed #4a930d; color:#2e2e2e; padding-top:6px; padding-bottom:6px; font-size:12px; float:left;}
+.gonggao2 li a:hover{ color:#f46744;}
+
+/*鏁版嵁鍥惧睍绀�/
+.shuju{ width:100%; height:240px; margin-top:15px;}
+/*宸�/
+.shuju_le{ width:317px; height:240px; border:1px solid #c1c1c1; float:left;}
+.shuju_le1{ width:100%; height:39px; line-height:39px; background:url(../image/new_bei.png) repeat-x;}
+.shuju_le1 li{ width:80px; height:31px; color:#2e2e2e; margin-left:18px; text-align:center; line-height:31px; margin-top:5px; float:left; font-size:14px; font-weight:700; cursor:pointer;}
+/*涓�/
+.shuju_cen{ width:317px; height:240px; border:1px solid #c1c1c1; float:left; margin:0px 25px;}
+.shuju_cen1{ width:100%; height:39px; line-height:39px; background:url(../image/new_bei.png) repeat-x;}
+.shuju_cen1 img{ float:left; width:20px; height:20px; margin-top:10px; margin-left:5px; cursor:pointer;}
+._cen1{ float:left; width:260px; height:39px; position:relative; overflow:hidden;}
+#long{ height:39px; position:absolute;}
+.shuju_cen1 div li{ float:left; width:80px; height:31px; line-height:31px; margin-left:5px; margin-top:5px; text-align:center; color:#2e2e2e; cursor:pointer; font-size:14px; font-weight:700;}
+
+.shuju_cen2{ width:100%;}
+.sjx{ width:40px; padding-left:5px; height:53px; line-height:53px; font-size:14px; color:#656565; font-weight:700; float:left; background:url(../image/sjx.png) repeat-x -1px -2px;}
+.cen2_a{ width:300px; height:53px; font-size:12px; margin:8px auto; border:1px solid #c6cfb8; box-shadow:2px 2px 2px #c6cfb8;}
+.cen2_a ul{ float:left; padding-left:10px; width:245px; height:53px;}
+.cen2_a li{ float:left; line-height:215%;}
+
+.cen2_b{ width:300px;}
+.cen2_b p{ margin-left:20px; height:30px; line-height:30px; font-size:12px; border-bottom:1px solid #cfcfcf;}
+.cen2_b p a{ color:#333;}
+.cen2_b p a:hover{ color:#f46744;}
+
+
+
+/*鍙�/
+.shuju_ri{ width:340px; height:240px; border:1px solid #c1c1c1; float:left;}
+.shuju_ri1{ width:100%; height:39px; line-height:39px; background:url(../image/new_bei.png) repeat-x;}
+.shuju_ri1 li{ width:125px; height:31px; color:#2e2e2e; margin-left:18px; text-align:center; line-height:31px; margin-top:5px; float:left; font-size:14px; font-weight:700; cursor:pointer;}
+
+/*婊氬姩琛ㄥ崟1*/
+.summary1{ width:1030px; height:300px; margin-top:15px;}
+.summary1_a{ width:100%; height:35px; line-height:35px; background:url(../image/ban_er.png) repeat-x; color:#fff;}
+.summary1_a h4{ width:140px; line-height:35px; color:#fff; float:left; margin-left:20px; letter-spacing:1px;}
+.summary1_a span{ float:left;  font-size:12px;}
+.summary1_a input{ float:left; width:50px; height:25px; color:#FFF; font-size:12px; background:#a2cc47; margin:6px 5px 0px 2px; border:1px solid #ace238; display:block;}
+.summary1_a select{ float:left; width:100px; height:23px; border:1px solid #c9c9c9; margin-top:7px; margin-right:50px;}
+.summary1_b{ width:1028px; height:260px; border:1px solid #bee4f9; margin-top:5px; overflow:hidden; float:left;}
+.summary1_b table{ width:1027px; font-size:12px; margin-top:1px; margin-bottom:1px;}
+.summary1_b table th{ height:35px; border-left:1px solid #FFF; background:#e6f3fa;}
+.summary1_b table td{ height:30px; border-left:1px solid #FFF; text-align:center;}
+
+/*婊氬姩琛ㄥ崟2*/
+.summary2{ width:1030px; height:300px; margin-top:15px;}
+.summary2_a{ width:100%; height:35px; line-height:35px; background:url(../image/ban_er.png) repeat-x; color:#fff;}
+.summary2_a h4{ width:140px; line-height:35px; color:#fff; float:left; margin-left:20px; letter-spacing:1px;}
+.summary2_a span{ float:left; font-size:12px;}
+.summary2_a input{ float:left; width:50px; height:25px; color:#FFF; font-size:12px; background:#a2cc47; margin:6px 5px 0px 2px; border:1px solid #ace238; display:block;}
+.summary2_a select{ float:left; height:23px; width:100px; border:1px solid #c9c9c9; margin-top:7px; margin-right:50px;}
+.summary2_b{ width:1028px; height:260px; border:1px solid #bee4f9; margin-top:5px; overflow:hidden;}
+.summary2_b table{ width:1027px; font-size:12px; margin-top:1px; margin-bottom:1px;}
+.summary2_b table th{ height:35px; border-left:1px solid #FFF; background:#e6f3fa;}
+.summary2_b table td{ height:30px; border-left:1px solid #FFF; text-align:center;}
+
+/*浜ゆ槗娴佺▼*/
+.tips{ width:1030px; height:134px; margin-top:15px;}
+
+/*浼佷笟LOGO鍒楄〃*/
+.logo{ width:1026px; border:2px solid #d9d9d9; border-radius:8px; box-shadow:0px 3px 6px #666666; margin-bottom:30px;}
+.logo1{ width:990px; height:64px; margin:15px auto; background:url(../image/new_greey.png) no-repeat;}
+.logo1 h2{ color:#45961c; line-height:64px; float:left; margin-left:30px;}
+.logo1 a{ color:#f7941d; font-weight:700; margin-right:20px; margin-top:30px; float:right;}
+.logo2{ width:990px; margin-bottom:20px; display:inline-block; margin-left:15px;}
+.logo2 img{ width:148px; height:60px; float:left; margin:8px;}
+@charset "utf-8";
+/* CSS Document */
+

@@ -1,0 +1,346 @@
+html { background-color: #e5f1f6; }
+a:link { color: #555; }
+a:visited { color: #555; }
+a:hover { color: #ff6a00; }
+a:active { color: #555; }
+
+div.wrapper { width: 1220px; height: 200px; margin: 0 auto; }
+div.wrapper-left { background-image: url(../Images/bg_wrapper_left.png); background-repeat: repeat-y; background-position: left center; }
+div.wrapper-right { background-image: url(../Images/bg_wrapper_right.png); background-repeat: repeat-y; background-position: right center; }
+div.wrapper-bottom { position: relative; z-index: 0; height: 10px; margin: 0 10px; background-image: url(../Images/bg_repeat_x.png); background-repeat: repeat-x; background-position: center -5px; }
+div.wrapper-radius-left { position: absolute; z-index: 1; top: 0; left: -10px; width: 10px; height: 10px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -71px -210px; }
+div.wrapper-radius-right { position: absolute; z-index: 1; top: 0; right: -10px; width: 10px; height: 10px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -86px -210px; }
+div.wrapper-main { margin: 0 15px; padding-bottom: 5px; }
+
+div.header { position: relative; z-index: 1; height: 200px; margin-bottom: 10px; }
+    div.header i.icon-logo { position: absolute; z-index: 1; top: 0; left: 0; }
+
+.nav-top { position: absolute; z-index: 2; bottom: 0; right: 0; }
+    .nav-top ul { }
+        .nav-top ul li { height: 35px; cursor: pointer; }
+            .nav-top ul li.bg-nav-top { position: relative; z-index: 1000; }
+            .nav-top ul li > a { display: block; margin: 13px 5px 0 5px; font-size: 15px; color: #eee; }
+                .nav-top ul li > a:hover { color: #fff; }
+            .nav-top ul li span,
+            .nav-top ul li div,
+            .nav-top ul li div dl { width: 150px; background-color: #fefefe; }
+            .nav-top ul li div { display: none; position: absolute; z-index: 1001; left: 0; top: 35px; }
+                .nav-top ul li div dl i { margin: 7px 10px 0 5px; }
+                .nav-top ul li div dl a { display: block; line-height: 20px; margin: 0 30px 0 10px; padding-left: 5px; border-left: 5px solid #0092d4; font-size: 13px; font-weight: bold; color: #0092d4; }
+                .nav-top ul li div dl .hover { background-color: #0092d4; }
+                    .nav-top ul li div dl .hover > a { border-left-color: #fff; color: #fff; }
+                .nav-top ul li div dl dd { +width: 150px; position: relative; z-index: 1002; margin-bottom: 10px; padding: 5px 0; border-bottom: 1px dotted #0092d4; cursor: pointer; }
+                    .nav-top ul li div dl dd dl { display: none; position: absolute; z-index: 1003; top: -5px; left: 149px; padding-top: 5px; }
+                        .nav-top ul li div dl dd dl dt { margin-bottom: 10px; padding: 5px 0; border-bottom: 1px dotted #0092d4; cursor: pointer; }
+
+div.row { }
+
+div.box { position: relative; z-index: 0; margin-top: 30px; border: 1px solid #0092d4; }
+    div.box h3 { position: absolute; z-index: 1; top: -27px; left: 12px; height: 54px; }
+        div.box h3 span { line-height: 25px; margin-top: 3px; color: #2786cc; font-size: 13px; }
+        	div.box h3 span em { color: #f00; }
+    div.box div.h3 { height: 27px; }
+    div.box h4 { position: absolute; z-index: 1; top: -23px; left: 12px; height: 45px; }
+        div.box h4 a { cursor:pointer; }
+            div.box h4 a span { line-height: 43px; color: #fff; }
+    div.box div.h4 { height: 15px; }
+    div.box ul { }
+        div.box ul li { position: relative; z-index: 0; height: 20px; line-height: 20px; margin: 15px 10px; border-bottom: 1px dotted #333; }
+            div.box ul li em { position: absolute; z-index: 1; top: -9px; right: 34px; }
+            div.box ul li i { margin: 5px 5px 0 5px; }
+            div.box ul li a { display: block; margin-left: 15px; margin-right: 60px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            div.box ul li span { margin-right: 5px; }
+/*div.box.hover { border-color: #33a8dd; }*/
+/*div.box.hover h3 { background-color: #33a8dd; }*/
+div.box-border { border: 1px solid #0092d4; }
+div.box-separator { width: 10px; height: 10px; }
+
+div.search { height: 26px; margin-top: 10px;}
+    div.search input { width: 160px; height: 26px; line-height: 26px; margin-left: 5px; border: 0; background-color: transparent; +background-color: #e5f1f6; font-size: 14px; }
+
+.focus { +width: 463px; +height: 302px; margin-top: 10px; border: 1px solid #0092d4; }
+    .focus div#focus { width: 453px; height: 292px; margin: 5px; }
+        .focus div#focus img { width: 453px; height: 292px; }
+
+.login { height: 85px; +height: 86px; font-size: 16px; font-weight: bold; color: #0075aa; }
+    .login table { width:200px; height: 72px; margin: 3px auto 0 auto; }
+        .login table col.col-0 { width: 25px; }
+        .login table col.col-1 { width: 125px; }
+        .login table col.col-2 { width: 50px; }
+        .login table td { border-bottom: 1px solid #0092d4; }
+        .login table input { width: 100%; line-height: 16px; border: 0; background-color: transparent; }
+        .login table button { width: 45px; height: 45px; margin-left: 5px; border: 0; background-color: #0092d4; color: #eee; font-size: 16px; font-weight: bold; }
+        
+.safety { }
+    .safety table { width: 80%; height: 160px; }
+        .safety table col.col-0 { width: 65%; }
+        .safety table td.col-0 { text-align: right; }
+        .safety table td { }
+            .safety table td em { color: #f00; }
+
+div.img-link { }
+    div.img-link dl { }
+        div.img-link dl dd { position: relative; z-index: 0; width: 115px; height: 50px; line-height: 50px; margin-bottom: 10px; font-size: 20px; font-weight: bold; }
+            div.img-link dl dd div { height: 32px; margin: 9px; background-color: #fff; filter: alpha(opacity=50); opacity: 0.5; }
+            div.img-link dl dd a { position: absolute; z-index: 1; top: 25px; left: 65px; width: 94px; height: 32px; line-height: 32px; margin-left: -56px; margin-top: -16px; color: #00608b; }
+                div.img-link dl dd a:hover { color: #ff6a00; }
+    div.img-link select { display: block; width: 100%; +width: 240px; height: 20px; margin-top: 10px; +margin-top: 6px; border-width: 1px; background-color: transparent; font-size: 14px; }
+
+div.notice { height: 25px; margin-top: 10px; border-top: 1px solid #0092d4; border-bottom: 1px solid #0092d4; }
+    div.notice h3 { height: 25px; }
+    div.notice div#notice { width: 1100px; margin-left: 90px; }
+        div.notice div#notice li { width: 550px; height: 25px; line-height: 25px; }
+            div.notice div#notice li i { margin: 8px 5px 0 10px; }
+            div.notice div#notice li a { display: block; margin-left: 96px; margin-right: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+div#ad { width: 1190px; height: 150px; margin-top: 10px; margin-bottom: 10px; }
+    div#ad ul li { height: 150px; }
+        div#ad ul li img { width: 1190px; height: 150px; }
+
+div#show { width: 1190px; height: 136px; margin-top: 10px; }
+    div#show ul { width: 1200px; height: 136px; margin-left: -10px; }
+        div#show ul li { width: 188px; height: 134px; margin-left: 10px; border: 1px solid #0092d4; }
+            div#show ul li img { width: 184px; height: 130px; margin: 2px; }
+
+div.row iframe { width: 100%; height: 220px; margin: 0; padding: 0; border: 0; }
+div.report { width: 1190px; }
+    div.report div { }
+    div.report table { width: 100%; height: 220px; }
+        div.report table th,
+        div.report table td { border: 1px solid #0092d4; text-align: center; }
+        div.report table td { padding: 5px 0; }
+        div.report table th { height: 26px; line-height: 26px; background-color: #0092d4; color: #eee; font-size: 14px; font-weight: bold; text-align: left; }
+            div.report table th em { margin: 2px 3px 0 2px; }
+            div.report table th.border-left,
+            div.report table td.border-left { border-left: 2px solid #0092d4; }
+            div.report table th.border-right,
+            div.report table td.border-right { border-right: 2px solid #0092d4; }
+
+table.link { width: 90%; margin: 5px auto; }
+    table.link colgroup { width: 50%; }
+    table.link td { padding: 5px; vertical-align: top; border-bottom: 1px dotted #0092d4; }
+
+.main { margin-top: 10px; }
+
+.layout-right { width: 240px; }
+    .layout-right .box { margin-top: 34px; margin-bottom: 10px; }
+.layout-left { margin-right: 250px; }
+    .layout-left .box { }
+
+.layout-list-right { width: 240px; }
+    .layout-list-right .box { margin-top: 24px; margin-bottom: 10px; }
+    .layout-list-right .img-link { margin-bottom: 34px; }
+.layout-list-left { margin-right: 250px; }
+    .layout-list-left .box { }
+
+.layout-ztree-left { width: 270px; }
+    .layout-ztree-left .ztree { border-right: 1px solid #0092d4; }
+.layout-ztree-right { margin-left: 280px; }
+
+.ztree-search { height: 26px; border-left: 9px solid #0092d4; border-bottom: 1px solid #0092d4; }
+    .ztree-search input { width: 230px; height: 26px; margin-left: 5px; line-height: 26px; border: 0; background-color: transparent; +background-color: #e5f1f6; }
+
+.layout-content-left { width: 270px; }
+    .layout-content-left h3 { height: 41px; background-color: #0075aa; margin-bottom: 5px; }
+        .layout-content-left h3 i { margin: 10px 5px 0 5px; }
+        .layout-content-left h3 span { line-height: 41px; font-size: 20px; font-weight: bold; color: #fff; }
+    .layout-content-left ul li { height: 40px; margin-bottom: 3px; background-color: #0075aa; }
+        .layout-content-left ul li:hover { background-color: #0092d4; }
+        .layout-content-left ul li span { position: relative; top: 10px; left: 10px; display: block; height: 20px; line-height: 20px; padding-left: 5px; border-left: 9px solid #fff; font-size: 16px; font-weight: bold; color: #fff; }
+.layout-content-right { margin-left: 280px; }
+    .layout-content-right > img { width: 100%; height: 150px; }
+
+div.footer { line-height: 80px; margin-top: 10px; background-color: #0075aa; color: #eee; }
+
+.position { margin-bottom: 10px; }
+    .position span,
+    .position a { margin: 1px 20px 0 2px; }
+
+.list { width: 100%; min-height: 500px; }
+    .list h3 { height: 31px; background-color: #0092d4; }
+        .list h3 i { margin-top: 5px; margin-left: 10px; }
+        .list h3 em { line-height: 31px; margin-left: 20px; margin-right: 20px; color: #fff; font-size: 15px; font-weight: bold; }
+    .list div img { width: 100%; height: 150px; }
+    .list div ul { }
+        .list div ul li { position: relative; z-index: 0; height: 20px; line-height: 20px; margin: 15px 0; border-bottom: 1px dotted #333; }
+            .list div ul li em { position: absolute; z-index: 1; top: -9px; right: 34px; }
+            .list div ul li i { margin: 6px 5px 0 5px; }
+            .list div ul li a { display: block; margin-left: 15px; margin-right: 60px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .list div ul li span { margin-right: 5px; }
+    .list div.xg-pager { background-color: transparent; }
+
+.detail { width: 90%; }
+    .detail h3 { margin-bottom: 20px; font-size: 20px; }
+    .detail h4 { margin-bottom: 15px; }
+        .detail h4 span { margin: 0 150px; }
+    .detail hr { margin-bottom: 20px; width: 90%; }
+    .detail div#editor { width: 90%; margin:0 auto;}
+
+
+li.bg-nav-top { background-image: url(../Images/bg_repeat_x.png); background-repeat: repeat-x; background-position: center -20px; }
+span.bg-nav-top-float { display: block; height: 10px; background: url(../Images/bg.png) no-repeat; background-position: -121px -210px; }
+span.bg-box-title { display: block; height: 45px; background-image: url(../Images/bg_repeat_x.png); background-repeat: repeat-x; background-position: center -91px; }
+span.bg-title { display: block; height: 26px; background-image: url(../Images/bg_repeat_x.png); background-repeat: repeat-x; background-position: center -60px; }
+dd.bg-img-link-0 { display: block; width: 130px; height: 50px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -140px -305px; }
+dd.bg-img-link-1 { display: block; width: 130px; height: 50px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -140px -250px; }
+dd.bg-img-link-2 { display: block; width: 130px; height: 50px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -275px -250px; }
+dd.bg-img-link-3 { display: block; width: 130px; height: 50px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -5px -305px; }
+dd.bg-img-link-4 { display: block; width: 130px; height: 50px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -5px -250px; }
+dd.bg-img-link-5 { display: block; width: 130px; height: 50px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -275px -305px; }
+div.bg-center-1 { background-image: url(../Images/bg_center_1.png); background-repeat: no-repeat; background-position: center center; }
+div.bg-center-2 { background-image: url(../Images/bg_center_2.png); background-repeat: no-repeat; background-position: center center; }
+
+i.icon-logo { display: block; width: 840px; height: 200px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -5px -5px; }
+li.icon-nav-top-left { display: block; width: 26px; height: 35px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -5px -210px; }
+li.icon-nav-top-separator { display: block; width: 30px; height: 35px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -36px -210px; }
+li.icon-nav-login { display: block; width: 60px; height: 35px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -582px -210px; }
+
+i.icon-box-title-left { display: block; width: 45px; height: 45px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -524px -241px; }
+i.icon-box-title-right { display: block; width: 45px; height: 45px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -524px -291px; }
+i.icon-title-left { display: block; width: 5px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -101px -210px; }
+i.icon-title-right { display: block; width: 5px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -111px -210px; }
+i.icon-login-user { display: block; width: 25px; height: 25px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -574px -250px; }
+i.icon-login-password { display: block; width: 25px; height: 25px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -604px -250px; }
+i.icon-box-login { display: block; width: 54px; height: 54px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -692px -210px; }
+i.icon-box-safety { display: block; width: 54px; height: 54px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -751px -210px; }
+i.icon-box-link { display: block; width: 54px; height: 54px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -659px -269px; }
+.bg-safety { background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -776px -265px; }
+i.icon-notice { display: block; width: 80px; height: 25px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -574px -280px; }
+em.icon-new { display: block; width: 26px; height: 14px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -524px -341px; }
+/*i.icon-login { display: block; width: 21px; height: 21px; background: url(../Images/bg.png) no-repeat; background-position: -200px -85px; }*/
+/*i.icon-important { display: block; width: 21px; height: 21px; background: url(../Images/bg.png) no-repeat; background-position: -226px -85px; }*/
+/*i.icon-friend-link { display: block; width: 21px; height: 21px; background: url(../Images/bg.png) no-repeat; background-position: -252px -85px; }*/
+i.icon-list { display: block; width: 9px; height: 9px; background: url(../Images/bg.png) no-repeat; background-position: -71px -225px; }
+i.icon-list-hover { display: block; width: 9px; height: 9px; background: url(../Images/bg.png) no-repeat; background-position: -85px -225px; }
+i.icon-position { display: block; width: 15px; height: 15px; background: url(../Images/bg.png) no-repeat; background-position: -121px -225px; }
+i.icon-position-level { display: block; width: 15px; height: 15px; background: url(../Images/bg.png) no-repeat; background-position: -141px -225px; }
+i.icon-nav-top-pointer { display: block; width: 7px; height: 6px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -71px -239px; }
+i.icon-link { display: block; width: 12px; height: 12px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -161px -225px; }
+i.icon-link-hover { display: block; width: 12px; height: 12px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -178px -225px; }
+i.icon-safety { display: block; width: 12px; height: 12px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -195px -225px; }
+/*i.icon-notice { display: block; width: 13px; height: 13px; background: url(../Images/bg.png) no-repeat; background-position: -5px -320px; }*/
+/*i.icon-search { display: block; width: 13px; height: 13px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -296px -85px; }*/
+/*i.icon-search { display: block; width: 26px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -334px -70px; }*/
+.icon-title { display: block; width: 21px; height: 21px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -326px -210px; }
+i.icon-title-search { display: block; width: 24px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -461px -210px; }
+i.icon-title-login { display: block; width: 18px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -490px -210px; }
+i.icon-title-safety { display: block; width: 18px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -513px -210px; }
+i.icon-title-1 { display: block; width: 18px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -536px -210px; }
+i.icon-title-2 { display: block; width: 18px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -559px -210px; }
+i.icon-ztree-search { display: block; width: 26px; height: 26px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -430px -210px; }
+i.icon-index-search { display: block; width: 40px; height: 40px; background-image: url(../Images/bg.png); background-repeat: no-repeat; background-position: -647px -210px; }
+
+
+.width-12 { width: 12px; /* 安全动态表情/友情链接图标列宽度 */ }
+.width-20 { width: 20px; /* nav-top最后一个li宽度 */ }
+.width-50 { width: 50px; /* login左列宽度 */ }
+.width-100 { width: 100px; /* login中列宽度 */ }
+.width-240 { width: 240px; /* box.login宽度 */ }
+.width-260 { width: 260px; /* list.search宽度 */ }
+.width-270 { width: 270px; /* box.friendlink宽度 */ }
+.width-390 { width: 390px; /* box宽度 */ }
+.width-400 { width: 400px; /* box宽度 */ }
+.width-450 { width: 450px; /* box宽度 */ }
+.width-465 { width: 465px; /* box宽度 */ }
+.width-510 { width: 480px; /* focus右列宽度 */ }
+/*.height-101 { height: 101px; /* box.login高度 */ /*}*/
+/*.height-150 { height: 150px; /* box.safety高度 */ /*}*/
+
+
+
+/*---- ZTree Begin ----*/
+/*-------------------------------------
+zTree Style
+
+version:	3.4
+author:		Hunter.z
+email:		hunter.z@263.net
+website:	http://code.google.com/p/jquerytree/
+
+-------------------------------------*/
+
+.ztree * { padding: 0; margin: 0; }
+.ztree { margin: 0; padding: 5px; color: #333; }
+    .ztree li { padding: 0; margin: 0; list-style: none; line-height: 14px; text-align: left; white-space: nowrap; outline: 0; }
+        .ztree li ul { margin: 0; padding: 0 0 0 24px; }
+            .ztree li ul.line { background: url(./img/line_conn.gif) 0 0 repeat-y; }
+
+        .ztree li a { padding: 1px 3px 0 0; margin: 0; cursor: pointer; height: 23px; color: #2786cc; background-color: transparent; text-decoration: none; vertical-align: top; display: inline-block; font-size: 16px; font-weight: bold; }
+            .ztree li a:hover { text-decoration: underline; }
+            .ztree li a.curSelectedNode { padding-top: 0px; background-color: #FFE6B0; color: #004485; height: 22px; border: 1px #FFB951 solid; opacity: 0.8; }
+            .ztree li a.curSelectedNode_Edit { padding-top: 0px; background-color: #FFE6B0; color: black; height: 22px; border: 1px #FFB951 solid; opacity: 0.8; }
+            .ztree li a.tmpTargetNode_inner { padding-top: 0px; background-color: #316AC5; color: white; height: 22px; border: 1px #316AC5 solid; opacity: 0.8; filter: alpha(opacity=80); }
+            .ztree li a.tmpTargetNode_prev { }
+            .ztree li a.tmpTargetNode_next { }
+            .ztree li a input.rename { height: 20px; width: 80px; padding: 0; margin: 0; font-size: 12px; border: 1px #7EC4CC solid; *border: 0px; }
+        .ztree li span { line-height: 22px; margin-right: 2px; }
+            .ztree li span.zbutton { line-height: 0; margin: 0; width: 22px; height: 22px; display: inline-block; vertical-align: middle; border: 0 none; cursor: pointer; outline: none; overflow: hidden; background-color: transparent; background-repeat: no-repeat; background-attachment: scroll; background-image: url("../Images/bg.png"); }
+
+                .ztree li span.zbutton.chk { width: 13px; height: 13px; margin: 0 3px 0 0; cursor: auto; }
+                    .ztree li span.zbutton.chk.checkbox_false_full { background-position: 0 0; }
+                    .ztree li span.zbutton.chk.checkbox_false_full_focus { background-position: 0 -14px; }
+                    .ztree li span.zbutton.chk.checkbox_false_part { background-position: 0 -28px; }
+                    .ztree li span.zbutton.chk.checkbox_false_part_focus { background-position: 0 -42px; }
+                    .ztree li span.zbutton.chk.checkbox_false_disable { background-position: 0 -56px; }
+                    .ztree li span.zbutton.chk.checkbox_true_full { background-position: -14px 0; }
+                    .ztree li span.zbutton.chk.checkbox_true_full_focus { background-position: -14px -14px; }
+                    .ztree li span.zbutton.chk.checkbox_true_part { background-position: -14px -28px; }
+                    .ztree li span.zbutton.chk.checkbox_true_part_focus { background-position: -14px -42px; }
+                    .ztree li span.zbutton.chk.checkbox_true_disable { background-position: -14px -56px; }
+                    .ztree li span.zbutton.chk.radio_false_full { background-position: -28px 0; }
+                    .ztree li span.zbutton.chk.radio_false_full_focus { background-position: -28px -14px; }
+                    .ztree li span.zbutton.chk.radio_false_part { background-position: -28px -28px; }
+                    .ztree li span.zbutton.chk.radio_false_part_focus { background-position: -28px -42px; }
+                    .ztree li span.zbutton.chk.radio_false_disable { background-position: -28px -56px; }
+                    .ztree li span.zbutton.chk.radio_true_full { background-position: -42px 0; }
+                    .ztree li span.zbutton.chk.radio_true_full_focus { background-position: -42px -14px; }
+                    .ztree li span.zbutton.chk.radio_true_part { background-position: -42px -28px; }
+                    .ztree li span.zbutton.chk.radio_true_part_focus { background-position: -42px -42px; }
+                    .ztree li span.zbutton.chk.radio_true_disable { background-position: -42px -56px; }
+
+                .ztree li span.zbutton.switch { width: 24px; height: 24px; }
+                .ztree li span.zbutton.root_open { background-position: -468px -328px; }
+                .ztree li span.zbutton.root_close { background-position: -439px -328px; }
+                .ztree li span.zbutton.roots_open { background-position: -468px -241px; }
+                .ztree li span.zbutton.roots_close { background-position: -439px -241px; }
+                .ztree li span.zbutton.center_open { background-position: -468px -270px; }
+                .ztree li span.zbutton.center_close { background-position: -439px -270px; }
+                .ztree li span.zbutton.bottom_open { background-position: -468px -299px; }
+                .ztree li span.zbutton.bottom_close { background-position: -439px -299px; }
+                .ztree li span.zbutton.noline_open { background-position: -410px -328px; }
+                .ztree li span.zbutton.noline_close { background-position: -410px -328px; }
+                .ztree li span.zbutton.root_docu { background: none; }
+                .ztree li span.zbutton.roots_docu { background-position: -410px -241px; }
+                .ztree li span.zbutton.center_docu { background-position: -410px -270px; }
+                .ztree li span.zbutton.bottom_docu { background-position: -410px -299px; }
+                .ztree li span.zbutton.noline_docu { background: none; }
+
+                .ztree li span.zbutton.ico_open { margin-right: 2px; background-position: -497px -268px; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.ico_close { margin-right: 2px; background-position: -497px -241px; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.ico_docu { margin-right: 2px; background-position: -497px -295px; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.edit { margin-right: 2px; background-position: -110px -48px; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.remove { margin-right: 2px; background-position: -110px -64px; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.add { margin-left: 2px; margin-right: -1px; background-position: -144px 0; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.firstPage { float: right; margin-left: 2px; margin-right: 0; background-position: -144px -16px; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.prevPage { float: right; margin-left: 2px; margin-right: 0; background-position: -144px -48px; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.nextPage { float: right; margin-left: 2px; margin-right: 0; background-position: -144px -64px; vertical-align: top; *vertical-align: middle; }
+                .ztree li span.zbutton.lastPage { float: right; margin-left: 2px; margin-right: 0; background-position: -144px -32px; vertical-align: top; *vertical-align: middle; }
+
+                .ztree li span.zbutton.ico_loading { margin-right: 2px; background: url(./img/loading.gif) no-repeat scroll 0 0 transparent; vertical-align: top; *vertical-align: middle; }
+
+ul.tmpTargetzTree { background-color: #FFE6B0; opacity: 0.8; filter: alpha(opacity=80); }
+
+span.tmpzTreeMove_arrow { width: 16px; height: 16px; display: inline-block; padding: 0; margin: 2px 0 0 1px; border: 0 none; position: absolute; background-color: transparent; background-repeat: no-repeat; background-attachment: scroll; background-position: -110px -80px; background-image: url("./img/zTreeStandard.png"); *background-image: url("./img/zTreeStandard.gif"); }
+
+ul.ztree.zTreeDragUL { margin: 0; padding: 0; position: absolute; width: auto; height: auto; overflow: hidden; background-color: #cfcfcf; border: 1px #00B83F dotted; opacity: 0.8; filter: alpha(opacity=80); }
+.zTreeMask { z-index: 10000; background-color: #cfcfcf; opacity: 0.0; filter: alpha(opacity=0); position: absolute; }
+
+/* level style*/
+/*.ztree li span.zbutton.level0 {
+	display:none;
+}
+.ztree li ul.level0 {
+	padding:0;
+	background:none;
+}*/
+/*---- ZTree End ----*/

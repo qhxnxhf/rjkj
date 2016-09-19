@@ -1,0 +1,103 @@
+﻿@charset "utf-8";
+
+/* default style for browser: */
+html { background: #fff; color: #000; }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, iframe, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { margin: 0; padding: 0; }
+body, button, input, select, textarea { font-size: 12px; font-family: Arial,宋体,SimSun,\5B8B\4F53; color: #555; }
+input, select, textarea { font-size: 100%; }
+table { border-collapse: collapse; border-spacing: 0; }
+caption, th { text-align: left; }
+fieldset, img { border: none; }
+iframe { display: block; }
+abbr, acronym { border: none; font-variant: normal; }
+del { text-decoration: line-through; }
+address, caption, cite, code, dfn, em, th, var { font-style: normal; font-weight: 500; }
+ol, ul { list-style: none; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ins, a { text-decoration: none; }
+/* default style for browser end */
+
+
+/* default style for public: */
+.font-hei { font-family: Arial,黑体,SimHei,\9ED1\4F53; +font-family: 黑体,SimHei,\9ED1\4F53; }
+.font-ya-hei { font-family: Arial,微软雅黑,Microsoft YaHei,\5FAE\8F6F\96C5\9ED1; +font-family: 微软雅黑,Microsoft YaHei,\5FAE\8F6F\96C5\9ED1; }
+.clear { clear: both; }
+.clear-left { clear: left; }
+.clear-right { clear: right; }
+.none { display: none; }
+.block { display: block; }
+.left { float: left; }
+.right { float: right; }
+.center { margin-left: auto; margin-right: auto; }
+.text-center { text-align: center; }
+.relative { position: relative; }
+.pointer { cursor: pointer; }
+/* default style for public end */
+
+
+/* default style for XG: */
+
+/* L.default style for XG.Pager: */
+div.xg-pager { text-align: center; line-height: 25px; }
+    div.xg-pager > span, div.xg-pager > a, div.xg-pager > em.xg-pager-hover, div.xg-pager > strong { margin: 0 5px; padding: 5px 10px; font-size: 12px; font-weight: bold; color: #fff; }
+    div.xg-pager > span { background-color: #808080; }
+    div.xg-pager > a { background-color: #0094ff; cursor: pointer; }
+        div.xg-pager > a:hover { background-color: #ffd800; text-decoration: none; }
+    div.xg-pager > em.xg-pager-hover { background-color: #b6ff00; font-style: normal; }
+    div.xg-pager > strong { background-color: #0094ff; }
+/* L.default style for XG.Pager end */
+
+/* L.default style for XG.List: */
+div.xg-list { }
+    div.xg-list > table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+        div.xg-list > table th, div.xg-list > table td { }
+    div.xg-list > ul { }
+        div.xg-list > ul > li { }
+/* L.default style for XG.List end */
+
+/* L.default style for XG.Scroll: */
+div.xg-scroll-type-table > div { overflow: hidden; }
+div.xg-scroll-type-table table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+div.xg-scroll-type-ul { overflow: hidden; }
+    div.xg-scroll-type-ul > ul { list-style: none; }
+        div.xg-scroll-type-ul > ul > li { float: left; }
+/* L.default style for XG.Scroll end */
+
+/* L.default style for XG.Editor: */
+div.xg-editor { }
+    div.xg-editor > iframe { width: 100%; height: 0; margin: 0; padding: 0; border: 0; }
+/* L.default style for XG.Editor end */
+
+/* L.default style for XG.Focus: */
+div.xg-focus { position: relative; z-index: 0; overflow: hidden; }
+    div.xg-focus > ul { margin: 0; padding: 0; position: relative; z-index: 1; list-style: none; }
+        div.xg-focus > ul > li { width: 100%; position: absolute; top: 0; left: 0; z-index: 2; background-color: #ff6a00; }
+            div.xg-focus > ul > li > img { }
+            div.xg-focus > ul > li > a { display: block; width: 100%; height: 20px; line-height: 20px; position: absolute; bottom: 0; left: 0; z-index: 4; color: #fff; }
+                div.xg-focus > ul > li > a > span { margin-left: 5px; margin-right: 5px; }
+            div.xg-focus > ul > li > div { width: 100%; height: 20px; position: absolute; bottom: 0; left: 0; z-index: 3; filter: alpha(opacity=25); opacity: 0.25; background-color: #000; }
+    div.xg-focus > div { position: absolute; bottom: 25px; right: 5px; z-index: 5; }
+        div.xg-focus > div > span, div.xg-focus > div > em { padding: 5px 10px; margin: 0 5px; line-height: 20px; background-color: #808080; font-size: 10px; font-weight: bold; font-style: normal; color: #fff; }
+        div.xg-focus > div > span { background-color: #808080; }
+        div.xg-focus > div > em { background-color: #f00; }
+/* L.default style for XG.Focus end */
+
+/* L.default style for XG.Dialog: */
+div.xg-dialog { display: none; position: absolute; left: 50%; z-index: 1000; padding: 5px; border: 1px solid #0094ff; background-color: #fff; }
+div.xg-dialog-title { margin-bottom: 5px; background-color: #0094ff; height: 20px; line-height: 20px; font-size: 12px; color: #fff; }
+    div.xg-dialog-title strong { float: right; padding: 0 5px; font-size: 20px; cursor: pointer; }
+        div.xg-dialog-title strong:hover { color: #f00; }
+    div.xg-dialog-title h6 { margin-left: 5px; margin-right: 25px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+div.xg-dialog-mark { display: none; position: absolute; z-index: 1000; top: 0; left: 0; width: 100%; background-color: #000; filter: alpha(opacity=25); opacity: 0.25; }
+/* L.default style for XG.Dialog end */
+
+/* L.default style for XG.FadeLoop: */
+div.xg-fade-loop { }
+    div.xg-fade-loop ul { position: relative; z-index: 0; }
+        div.xg-fade-loop ul li { position: absolute; z-index: 1; top: 0; left: 0; }
+/* L.default style for XG.FadeLoop end */
+
+/* default style for XG end */
