@@ -76,7 +76,7 @@
 					
 					
 					
-					<td><button type="button" onclick="searchHandler2()"><span class="icon_find">查询</span></button></td>
+					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
 					
 					
 				</tr>
