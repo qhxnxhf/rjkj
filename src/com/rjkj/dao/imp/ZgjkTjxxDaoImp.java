@@ -61,7 +61,7 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 	}
 
 	@Override
-	public List<Tjlb> findByAll() {
+	public List<Tjlb> findTjlb() {
 		List <Tjlb> list=new ArrayList<Tjlb>();
 		String sql="SELECT * FROM jtjlb ";
 		try {

@@ -13,6 +13,6 @@ public interface ZgjkTjxxDao {
 	
 	List<Tjxx> findByMedicareId(String cId);
 	
-	List<Tjlb> findByAll();//添加类别
+	List<Tjlb> findTjlb();//添加类别
 
 }

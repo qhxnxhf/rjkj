@@ -68,10 +68,13 @@
 			
 			<table width="100%">
 				<tr>
-					
+					<td>体检类别</td>
+					<td>
+						<select boxHeight="100" name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/gr/tjtype'/>"  selWidth="180" ></select>  				
+					</td>
 					<td>身份证：</td>
 					<td>
-						<input type="text" id="carId" name="carId"  style="width:200px;"/>
+						<input type="text" id="carId" name="carId"  style="width:180px;"/>
 					</td>
 					
 					

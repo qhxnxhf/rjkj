@@ -15,11 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rjkj.dao.OrgDao;
 import com.rjkj.dao.ZgjkTjxxDao;
+import com.rjkj.entities.Dic;
 import com.rjkj.entities.Organize;
+import com.rjkj.model.Tjlb;
 import com.rjkj.model.Tjxx;
 import com.rjkj.util.web.JsonUtil;
 import com.rjkj.util.web.Page;
@@ -36,11 +39,38 @@ public class GrQueryControl {
 	@Autowired
 	private ZgjkTjxxDao tjService;
 	
+	//组织机构单选框
+		
+	@RequestMapping(value="/typeTj", method={RequestMethod.GET, RequestMethod.POST})		
+	public @ResponseBody String getTypeTj(@RequestParam("parentId") String parentId, HttpServletRequest request){
+						
+					JSONObject json = new JSONObject();
+					
+					JSONArray jsonArray=new JSONArray();
+					List<Tjlb> dics=this.tjService.findTjlb();
+					
+					for(Tjlb dic:dics){
+						JSONObject js = new JSONObject();
+						
+						js.put("key", dic.getLbName());
+						js.put("value", dic.getId());
+						
+						jsonArray.add(js);
+					}
+						
+					json.put("list", jsonArray);
+					String result=json.toString();
+					return result;
+					    
+			}	
+	
 	
 	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody String getTreeList(HttpServletRequest request){
 		String cId = request.getParameter("carId");
+		String tjlb= request.getParameter("tjlb");;
 		//String medId = request.getParameter("medId");
+		
 		String sort= request.getParameter("sort");;
 		String direction= request.getParameter("direction");
 		
