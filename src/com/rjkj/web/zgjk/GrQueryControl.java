@@ -42,7 +42,7 @@ public class GrQueryControl {
 	//组织机构单选框
 		
 	@RequestMapping(value="/typeTj", method={RequestMethod.GET, RequestMethod.POST})		
-	public @ResponseBody String getTypeTj(@RequestParam("parentId") String parentId, HttpServletRequest request){
+	public @ResponseBody String getTypeTj(HttpServletRequest request){
 						
 					JSONObject json = new JSONObject();
 					

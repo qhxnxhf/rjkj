@@ -28,6 +28,11 @@
 <script src="<%=path%>/resources/libs/js/table/quiGrid.js" type="text/javascript"></script>
 <!--数据表格end-->
 
+
+<!-- 组合下拉框start -->
+<script type="text/javascript" src="<%=path%>/resources/libs/js/form/selectCustom.js"></script>
+<!-- 组合拉框end -->
+
 <!-- 表单start -->
 <script src="<%=path%>/resources/libs/js/form/form.js" type="text/javascript"></script>
 <!-- 表单end -->
@@ -70,7 +75,7 @@
 				<tr>
 					<td>体检类别</td>
 					<td>
-						<select boxHeight="100" name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/gr/tjtype'/>"  selWidth="180" ></select>  				
+						<select boxHeight="100" name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/gr/typeTj"  selWidth="180" ></select>  				
 					</td>
 					<td>身份证：</td>
 					<td>
