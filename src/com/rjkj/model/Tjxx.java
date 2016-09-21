@@ -14,6 +14,8 @@ public class Tjxx {
 	
 	private Date tjDate;//体检日期
 	
+	private String tjpc;//体检批次
+	
 	private String tjType;//体检批次
 	
 	private Long tjxId;//体检项目ID
@@ -105,6 +107,14 @@ public class Tjxx {
 
 	public void setTjjg(String tjjg) {
 		this.tjjg = tjjg;
+	}
+
+	public String getTjpc() {
+		return tjpc;
+	}
+
+	public void setTjpc(String tjpc) {
+		this.tjpc = tjpc;
 	}
 	
 	

@@ -16,6 +16,7 @@ public class TjxxMapper implements RowMapper<Tjxx>{
 		tjx.setMedicareId(arg0.getString("xx_4"));
 		tjx.setCardId(arg0.getString("xx_5"));
 		tjx.setTjDate(arg0.getDate("txx_1"));
+		tjx.setTjpc(arg0.getString("gxx_6"));
 		tjx.setTjType(arg0.getString("txx_2"));
 		//tjx.setTjrId(tjrId);
 		tjx.setTjkm(arg0.getString("txx_3"));

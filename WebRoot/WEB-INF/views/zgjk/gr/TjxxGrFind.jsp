@@ -71,12 +71,12 @@
 					
 					<td>身份证：</td>
 					<td>
-						<input type="text" id="carId" name="carId"  style="width:120px;"/>
+						<input type="text" id="carId" name="carId"  style="width:200px;"/>
 					</td>
 					
 					
 					
-					<td><button type="button" onclick="searchHandler2()"><span class="icon_find">查询</span></button></td>
+					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
 					
 					
 				</tr>
@@ -127,18 +127,19 @@
 	function initGrid() {
 		grid = $("#dataBasic").quiGrid({
 			columns:[
-				{ display: '身份证', name: 'cardId', align: 'left', width: "10%"},
+				{ display: '身份证', name: 'cardId', align: 'left', width: "18%"},
 				{ display: '医保号', name: 'medicareId',     align: 'left', width: "10%"},
-				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "10%"},
+				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "15%"},
+				{ display: '体检批次', name: 'tjpc',  align: 'left', width: "10%"},
 				{ display: '体检类别', name: 'tjType',     align: 'left', width: "10%"},
 				{ display: '体检科目', name: 'tjkm',     align: 'left', width: "10%"},
-				{ display: '体检项', name: 'tjx',     align: 'center', width: "10%" },
+				{ display: '体检项', name: 'tjx',     align: 'center', width: "15%" },
 				{ display: '体检结果', name: 'tjjg',     align: 'center', width: "10%"}
            		
 			  ],
 		isScroll: true, 
-		 url: "<c:url value='/zgjk/gr/list'/>", sortName: 'id',rownumbers:false,checkbox:true,
-         height: '100%', width:"100%",pageSize:10,
+		 url: "<c:url value='/zgjk/gr/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
+         height: '100%', width:"100%",pageSize:50,
          onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
          percentWidthMode:true
          

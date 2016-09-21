@@ -9,7 +9,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.rjkj.dao.ZgjkTjxxDao;
+import com.rjkj.model.Tjlb;
 import com.rjkj.model.Tjxx;
+import com.rjkj.model.mapper.TjlbMapper;
 import com.rjkj.model.mapper.TjxxMapper;
 
 
@@ -51,6 +53,19 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 		String sql="SELECT * FROM jtjxx WHERE  xx_4='"+cId+"'";
 		try {
 			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjxxMapper());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return list;
+		}
+		return list;
+	}
+
+	@Override
+	public List<Tjlb> findByAll() {
+		List <Tjlb> list=new ArrayList<Tjlb>();
+		String sql="SELECT * FROM jtjlb ";
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjlbMapper());
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 			return list;
