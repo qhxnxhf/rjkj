@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>
 				<input id="CSRFToken" name="CSRFToken" type="hidden" value="${CSRFToken}"/>
 				<input type="hidden" name="parent.id" value="${dic.parent.id}"/>
-				<input type="text" name="orderNum"   value="${dic.orderNum}" class="validate[required,custom[onlyNumber]]" watermark="请输入正整数" style="width:200px;"/><span class="star">*</span>
+				<input type="text" name="orderNum"   value="${dic.orderNum}" class="validate[required,custom[onlyNumber]]" watermark="请输入正整数" style="width:200px;"/>
 			</td>
 		
 			<td>类别</td>
@@ -52,49 +52,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 			<td width="150">中文名称</td>
 			<td>
-			<input type="text" name="name" value="${dic.name}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="name" value="${dic.name}" class="validate[required]" watermark="请输入" style="width:200px;"/>
 			</td>
 			<td width="150">英文缩写</td>
 			<td>
-			<input type="text" name="shortName" value="${dic.shortName}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="shortName" value="${dic.shortName}" class="validate[required]" watermark="请输入" style="width:200px;"/>
 			</td>
 		</tr>
 		<tr>
 			<td width="150">参考低值</td>
 			<td>
-			<input type="text" name="refValueL" value="${dic.refValueL}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="refValueL" value="${dic.refValueL}" class="validate[required]" watermark="请输入" style="width:200px;"/>
 			</td>
 			<td width="150">参考高值</td>
 			<td>
-			<input type="text" name="refValueH" value="${dic.refValueH}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="refValueH" value="${dic.refValueH}" class="validate[required]" watermark="请输入" style="width:200px;"/>
 			</td>
 		</tr>
 		<tr>
 			<td width="150">一类参考值</td>
 			<td>
-			<input type="text" name="type1Value" value="${dic.type1Value}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="type1Value" value="${dic.type1Value}" class="validate[required]" watermark="请输入" style="width:200px;"/>
 			</td>
 			<td width="150">计量单位</td>
 			<td>
-			<input type="text" name="tjUnit" value="${dic.tjUnit}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="tjUnit" value="${dic.tjUnit}" class="validate[required]" watermark="请输入" style="width:200px;"/>
 			</td>
 		</tr>
 		
 		<tr>
 			<td width="150">转义符</td>
 			<td>
-			<input type="text" name="escValue" value="${dic.escValue}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="escValue" value="${dic.escValue}" class="validate[required]" watermark="请输入" style="width:200px;"/>
 			</td>
 			<td width="150">字段映射</td>
 			<td>
-			<input type="text" name="mappingField" value="${dic.mappingField}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="mappingField" value="${dic.mappingField}" class="validate[required]" watermark="请输入" style="width:200px;"/>
 			</td>
 		</tr>
 		
 		<tr>
 			<td>节点类别</td>
 			<td>
-				<select  name="nodeType"  data='{"list":[{"value":"b","key":"分类"},{"value":"d","key":"部门"},{"value":"y","key":"科室"}]}' selWidth="200">
+				<select  name="nodeType"  data='{"list":[{"value":"b","key":"分类"},{"value":"d","key":"分支"},{"value":"y","key":"叶子"}]}' selWidth="200">
 				</select>
 			</td>
 			<td>节点状态</td>

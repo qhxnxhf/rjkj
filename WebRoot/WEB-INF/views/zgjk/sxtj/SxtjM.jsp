@@ -178,10 +178,7 @@
         		  <shiro:hasPermission name="OrgM:save">
         		  {text: '新增', click: addUnit,    iconClass: 'icon_add'},
         		  </shiro:hasPermission>
-        		 <shiro:hasPermission name="RoleM:edit">
-        		  { line : true },
-        		  {text: '级联标志', click: inheritUnit,    iconClass: 'icon_add'},
-        		   </shiro:hasPermission>
+        		
         		 <shiro:hasPermission name="OrgM:batchdel">
         		  { line : true },
         		  {text: '批量删除', click: deleteUnit, iconClass: 'icon_delete'},
@@ -199,9 +196,9 @@
 		}if(value=="b"){
            return "<font color=blue>分类 </font>";
         }if(value=="d"){
-           return "<font color=blue>部门</font>";
+           return "<font color=blue>分支</font>";
         }if(value=="y"){
-           return "<font color=blue>科室 </font>";
+           return "<font color=blue>叶节点 </font>";
         }
 	}
 	
@@ -224,8 +221,8 @@
 				top.Dialog.alert("请选择正确父级节点!");
 			}else{
 				top.Dialog.open({
-				URL:"<c:url value='/zgjk/sxtj/preAdd?orgid='/>" + orgid,
-				Title:"添加",Width:500,Height:300});
+				URL:"<%=path%>/zgjk/sxtj/preAdd?url=/zgjk/sxtj/SxtjAdd&orgid=" + orgid,
+				Title:"添加",Width:600,Height:350});
 			};
 			
 		}else{
@@ -233,31 +230,14 @@
 		}
 	}
 	
-	//建立级联标志
-	function inheritUnit() {
-		var orgid = $("#parentId").val();
-		alert(orgid);
-		if(orgid != null && orgid != ""){
-			$.post("<c:url value='/zgjk/sxtj/inherit'/>",
-		  			{"orgid":orgid,"CSRFToken":$("#CSRFToken").val()},
-		  			function(result){
-		  				getToken();
-		  				handleResult(result);
-					},"json");
-					//刷新表格数据 
-					//grid.loadData();
-			
-		}else{
-				top.Dialog.alert("请选择父级节点",null,null,null,2);
-		}
-	}
+	
 	
 	//修改	
 	function onEdit(rowid){
 		
 		top.Dialog.open({
-			URL:"<c:url value='/zgjk/sxtj/preEdit?orgid='/>" + rowid,
-			Title:"修改",Width:500,Height:300});
+			URL:"<%=path%>/zgjk/sxtj/preEdit?url=/zgjk/sxtj/SxtjEdit&orgid=" + rowid,
+			Title:"修改",Width:600,Height:350});
 	}
 	//删除	
 	function onDelete(rowid,rowidx){

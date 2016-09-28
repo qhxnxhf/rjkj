@@ -166,7 +166,6 @@
            		{ display: '操作', isAllowHide: false, align: 'center', width:80,
 						 render: function (rowdata, rowindex, value, column){
 	                 	    return '<div class="padding_top4 padding_left5">'
-	                                  + '<shiro:hasPermission name="OrgM:view"><span class="img_list hand" title="查看" onclick="onView(' + rowdata.id + ')"></span></shiro:hasPermission>'
 	                                  + '<shiro:hasPermission name="OrgM:edit"><span class="img_edit hand" title="修改" onclick="onEdit(' + rowdata.id + ')"></span></shiro:hasPermission>' 
 	                                 + '<shiro:hasPermission name="OrgM:delete"><span class="img_delete hand" title="删除" onclick="onDelete(' + rowdata.id+','+rowindex + ')"></span></shiro:hasPermission>'
 	                             + '</div>';
@@ -181,10 +180,7 @@
         		  <shiro:hasPermission name="OrgM:save">
         		  {text: '新增', click: addUnit,    iconClass: 'icon_add'},
         		  </shiro:hasPermission>
-        		 <shiro:hasPermission name="RoleM:edit">
-        		  { line : true },
-        		  {text: '级联标志', click: inheritUnit,    iconClass: 'icon_add'},
-        		   </shiro:hasPermission>
+        		 
         		 <shiro:hasPermission name="OrgM:batchdel">
         		  { line : true },
         		  {text: '批量删除', click: deleteUnit, iconClass: 'icon_delete'},
@@ -202,9 +198,9 @@
 		}if(value=="b"){
            return "<font color=blue>分类 </font>";
         }if(value=="d"){
-           return "<font color=blue>部门</font>";
+           return "<font color=blue>分支</font>";
         }if(value=="y"){
-           return "<font color=blue>科室 </font>";
+           return "<font color=blue>叶节点 </font>";
         }
 	}
 	
@@ -227,8 +223,8 @@
 				top.Dialog.alert("请选择正确父级节点!");
 			}else{
 				top.Dialog.open({
-				URL:"<c:url value='/zgjk/tjxm/preAdd?orgid='/>" + orgid,
-				Title:"添加",Width:500,Height:300});
+				URL:"<%=path%>/zgjk/tjxm/preAdd?url=/zgjk/tjxm/TjxmAdd&orgid=" + orgid,
+				Title:"添加",Width:600,Height:350});
 			};
 			
 		}else{
@@ -242,8 +238,8 @@
 	function onEdit(rowid){
 		
 		top.Dialog.open({
-			URL:"<c:url value='/zgjk/tjxm/preEdit?orgid='/>" + rowid,
-			Title:"修改",Width:500,Height:300});
+			URL:"<%=path%>/zgjk/tjxm/preEdit?url=/zgjk/tjxm/TjxmEdit&orgid=" + rowid,
+			Title:"修改",Width:600,Height:350});
 	}
 	//删除	
 	function onDelete(rowid,rowidx){
