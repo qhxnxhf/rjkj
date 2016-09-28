@@ -62,17 +62,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 			<td width="150">参考低值</td>
 			<td>
-			<input type="text" name="refValueL" value="${dic.refValueL}" class="validate[required]" watermark="请输入" style="width:200px;"/>
+			<input type="text" name="refValueL" value="${dic.refValueL}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
 			</td>
 			<td width="150">参考高值</td>
 			<td>
-			<input type="text" name="refValueH" value="${dic.refValueH}" class="validate[required]" watermark="请输入" style="width:200px;"/>
+			<input type="text" name="refValueH" value="${dic.refValueH}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
 			</td>
 		</tr>
 		<tr>
 			<td width="150">一类参考值</td>
 			<td>
-			<input type="text" name="type1Value" value="${dic.type1Value}" class="validate[required]" watermark="请输入" style="width:200px;"/>
+			<input type="text" name="type1Value" value="${dic.type1Value}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
 			</td>
 			<td width="150">计量单位</td>
 			<td>
