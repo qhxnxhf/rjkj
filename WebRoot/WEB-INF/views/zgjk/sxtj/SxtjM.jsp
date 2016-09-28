@@ -152,13 +152,12 @@
 	function initGrid() {
 		grid = $("#dataBasic").quiGrid({
 			columns:[
-				{ display: 'ID', name: 'id',     align: 'left', width: "5%"},
-				{ display: '部门名', name: 'orgName',     align: 'left', width: "20%"},
-				{ display: '上级部门', name: 'parent.orgName',     align: 'left', width: "10%"},
+				{ display: '类别', name: 'parent.typeName',     align: 'left', width: "10%"},
+				{ display: '名称', name: 'typeName',     align: 'left', width: "20%"},
+				 { display: '查询条件', name: 'typeSql',     align: 'left', width: "10%"},
+			    { display: '查询说明', name: 'typeBrief', 	 align: 'left', width: "20%"},
 				{ display: '节点类型', name: 'nodeType',     align: 'center', width: "10%",
 				 render : function(rowdata, rowindex, value, column){ return renderType(value);} },
-				 { display: '编号', name: 'orgCode',     align: 'left', width: "10%"},
-			    { display: '简介', name: 'orgBrief', 	 align: 'left', width: "20%"},
 			    { display: '状态', name: 'status',     align: 'center', width: "10%",
 				 render : function(rowdata, rowindex, value, column){ return onStatue(rowdata,value);}},
            		{ display: '操作', isAllowHide: false, align: 'center', width:80,

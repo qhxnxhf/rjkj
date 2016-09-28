@@ -43,59 +43,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="box1" id="formContent" whiteBg="true">
 	<table class="tableStyle" formMode="transparent">
 		<tr>
+			<td width="150">序号：</td>
+			<td>
+				<input id="CSRFToken" name="CSRFToken" type="hidden" value="${CSRFToken}"/>
+				<input type="hidden" name="id" value="${dic.id}"/>
+				<input type="hidden" name="parent.id" value="${dic.parent.id}"/>
+				<input type="text" name="orderNum"  value="${dic.parent.id}"  class="validate[required,custom[onlyNumber]]" watermark="请输入正整数" style="width:200px;"/><span class="star">*</span></td>
 			<td>上级部门：</td>
 			<td>
-			<input id="CSRFToken" name="CSRFToken" type="hidden" value="${CSRFToken}"/>
-				<div class="selectTree validate[required]" selectedValue="${organize.parent.id}" name="parent.id" id="parent.id" url="<c:url value='/sys/user/orgtree'/>"  selWidth="200" ></div><span class="star">*</span>	
-		
+				<input type="text" name="parent.typeName" value="${dic.parent.typeName}" style="width:200px;"/>
 			</td>
 		</tr>
-		<tr>
-			<td width="150">序号：</td>
-			<td><input type="text" name="orderNum"  value="${organize.orderNum}"  class="validate[required,custom[onlyNumber]]" watermark="请输入正整数" style="width:200px;"/><span class="star">*</span></td>
-		</tr>
+		
 		<tr>
 			<td width="150">名称：</td>
-			<td>
-					<input type="hidden" name="id" value="${organize.id}"/>
-					
-					<input type="text" name="orgName" value="${organize.orgName}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
-				
+			<td colspan="3">
+			<input type="text" name="typeName" value="${dic.typeName}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
 			</td>
+		</tr>
+		
+		<tr>
+			<td width="150">查询说明</td>
+			<td colspan="3"><input type="text" name="typeBrief"  class="validate[length[0,20]]" style="width:200px;">${dic.typeBrief}</input><span class="star">*</span></td>
+		</tr>
+		<tr>
+			<td width="150">查询SQL</td>
+			<td colspan="3"><input type="text" name="typeSql"  class="validate[length[0,20]]" style="width:200px;">${dic.typeSql}</input><span class="star">*</span></td>
 		</tr>
 		<tr>
 			<td>类别：</td>
 			<td>
-				<select selectedValue="${organize.nodeType}" name="nodeType"  data='{"list":[{"value":"b","key":"分类"},{"value":"d","key":"部门"},{"value":"y","key":"科室"}]}' selWidth="200">
+				<select  name="nodeType"  data='{"list":[{"value":"b","key":"分类"},{"value":"d","key":"部门"},{"value":"y","key":"科室"}]}' selWidth="200">
 				</select>
 				
 			</td>
-		</tr>
-		<tr>
-			<td>编号：</td>
-			<td>
-				<input type="text" name="orgCode" value="${organize.orgCode}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
-			</td>
-		</tr>
-		<tr>
 			<td>状态：</td>
 			<td>
-				<select selectedValue="${organize.status}" name="status"  data='{"list":[{"value":"y","key":"有效"},{"value":"n","key":"禁用"}]}' selWidth="200">
+				<select  name="status"  data='{"list":[{"value":"y","key":"有效"},{"value":"n","key":"禁用"}]}' selWidth="200">
 				</select>
 				
 			</td>
 		</tr>
 		
 		<tr>
-			<td width="150">简介：</td>
-			<td><input type="text" name="orgBrief"  value="${organize.orgBrief}" class="validate[length[0,20]]" style="width:200px;"/><span class="star">*</span></td>
-		</tr>
-		
-		
-		
-		
-		<tr>
-			<td colspan="2">
+			<td colspan="4">
 				<input type="submit" value="提交"/>
 				<input type="button" value="取消" onclick="top.Dialog.close()"/>
 			</td>

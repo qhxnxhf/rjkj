@@ -36,39 +36,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="box1" id="formContent" whiteBg="true">
 	<table class="tableStyle" formMode="transparent">
 		<tr>
-			<td>上级部门：</td>
+			<td width="150">序号</td>
 			<td>
-			<input id="CSRFToken" name="CSRFToken" type="hidden" value="${CSRFToken}"/>
-					<input type="hidden" name="parent.id" value="${organize.parent.id}"/>
-					<input type="text" name="parent.orgName" value="${organize.parent.orgName}" style="width:200px;"/>
+				<input id="CSRFToken" name="CSRFToken" type="hidden" value="${CSRFToken}"/>
+				<input type="hidden" name="parent.id" value="${dic.parent.id}"/>
+				<input type="text" name="orderNum"   value="${dic.orderNum}" class="validate[required,custom[onlyNumber]]" watermark="请输入正整数" style="width:200px;"/><span class="star">*</span>
+			</td>
+		
+			<td>类别</td>
+			<td>
+				<input type="text" name="parent.name" value="${dic.parent.name}" style="width:200px;"/>
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="150">中文名称</td>
+			<td>
+			<input type="text" name="name" value="${dic.name}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			</td>
+			<td width="150">英文缩写</td>
+			<td>
+			<input type="text" name="shortName" value="${dic.shortName}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
 			</td>
 		</tr>
 		<tr>
-			<td width="150">序号：</td>
-			<td><input type="text" name="orderNum"   class="validate[required,custom[onlyNumber]]" watermark="请输入正整数" style="width:200px;"/><span class="star">*</span></td>
-		</tr>
-		<tr>
-			<td width="150">名称：</td>
+			<td width="150">参考低值</td>
 			<td>
-			<input type="text" name="orgName" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<input type="text" name="refValueL" value="${dic.refValueL}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			</td>
+			<td width="150">参考高值</td>
+			<td>
+			<input type="text" name="refValueH" value="${dic.refValueH}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
 			</td>
 		</tr>
 		<tr>
-			<td>类别：</td>
+			<td width="150">一类参考值</td>
+			<td>
+			<input type="text" name="type1Value" value="${dic.type1Value}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			</td>
+			<td width="150">计量单位</td>
+			<td>
+			<input type="text" name="tjUnit" value="${dic.tjUnit}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			</td>
+		</tr>
+		
+		<tr>
+			<td width="150">转义符</td>
+			<td>
+			<input type="text" name="escValue" value="${dic.escValue}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			</td>
+			<td width="150">字段映射</td>
+			<td>
+			<input type="text" name="mappingField" value="${dic.mappingField}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>节点类别</td>
 			<td>
 				<select  name="nodeType"  data='{"list":[{"value":"b","key":"分类"},{"value":"d","key":"部门"},{"value":"y","key":"科室"}]}' selWidth="200">
 				</select>
-				
 			</td>
-		</tr>
-		<tr>
-			<td>编号：</td>
-			<td>
-				<input type="text" name="orgCode" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
-			</td>
-		</tr>
-		<tr>
-			<td>状态：</td>
+			<td>节点状态</td>
 			<td>
 				<select  name="status"  data='{"list":[{"value":"y","key":"有效"},{"value":"n","key":"禁用"}]}' selWidth="200">
 				</select>
@@ -77,15 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 		
 		<tr>
-			<td width="150">简介：</td>
-			<td><input type="text" name="orgBrief"  class="validate[length[0,20]]" style="width:200px;"/><span class="star">*</span></td>
-		</tr>
-		
-		
-		
-		
-		<tr>
-			<td colspan="2">
+			<td colspan="4">
 				<input type="submit" value="提交"/>
 				<input type="button" value="取消" onclick="top.Dialog.close()"/>
 			</td>

@@ -22,43 +22,43 @@ public class JkTjxm extends IdEntity{
 	private static final long serialVersionUID = 6077548231135965507L;
 
 	@Column(nullable=false, length=128)
-	private String name;
+	private String name;//中文名称
 	
 	@Column(nullable=true,length=64)
-	private String shortName;
+	private String shortName;//英文缩写
 	
 	@Column(nullable=true, length=32)
-	private String escValue;
+	private String escValue;//转义符
 	
 	@Column(nullable=true)
-	private Double refValueH;
+	private Double refValueH;//参考高值
 	
 	@Column(nullable=true)
-	private Double refValueL;
+	private Double refValueL;//参考低值
 	
 	@Column(nullable=true,length=64)
-	private String type1Value;
+	private String type1Value;//一类参考值
 	
 	@Column(nullable=true,length=64)
-	private String type2Value;
+	private String type2Value;//二类参考值
 	
 	@Column(nullable=true,length=64)
-	private String type3Value;
+	private String type3Value;//三类参考值
 	
 	@Column(nullable=true,length=32)
-	private String tjUnit;
+	private String tjUnit;//计量单位
 	
 	@Column(nullable=true,length=32)
-	private String mappingField;
+	private String mappingField;//字段映射
 	
 	@Column(nullable=false, length=4)
-	private String nodeType;
+	private String nodeType;//节点类型
 	
 	@Column(length=2)
-	private Integer orderNum;
+	private Integer orderNum;//节点序号
 	
 	@Column(nullable=true, length=4)
-	private String status;
+	private String status;//状态
 	
 	
 	

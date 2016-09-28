@@ -36,22 +36,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="box1" id="formContent" whiteBg="true">
 	<table class="tableStyle" formMode="transparent">
 		<tr>
+			<td width="150">序号：</td>
+			<td><input type="text" name="orderNum"  value="${dic.parent.id}"  class="validate[required,custom[onlyNumber]]" watermark="请输入正整数" style="width:200px;"/><span class="star">*</span></td>
 			<td>上级部门：</td>
 			<td>
 			<input id="CSRFToken" name="CSRFToken" type="hidden" value="${CSRFToken}"/>
-					<input type="hidden" name="parent.id" value="${organize.parent.id}"/>
-					<input type="text" name="parent.orgName" value="${organize.parent.orgName}" style="width:200px;"/>
+					<input type="hidden" name="parent.id" value="${dic.parent.id}"/>
+					<input type="text" name="parent.typeName" value="${dic.parent.typeName}" style="width:200px;"/>
 			</td>
 		</tr>
-		<tr>
-			<td width="150">序号：</td>
-			<td><input type="text" name="orderNum"   class="validate[required,custom[onlyNumber]]" watermark="请输入正整数" style="width:200px;"/><span class="star">*</span></td>
-		</tr>
+		
 		<tr>
 			<td width="150">名称：</td>
-			<td>
-			<input type="text" name="orgName" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
+			<td colspan="3">
+			<input type="text" name="typeName" value="${dic.typeName}" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
 			</td>
+		</tr>
+		
+		<tr>
+			<td width="150">查询说明</td>
+			<td colspan="3"><input type="text" name="typeBrief"  class="validate[length[0,20]]" style="width:200px;">${dic.typeBrief}</input><span class="star">*</span></td>
+		</tr>
+		<tr>
+			<td width="150">查询SQL</td>
+			<td colspan="3"><input type="text" name="typeSql"  class="validate[length[0,20]]" style="width:200px;">${dic.typeSql}</input><span class="star">*</span></td>
 		</tr>
 		<tr>
 			<td>类别：</td>
@@ -60,14 +68,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</select>
 				
 			</td>
-		</tr>
-		<tr>
-			<td>编号：</td>
-			<td>
-				<input type="text" name="orgCode" class="validate[required]" watermark="请输入" style="width:200px;"/><span class="star">*</span>
-			</td>
-		</tr>
-		<tr>
 			<td>状态：</td>
 			<td>
 				<select  name="status"  data='{"list":[{"value":"y","key":"有效"},{"value":"n","key":"禁用"}]}' selWidth="200">
@@ -77,15 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 		
 		<tr>
-			<td width="150">简介：</td>
-			<td><input type="text" name="orgBrief"  class="validate[length[0,20]]" style="width:200px;"/><span class="star">*</span></td>
-		</tr>
-		
-		
-		
-		
-		<tr>
-			<td colspan="2">
+			<td colspan="4">
 				<input type="submit" value="提交"/>
 				<input type="button" value="取消" onclick="top.Dialog.close()"/>
 			</td>
