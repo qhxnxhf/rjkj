@@ -11,7 +11,7 @@ import com.rjkj.entities.News;
 import com.rjkj.util.web.Page;
 
 @Transactional
-@Component("JkSxjgDao")
+@Component("JkYcxmDao")
 public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxmDao{
 
 	@Override

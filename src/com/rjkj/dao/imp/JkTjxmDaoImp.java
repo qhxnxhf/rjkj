@@ -10,7 +10,7 @@ import com.rjkj.entities.JkTjxm;
 import com.rjkj.util.web.Page;
 
 @Transactional
-@Component("JkSxjgDao")
+@Component("JkTjxmDao")
 public class JkTjxmDaoImp extends GenericDaoImpl<JkTjxm, Long> implements JkTjxmDao{
 
 	@Override
