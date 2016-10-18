@@ -70,13 +70,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</td>
 		</tr>
 		<tr>
-			<td width="150">一类低值</td>
+			<td width="150">筛选条件</td>
 			<td>
-			<input type="text" name="typeValueL" value="${dic.typeValueL}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
+			<input type="text" name="type1Value" value="${dic.type1Value}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
 			</td>
-			<td width="150">一类高值</td>
+			<td width="150">字段映射</td>
 			<td>
-			<input type="text" name="typeValueH" value="${dic.typeValueH}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
+			<input type="text" name="mappingField" value="${dic.mappingField}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
 			</td>
 		</tr>
 		

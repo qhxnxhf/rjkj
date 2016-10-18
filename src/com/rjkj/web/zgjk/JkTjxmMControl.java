@@ -161,8 +161,7 @@ public class JkTjxmMControl {
 		request.setAttribute(CsrfTokenUtils.CSRF_TOKEN_NAME, CsrfTokenUtils.getTokenForSession(request.getSession()));
 		
 		JkTjxm sort=new JkTjxm();
-		sort.setTypeValueH("0");
-		sort.setTypeValueL("0");
+		
 		sort.setParent(porg);
 		map.put("dic", sort);
 		return url;

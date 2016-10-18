@@ -75,14 +75,12 @@
 				<tr>
 					<td>体检类别</td>
 					<td>
-						<select boxHeight="100" name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/gr/typeTj"  selWidth="180" ></select>  				
+						<select boxHeight="100" name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="180" ></select>  				
 					</td>
 					<td>身份证：</td>
 					<td>
-						<input type="text" id="carId" name="carId"  style="width:180px;"/>
+						<input type="text" id="carId" name="carId" value="${user.cardId}" style="width:180px;"/>
 					</td>
-					
-					
 					
 					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
 					
@@ -110,7 +108,7 @@
 	//初始化函数
 	function initComplete(){
 		//当提交表单刷新本页面时关闭弹窗
-		top.Dialog.close();
+		//top.Dialog.close();
 		
 		$("#layout1").layout({ leftWidth: 180,onEndResize:function(){
 			  	grid.resetWidth();
@@ -146,7 +144,7 @@
            		
 			  ],
 		isScroll: true, 
-		 url: "<c:url value='/zgjk/gr/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
+		 url: "<c:url value='/zgjk/tjxx/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
          height: '100%', width:"100%",pageSize:50,
          onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
          percentWidthMode:true

@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "jk_ycxm")
+@Table(name = "jk_sxjg")
 public class JkSxjg extends IdEntity{
 	
 	/**
@@ -41,6 +41,9 @@ public class JkSxjg extends IdEntity{
 	
 	@Column(nullable=true)
 	private Double dimi;	
+	
+	@Column(nullable=true)
+	private Double kfxt;	
 	
 	@Column(nullable=true)
 	private Double shzhya;
@@ -266,6 +269,14 @@ public class JkSxjg extends IdEntity{
 
 	public void setSxResult(String sxResult) {
 		this.sxResult = sxResult;
+	}
+
+	public Double getKfxt() {
+		return kfxt;
+	}
+
+	public void setKfxt(Double kfxt) {
+		this.kfxt = kfxt;
 	}
 	
 	

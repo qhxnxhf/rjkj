@@ -153,12 +153,12 @@
 		grid = $("#dataBasic").quiGrid({
 			columns:[
 				{ display: '类别', name: 'parent.name',     align: 'left', width: "10%"},
-				{ display: '名称', name: 'name',            align: 'left', width: "20%"},
+				{ display: '名称', name: 'name',            align: 'left', width: "10%"},
 				{ display: '英文名称', name: 'shortName',     align: 'left', width: "10%"},
 				{ display: '标准值高', name: 'refValueH',     align: 'left', width: "10%"},
 				{ display: '标准值低', name: 'refValueL',     align: 'left', width: "10%"},
-				{ display: '异常值小于', name: 'typeValueH',     align: 'left', width: "5%"},
-				{ display: '异常值大于', name: 'typeValueL',     align: 'left', width: "5%"},
+				{ display: '筛选条件', name: 'type1Value',     align: 'left', width: "5%"},
+				{ display: '字段映射', name: 'mappingField',     align: 'left', width: "5%"},
 				{ display: '计量单位', name: 'tjUnit',        align: 'left', width: "10%"},
 				{ display: '节点类型', name: 'nodeType',     align: 'center', width: "10%",
 				 render : function(rowdata, rowindex, value, column){ return renderType(value);} },
@@ -174,7 +174,7 @@
 		            }
 			  ],
 		 url: "<c:url value='/zgjk/tjxm/list'/>", sortName: 'id',rownumbers:true,checkbox:true,
-         height: '100%', width:"100%",pageSize:10,percentWidthMode:true,
+         height: '100%', width:"100%",pageSize:20,percentWidthMode:true,
         
          toolbar:{
         	 items:[
