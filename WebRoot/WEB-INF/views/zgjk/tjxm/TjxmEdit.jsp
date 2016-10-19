@@ -78,6 +78,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</td>
 		</tr>
 		<tr>
+			<td width="150">筛选值1</td>
+			<td>
+			<input type="text" name="sxValueL" value="${dic.sxValueL}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
+			</td>
+			<td width="150">筛选值2</td>
+			<td>
+			<input type="text" name="sxValueH" value="${dic.sxValueH}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
+			</td>
+		</tr>
+		<tr>
 			<td width="150">筛选条件</td>
 			<td>
 			<input type="text" name="type1Value" value="${dic.type1Value}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>

@@ -23,10 +23,19 @@ public class JkYcxm extends IdEntity{
 	private Long tjrId;//体检人ID
 	
 	@Column(nullable=true)
+	private Integer tjAges;//体检人年龄
+	
+	@Column(nullable=true)
 	private Long deptId;//单位ID
 	
 	@Column(nullable=true,length=64)
 	private String tjpc;//体检批次
+	
+	@Column(nullable=true,length=64)
+	private String tjType;//体检类别
+	
+	@Column(nullable=true,length=16)
+	private String sex;//性别
 	
 	@Column(nullable=true)
 	private Date tjDate;//体检日期
@@ -114,6 +123,30 @@ public class JkYcxm extends IdEntity{
 
 	public void setTjValue(Double tjValue) {
 		this.tjValue = tjValue;
+	}
+
+	public String getTjType() {
+		return tjType;
+	}
+
+	public void setTjType(String tjType) {
+		this.tjType = tjType;
+	}
+
+	public Integer getTjAges() {
+		return tjAges;
+	}
+
+	public void setTjAges(Integer tjAges) {
+		this.tjAges = tjAges;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	
 	

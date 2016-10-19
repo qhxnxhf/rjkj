@@ -157,6 +157,8 @@
 				{ display: '英文名称', name: 'shortName',     align: 'left', width: "10%"},
 				{ display: '标准值高', name: 'refValueH',     align: 'left', width: "10%"},
 				{ display: '标准值低', name: 'refValueL',     align: 'left', width: "10%"},
+				{ display: '筛选值1', name: 'sxValueL',     align: 'left', width: "5%"},
+				{ display: '筛选值2', name: 'sxValueH',     align: 'left', width: "5%"},
 				{ display: '筛选条件', name: 'type1Value',     align: 'left', width: "5%"},
 				{ display: '字段映射', name: 'mappingField',     align: 'left', width: "5%"},
 				{ display: '计量单位', name: 'tjUnit',        align: 'left', width: "10%"},
@@ -225,7 +227,7 @@
 			}else{
 				top.Dialog.open({
 				URL:"<%=path%>/zgjk/tjxm/preAdd?url=/zgjk/tjxm/TjxmAdd&orgid=" + orgid,
-				Title:"添加",Width:600,Height:350});
+				Title:"添加",Width:650,Height:350});
 			};
 			
 		}else{
@@ -240,7 +242,7 @@
 		
 		top.Dialog.open({
 			URL:"<%=path%>/zgjk/tjxm/preEdit?url=/zgjk/tjxm/TjxmEdit&orgid=" + rowid,
-			Title:"修改",Width:600,Height:350});
+			Title:"修改",Width:650,Height:350});
 	}
 	//删除	
 	function onDelete(rowid,rowidx){

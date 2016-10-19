@@ -36,7 +36,11 @@ public class JkTjxm extends IdEntity{
 	@Column(nullable=true)
 	private Double refValueL;//参考低值
 	
+	@Column(nullable=true)
+	private Double sxValueH;//筛选参考高值
 	
+	@Column(nullable=true)
+	private Double sxValueL;//筛选参考低值
 	
 	@Column(nullable=true,length=64)
 	private String type1Value;//一类参考值
@@ -189,6 +193,22 @@ public class JkTjxm extends IdEntity{
 
 	public void setEscValue(String escValue) {
 		this.escValue = escValue;
+	}
+
+	public Double getSxValueH() {
+		return sxValueH;
+	}
+
+	public void setSxValueH(Double sxValueH) {
+		this.sxValueH = sxValueH;
+	}
+
+	public Double getSxValueL() {
+		return sxValueL;
+	}
+
+	public void setSxValueL(Double sxValueL) {
+		this.sxValueL = sxValueL;
 	}
 
 	

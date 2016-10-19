@@ -23,6 +23,9 @@ public class TjxxMapper implements RowMapper<Tjxx>{
 		tjx.setTjx(arg0.getString("txx_4"));
 		//tjx.setTjxId(tjxId);
 		tjx.setTjjg(arg0.getString("txx_9"));
+		tjx.setDeptId(arg0.getLong("txx_16"));
+		tjx.setTjAges(arg0.getInt("txx_15"));
+		tjx.setSex(arg0.getString("txx_14"));
 		
 		return tjx;
 	}

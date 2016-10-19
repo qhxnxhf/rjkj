@@ -6,7 +6,13 @@ public class Tjxx {
 	
 	protected Long id;//体检ID
 	
+	private Long deptId;//体检部门ID
+	
 	private Long tjrId;//体检人ID
+	
+	private Integer tjAges;//体检人年龄
+	
+	private String sex;
 	
 	private String cardId;//体检人身份证
 	
@@ -116,6 +122,31 @@ public class Tjxx {
 	public void setTjpc(String tjpc) {
 		this.tjpc = tjpc;
 	}
+
+	public Long getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(Long deptId) {
+		this.deptId = deptId;
+	}
+
+	public Integer getTjAges() {
+		return tjAges;
+	}
+
+	public void setTjAges(Integer tjAges) {
+		this.tjAges = tjAges;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	
 	
 	
 
