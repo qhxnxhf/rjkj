@@ -29,7 +29,7 @@ import com.rjkj.web.sys.OrgMControl;
 @RequestMapping("/zgjk/tjxx")
 public class JkTjxxControl {
 	
-	private static final Log log = LogFactory.getLog(OrgMControl.class);  
+	private static final Log log = LogFactory.getLog(JkTjxxControl.class);  
 	//protected ErrMg error; 
 	 
 	@Autowired

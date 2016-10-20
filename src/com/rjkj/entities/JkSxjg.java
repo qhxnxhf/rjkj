@@ -15,8 +15,8 @@ public class JkSxjg extends IdEntity{
 	 */
 	private static final long serialVersionUID = 6398250094756338569L;
 
-	@Column(nullable=false, length=64)
-	private String name;
+	@Column(nullable=true, length=64)
+	private String name;//姓名
 	
 	@Column(nullable=true)
 	private Long tjrId;//体检人ID
@@ -32,6 +32,12 @@ public class JkSxjg extends IdEntity{
 	
 	@Column(nullable=true,length=64)
 	private String cardId;//体检人身份证
+	
+	@Column(nullable=true,length=64)
+	private String tjType;//体检类别
+	
+	@Column(nullable=true,length=16)
+	private String sex;//性别
 	
 	@Column(nullable=true)
 	private Double bmi;
@@ -61,7 +67,7 @@ public class JkSxjg extends IdEntity{
 	private Double fev1fvc;
 	
 	@Column(nullable=true)
-	private Double age;
+	private Integer age;
 	
 	@Column(nullable=true)
 	private Double guanxb;
@@ -86,6 +92,9 @@ public class JkSxjg extends IdEntity{
 	
 	@Column(nullable=true, length=256)
 	private String sxResult;
+	
+	@Column(nullable=true)
+	private Long indexId;//体检信息ID
 
 	public String getName() {
 		return name;
@@ -199,11 +208,13 @@ public class JkSxjg extends IdEntity{
 		this.fev1fvc = fev1fvc;
 	}
 
-	public Double getAge() {
+	
+
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(Double age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -277,6 +288,30 @@ public class JkSxjg extends IdEntity{
 
 	public void setKfxt(Double kfxt) {
 		this.kfxt = kfxt;
+	}
+
+	public String getTjType() {
+		return tjType;
+	}
+
+	public void setTjType(String tjType) {
+		this.tjType = tjType;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public Long getIndexId() {
+		return indexId;
+	}
+
+	public void setIndexId(Long indexId) {
+		this.indexId = indexId;
 	}
 	
 	
