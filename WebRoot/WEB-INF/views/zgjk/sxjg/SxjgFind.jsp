@@ -79,7 +79,7 @@
 					</td>
 					<td>部门</td>
 					<td>
-						<select name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
+						<select  name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
 					</td>
 					
 					<td>身份证</td>
@@ -90,9 +90,6 @@
 					
 					
 					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
-					<td><button type="button" onclick="delHandler()"><span class="icon_find">批量删除</span></button></td>
-					
-					<td><button type="button" onclick="xxcsHandler()"><span class="icon_find">体检信息初筛</span></button></td>
 					
 				</tr>
 			</table>
@@ -142,23 +139,74 @@
 	function initGrid() {
 		grid = $("#dataBasic").quiGrid({
 			columns:[
-				{ display: '身份证', name: 'cardId', align: 'left', width: "10%"},
-				{ display: '姓名', name: 'name',     align: 'center', width: "10%" },
+				{ display: '身份证', name: 'cardId', align: 'left', width: "5%"},
+				{ display: '姓名', name: 'name',     align: 'center', width: "5%" },
 				{ display: '性别', name: 'sex',     align: 'left', width: "5%"},
-				{ display: '年龄', name: 'tjAges',     align: 'left', width: "5%"},
-				{ display: '体检批次', name: 'tjpc',  align: 'left', width: "10%"},
-				{ display: '体检类别', name: 'tjType',     align: 'left', width: "10%"},
-				{ display: '体检项', name: 'tjxmMc',     align: 'center', width: "15%" },
-				{ display: '体检结果', name: 'tjValue',     align: 'center', width: "10%"}
+				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "5%"},
+				{ display: '体检类别', name: 'tjType',     align: 'left', width: "5%"},
+				{ display: 'age', name: 'age',     align: 'center', width: "5%"},
+				{ display: 'bmi', name: 'bmi',     align: 'center', width: "5%"},
+				{ display: 'zongdan', name: 'zongdan',     align: 'center', width: "5%"},
+				{ display: 'dimi', name: 'dimi',     align: 'center', width: "5%"},
+				{ display: 'kfxt', name: 'kfxt',     align: 'center', width: "5%"},
+				{ display: 'shzhya', name: 'shzhya',     align: 'center', width: "5%"},
+				{ display: 'gaomi', name: 'gaomi',     align: 'center', width: "5%"},
+				{ display: 'gysz', name: 'gysz',     align: 'center', width: "5%"},
+				{ display: 'fev1', name: 'fev1',     align: 'center', width: "5%"},
+				{ display: 'fev1fvc', name: 'fev1fvc',     align: 'center', width: "5%"},
+				{ display: 'type1', name: 'type1',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType1(rowdata,value);}},
+				{ display: 'type2', name: 'type2',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType2(rowdata,value);}},
+				{ display: 'type3', name: 'type3',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType3(rowdata,value);}}
+				
 			  ],
 		isScroll: true, 
-		 url: "<c:url value='/zgjk/xxcs/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
+		 url: "<c:url value='/zgjk/sxjg/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
          height: '100%', width:"100%",pageSize:50,
          onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
          percentWidthMode:true
          
          
 		});
+	}
+	
+	//渲染节点
+	function renderType1(value){
+		if(value=="r"){
+           return "<font color=blue>根 </font>";
+		}if(value=="b"){
+           return "<font color=blue>分类 </font>";
+        }if(value=="d"){
+           return "<font color=blue>分支</font>";
+        }if(value=="y"){
+           return "<font color=blue>叶节点 </font>";
+        }
+	}
+	
+	//渲染节点
+	function renderType1(rowdata,value){
+		if(rowdata.type1!=0||rowdata.type2!=0||rowdata.type3!=0||rowdata.type4!=0||rowdata.type5!=0||rowdata.type6!=0||rowdata.type7!=0||rowdata.type8!=0){
+			
+			
+			return "<font color=blue>一类人群</font>";
+		}
+		
+	}
+	
+	function renderType2(rowdata,value){
+		if(rowdata.type9!=0||rowdata.type10!=0||rowdata.type11!=0){
+			return "<font color=yellow>二类人群</font>";
+		}
+		
+	}
+	
+	function renderType3(rowdata,value){
+		if(rowdata.type12!=0||rowdata.type13!=0||rowdata.type14!=0||rowdata.type15!=0){
+			return "<font color=red>三类人群</font>";
+		}
+		
 	}
 	
 	function onView(rowid){
@@ -197,34 +245,8 @@
 		}
 	}
     
-    //查询
-    function xxcsHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行体检信息初筛吗？",function(){
-			$.post("<c:url value='/zgjk/xxcs/saveXxcs'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						handleResult(result);
-					},
-					"json");
-		});
-    }
-    
-    //查询
-    function delHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行批量删除吗？",function(){
-			$.post("<c:url value='/zgjk/xxcs/delXxcs'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						
-						handleResult(result);
-					},
-					"json");
-		});
-    }
+       
+  
     
      //查询
     function searchHandler(){

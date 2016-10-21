@@ -19,6 +19,9 @@ public class JkYcxm extends IdEntity{
 	@Column(nullable=false, length=64)
 	private String name;
 	
+	@Column(nullable=false, length=64)
+	private String tjxmMc;
+	
 	@Column(nullable=true)
 	private Long tjrId;//体检人ID
 	
@@ -147,6 +150,14 @@ public class JkYcxm extends IdEntity{
 
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+
+	public String getTjxmMc() {
+		return tjxmMc;
+	}
+
+	public void setTjxmMc(String tjxmMc) {
+		this.tjxmMc = tjxmMc;
 	}
 	
 	

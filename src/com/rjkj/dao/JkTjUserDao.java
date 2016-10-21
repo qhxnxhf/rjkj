@@ -10,4 +10,6 @@ public interface JkTjUserDao {
 	public List<TjUser> findAll(String query,Page page);
 	
 	public TjUser findById(String cardId);
+
+	TjUser findBycardId(String cid);
 }

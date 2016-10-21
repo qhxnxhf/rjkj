@@ -2,12 +2,15 @@ package com.rjkj.dao.imp;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rjkj.dao.JkTjUserDao;
 import com.rjkj.dao.JkYcxmDao;
 import com.rjkj.entities.JkTjxm;
 import com.rjkj.entities.JkYcxm;
+import com.rjkj.model.TjUser;
 import com.rjkj.model.Tjxx;
 import com.rjkj.util.web.Page;
 
@@ -97,19 +100,25 @@ public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxm
 		
 	}
 	
+	@Autowired
+	private JkTjUserDao userService;
+	
 	public void saveXm(Tjxx tjx,JkTjxm tjxm,double jg){
 		JkYcxm ycxm=new JkYcxm();
 		ycxm.setCardId(tjx.getCardId());
 		ycxm.setDeptId(tjx.getDeptId());
 		ycxm.setTjAges(tjx.getTjAges());
 		ycxm.setSex(tjx.getSex());
-		ycxm.setName(tjx.getTjx());
+		ycxm.setTjxmMc(tjx.getTjx());
 		ycxm.setTjDate(tjx.getTjDate());
 		ycxm.setTjpc(tjx.getTjpc());
 		ycxm.setTjType(tjx.getTjType());
 		ycxm.setTjxm(tjxm);
 		ycxm.setTjValue(jg);
 		ycxm.setTjxxId(tjx.getId());
+		TjUser user=userService.findBycardId(tjx.getCardId());
+		ycxm.setName(user.getName());
+		ycxm.setTjrId(user.getId());;
 		this.save(ycxm);
 		
 	}

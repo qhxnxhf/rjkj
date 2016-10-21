@@ -83,11 +83,11 @@
 	<!-- 该扫描器的目地是只加载controller相关的MVC组件  注：如果有Service组件并且有代理类(如：配置了aop)，则该组件代理类实例并不会加载到IOC容器中-->
 	<context:component-scan base-package="com.rjkj.web.*" />
 	
-	<!-- 防SQL注入拦截器 -->
+	<!-- 防SQL注入拦截器 
 	<mvc:interceptors>
 		<bean class="com.rjkj.web.interceptor.CustomWebInterceptor" />
 	</mvc:interceptors> 
-
+-->
 	
 	<!-- 支持 Shiro对Controller的方法级AOP安全控制 begin-->
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">

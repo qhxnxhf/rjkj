@@ -153,9 +153,10 @@
 		grid = $("#dataBasic").quiGrid({
 			columns:[
 				{ display: '类别', name: 'parent.typeName',     align: 'left', width: "10%"},
-				{ display: '名称', name: 'typeName',     align: 'left', width: "20%"},
-				 { display: '查询条件', name: 'typeSql',     align: 'left', width: "10%"},
-			    { display: '查询说明', name: 'typeBrief', 	 align: 'left', width: "20%"},
+				{ display: '名称', name: 'typeName',     align: 'left', width: "10%"},
+				 { display: '查询条件', name: 'typeSql',     align: 'left', width: "40%"},
+			    { display: '健康提示', name: 'jkts', 	 align: 'left', width: "10%"},
+			    { display: '映射字段', name: 'mappingField', 	 align: 'left', width: "10%"},
 				{ display: '节点类型', name: 'nodeType',     align: 'center', width: "10%",
 				 render : function(rowdata, rowindex, value, column){ return renderType(value);} },
 			    { display: '状态', name: 'status',     align: 'center', width: "10%",
@@ -222,7 +223,7 @@
 			}else{
 				top.Dialog.open({
 				URL:"<%=path%>/zgjk/sxtj/preAdd?url=/zgjk/sxtj/SxtjAdd&orgid=" + orgid,
-				Title:"添加",Width:600,Height:350});
+				Title:"添加",Width:600,Height:400});
 			};
 			
 		}else{
@@ -237,7 +238,7 @@
 		
 		top.Dialog.open({
 			URL:"<%=path%>/zgjk/sxtj/preEdit?url=/zgjk/sxtj/SxtjEdit&orgid=" + rowid,
-			Title:"修改",Width:600,Height:350});
+			Title:"修改",Width:600,Height:400});
 	}
 	//删除	
 	function onDelete(rowid,rowidx){

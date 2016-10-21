@@ -75,7 +75,7 @@
 				<tr>
 					<td>部门</td>
 					<td>
-						<select boxHeight="100" name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
+						<select  name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
 					</td>
 					
 					<td>姓名</td>

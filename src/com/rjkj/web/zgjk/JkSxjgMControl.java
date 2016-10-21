@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rjkj.dao.JkSxjgDao;
+import com.rjkj.dao.JkSxtjDao;
 import com.rjkj.dao.JkTjDeptDao;
 import com.rjkj.dao.JkTjxmDao;
 import com.rjkj.dao.JkYcxmDao;
 import com.rjkj.dao.ZgjkTjxxDao;
 import com.rjkj.entities.JkSxjg;
+import com.rjkj.entities.JkSxtj;
 import com.rjkj.entities.JkTjxm;
 import com.rjkj.entities.JkYcxm;
 import com.rjkj.model.TjDept;
@@ -47,6 +49,9 @@ public class JkSxjgMControl {
 	
 	@Autowired
 	private JkSxjgDao sxService;
+	
+	@Autowired
+	private JkSxtjDao sxtjService;
 	
 	
 	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
@@ -116,6 +121,8 @@ public class JkSxjgMControl {
 			query=query+" AND tjType ='"+tjlb+"'";
 		}
 		
+		
+		
 		if(StringUtils.isNotBlank(cId)){
 			query=query+" AND cardId ='"+cId+"'";
 		}
@@ -147,6 +154,78 @@ public class JkSxjgMControl {
 	}
 	
 	
+	@RequestMapping(value="/saveTjfl", method={RequestMethod.POST})
+	public @ResponseBody String saveTjfl(Map<String, Object> map ,HttpServletRequest request){
+		String tjlb= request.getParameter("tjlb");
+		String tjbm = request.getParameter("tjbm");
+		String cId = request.getParameter("carId");
+		String tjdate = request.getParameter("tjdate");	
+		Long index=0L;
+		
+		String query=" WHERE 1=1 ";
+		
+		if(StringUtils.isNotBlank(tjbm)){
+			query=query+" AND deptId="+tjbm;
+		}
+		if(StringUtils.isNotBlank(tjlb)){
+			query=query+" AND tjType ='"+tjlb+"'";
+		}
+		
+		
+		
+		if(StringUtils.isNotBlank(cId)){
+			query=query+" AND cardId ='"+cId+"'";
+		}	
+		
+		List<JkSxtj> listTj=this.sxtjService.findAll(JkSxtj.class," WHERE o.nodeType='y' AND o.status='y'");
+		
+		String msgs=this.sxService.updateToTjfl(listTj,query);
+	
+		JSONObject json = new JSONObject();				   
+			//this.tjxService.save(dic);
+		json.put("status", "true");
+		json.put("message", msgs);
+			//map.put("dic", dic);
+		String result=json.toString();
+		return result;
+	}
+	
+	@RequestMapping(value="/resetTjfl", method={RequestMethod.POST})
+	public @ResponseBody String restTjfl(Map<String, Object> map ,HttpServletRequest request){
+		String tjlb= request.getParameter("tjlb");
+		String tjbm = request.getParameter("tjbm");
+		String cId = request.getParameter("carId");
+		String tjdate = request.getParameter("tjdate");	
+		Long index=0L;
+		
+		String query=" WHERE 1=1 ";
+		
+		if(StringUtils.isNotBlank(tjbm)){
+			query=query+" AND deptId="+tjbm;
+		}
+		if(StringUtils.isNotBlank(tjlb)){
+			query=query+" AND tjType ='"+tjlb+"'";
+		}
+		
+		
+		
+		if(StringUtils.isNotBlank(cId)){
+			query=query+" AND cardId ='"+cId+"'";
+		}	
+		
+		//List<JkSxtj> listTj=this.sxtjService.findAll(JkSxtj.class," WHERE o.nodeType='y' AND o.status='y'");
+		
+		String msgs=this.sxService.reseTjfl(query);
+	
+		JSONObject json = new JSONObject();				   
+			//this.tjxService.save(dic);
+		json.put("status", "true");
+		json.put("message", msgs);
+			//map.put("dic", dic);
+		String result=json.toString();
+		return result;
+	}
+	
 	@RequestMapping(value="/delSxjg", method={RequestMethod.POST})
 	public @ResponseBody String delXxcs(HttpServletRequest request  ,Map<String, Object> map ){
 		String cId = request.getParameter("carId");
@@ -176,7 +255,7 @@ public class JkSxjgMControl {
 		query=query.trim();
 		if(StringUtils.isNotBlank(query)){
 			try{
-				String msg=ycService.delByHql(query);
+				String msg=sxService.delByHql(query);
 				json.put("status", "true");
 				json.put("message", msg);
 			}catch(Exception e){

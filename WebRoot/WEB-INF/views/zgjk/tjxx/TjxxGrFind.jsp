@@ -75,7 +75,7 @@
 				<tr>
 					<td>体检类别</td>
 					<td>
-						<select boxHeight="100" name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="180" ></select>  				
+						<select  name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="180" ></select>  				
 					</td>
 					<td>身份证：</td>
 					<td>

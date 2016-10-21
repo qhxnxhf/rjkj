@@ -79,16 +79,77 @@ public class JkSxjg extends IdEntity{
 	private Double naocu;
 	
 	@Column(nullable=true)
+	private Double xjqx;
+	
+	@Column(nullable=true)
+	private Double xnxg;
+	
+	@Column(nullable=true)
+	private Double tnbs;
+	
+	@Column(nullable=true)
 	private Double zhongliu;
 	
-	@Column(nullable=true, length=4)
-	private String type1;
+	@Column(nullable=true)
+	private Long type1;
 	
-	@Column(nullable=true, length=4)
-	private String type2;
+	@Column(nullable=true)
+	private Long type2;
 	
-	@Column(nullable=true, length=4)
-	private String type3;
+	@Column(nullable=true)
+	private Long type3;
+	
+	@Column(nullable=true)
+	private Long type4;
+	
+	@Column(nullable=true)
+	private Long type5;
+	
+	@Column(nullable=true)
+	private Long type6;
+	
+	@Column(nullable=true)
+	private Long type7;
+	
+	@Column(nullable=true)
+	private Long type8;
+	
+	@Column(nullable=true)
+	private Long type9;
+	
+	@Column(nullable=true)
+	private Long type10;
+	
+	@Column(nullable=true)
+	private Long type11;
+	
+	@Column(nullable=true)
+	private Long type12;
+	
+	@Column(nullable=true)
+	private Long type13;
+	
+	@Column(nullable=true)
+	private Long type14;
+	
+	@Column(nullable=true)
+	private Long type15;
+	
+	@Column(nullable=true)
+	private Long type16;
+	
+	@Column(nullable=true)
+	private Long type17;
+	
+	@Column(nullable=true)
+	private Long type18;
+	
+	@Column(nullable=true)
+	private Long type19;
+	
+	@Column(nullable=true)
+	private Long type20;
+	
 	
 	@Column(nullable=true, length=256)
 	private String sxResult;
@@ -249,31 +310,6 @@ public class JkSxjg extends IdEntity{
 	public void setZhongliu(Double zhongliu) {
 		this.zhongliu = zhongliu;
 	}
-
-	public String getType1() {
-		return type1;
-	}
-
-	public void setType1(String type1) {
-		this.type1 = type1;
-	}
-
-	public String getType2() {
-		return type2;
-	}
-
-	public void setType2(String type2) {
-		this.type2 = type2;
-	}
-
-	public String getType3() {
-		return type3;
-	}
-
-	public void setType3(String type3) {
-		this.type3 = type3;
-	}
-
 	public String getSxResult() {
 		return sxResult;
 	}
@@ -312,6 +348,190 @@ public class JkSxjg extends IdEntity{
 
 	public void setIndexId(Long indexId) {
 		this.indexId = indexId;
+	}
+
+	public Double getXjqx() {
+		return xjqx;
+	}
+
+	public void setXjqx(Double xjqx) {
+		this.xjqx = xjqx;
+	}
+
+	public Double getXnxg() {
+		return xnxg;
+	}
+
+	public void setXnxg(Double xnxg) {
+		this.xnxg = xnxg;
+	}
+
+	public Double getTnbs() {
+		return tnbs;
+	}
+
+	public void setTnbs(Double tnbs) {
+		this.tnbs = tnbs;
+	}
+
+	public Long getType1() {
+		return type1;
+	}
+
+	public void setType1(Long type1) {
+		this.type1 = type1;
+	}
+
+	public Long getType2() {
+		return type2;
+	}
+
+	public void setType2(Long type2) {
+		this.type2 = type2;
+	}
+
+	public Long getType3() {
+		return type3;
+	}
+
+	public void setType3(Long type3) {
+		this.type3 = type3;
+	}
+
+	public Long getType4() {
+		return type4;
+	}
+
+	public void setType4(Long type4) {
+		this.type4 = type4;
+	}
+
+	public Long getType5() {
+		return type5;
+	}
+
+	public void setType5(Long type5) {
+		this.type5 = type5;
+	}
+
+	public Long getType6() {
+		return type6;
+	}
+
+	public void setType6(Long type6) {
+		this.type6 = type6;
+	}
+
+	public Long getType7() {
+		return type7;
+	}
+
+	public void setType7(Long type7) {
+		this.type7 = type7;
+	}
+
+	public Long getType8() {
+		return type8;
+	}
+
+	public void setType8(Long type8) {
+		this.type8 = type8;
+	}
+
+	public Long getType9() {
+		return type9;
+	}
+
+	public void setType9(Long type9) {
+		this.type9 = type9;
+	}
+
+	public Long getType10() {
+		return type10;
+	}
+
+	public void setType10(Long type10) {
+		this.type10 = type10;
+	}
+
+	public Long getType11() {
+		return type11;
+	}
+
+	public void setType11(Long type11) {
+		this.type11 = type11;
+	}
+
+	public Long getType12() {
+		return type12;
+	}
+
+	public void setType12(Long type12) {
+		this.type12 = type12;
+	}
+
+	public Long getType13() {
+		return type13;
+	}
+
+	public void setType13(Long type13) {
+		this.type13 = type13;
+	}
+
+	public Long getType14() {
+		return type14;
+	}
+
+	public void setType14(Long type14) {
+		this.type14 = type14;
+	}
+
+	public Long getType15() {
+		return type15;
+	}
+
+	public void setType15(Long type15) {
+		this.type15 = type15;
+	}
+
+	public Long getType16() {
+		return type16;
+	}
+
+	public void setType16(Long type16) {
+		this.type16 = type16;
+	}
+
+	public Long getType17() {
+		return type17;
+	}
+
+	public void setType17(Long type17) {
+		this.type17 = type17;
+	}
+
+	public Long getType18() {
+		return type18;
+	}
+
+	public void setType18(Long type18) {
+		this.type18 = type18;
+	}
+
+	public Long getType19() {
+		return type19;
+	}
+
+	public void setType19(Long type19) {
+		this.type19 = type19;
+	}
+
+	public Long getType20() {
+		return type20;
+	}
+
+	public void setType20(Long type20) {
+		this.type20 = type20;
 	}
 	
 	

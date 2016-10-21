@@ -26,10 +26,16 @@ public class JkSxtj extends IdEntity{
 	private String typeName;//类别名称
 	
 	@Column(nullable=true,length=512)
+	private String typeSql;//SQL筛选语句
+	
+	@Column(nullable=true,length=512)
 	private String typeBrief;//筛选类别说明
 	
-	@Column(nullable=true,length=64)
-	private String typeSql;//SQL筛选语句
+	@Column(nullable=true,length=1024)
+	private String jkts;//健康提示
+	
+	@Column(nullable=true,length=32)
+	private String mappingField;//字段映射
 	
 	@Column(nullable=false, length=4)
 	private String nodeType;
@@ -109,6 +115,22 @@ public class JkSxtj extends IdEntity{
 
 	public void setChildren(List<JkSxtj> children) {
 		this.children = children;
+	}
+
+	public String getJkts() {
+		return jkts;
+	}
+
+	public void setJkts(String jkts) {
+		this.jkts = jkts;
+	}
+
+	public String getMappingField() {
+		return mappingField;
+	}
+
+	public void setMappingField(String mappingField) {
+		this.mappingField = mappingField;
 	}
 	
 	

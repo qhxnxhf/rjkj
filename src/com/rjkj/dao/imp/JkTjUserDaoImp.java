@@ -84,6 +84,19 @@ public class JkTjUserDaoImp implements JkTjUserDao {
 		}
 		return list.get(0);
 	}
+	
+	@Override
+	public TjUser findBycardId(String cid) {
+		List<TjUser> list=new ArrayList<TjUser>();
+		String sql="SELECT * FROM jbxx WHERE  xx_5='"+cid+"'";
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjUserMapper());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return list.get(0);
+	}
 
 
 }

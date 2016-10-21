@@ -50,11 +50,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<tr>
 			<td >名称</td>
-			<td colspan="3">
-			<input type="text" name="typeName" value="${dic.typeName}" class="validate[required]" watermark="请输入" style="width:470px;"/>
+			<td >
+			<input type="text" name="typeName" value="${dic.typeName}" class="validate[required]" watermark="请输入" style="width:200px;"/>
+			</td>
+			
+			<td >字段映射</td>
+			<td>
+			<input type="text" name="mappingField" value="${dic.mappingField}" class="validate[custom[onlyNumberWide]]" watermark="请输入" style="width:200px;"/>
 			</td>
 		</tr>
 		
+		
+		<tr>
+			<td >查询SQL</td>
+			<td colspan="3">
+			<textarea name="typeSql"  style="width:470px;height:50px;" >${dic.typeSql}</textarea>
+			</td>
+		</tr>
 		<tr>
 			<td >查询说明</td>
 			<td colspan="3">
@@ -63,9 +75,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</td>
 		</tr>
 		<tr>
-			<td >查询SQL</td>
+			<td >健康提示</td>
 			<td colspan="3">
-			<textarea name="typeSql"  style="width:470px;height:50px;" >${dic.typeSql}</textarea>
+			<textarea name="jkts"  style="width:470px;height:100px;" >${dic.jkts}</textarea>
+			
 			</td>
 		</tr>
 		<tr>
