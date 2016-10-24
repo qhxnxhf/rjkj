@@ -16,8 +16,10 @@ import com.rjkj.dao.JkYcxmDao;
 import com.rjkj.dao.ZgjkTjxxDao;
 import com.rjkj.entities.JkTjxm;
 import com.rjkj.entities.JkYcxm;
+import com.rjkj.model.Tjjl;
 import com.rjkj.model.Tjlb;
 import com.rjkj.model.Tjxx;
+import com.rjkj.model.mapper.TjjlMapper;
 import com.rjkj.model.mapper.TjlbMapper;
 import com.rjkj.model.mapper.TjxxMapper;
 
@@ -44,7 +46,7 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 	@Override
 	public List<Tjxx> findByCardId(String cId) {
 		List <Tjxx> list=new ArrayList<Tjxx>();
-		String sql="SELECT * FROM jtjxx WHERE  xx_5='"+cId+"'";
+		String sql="SELECT * FROM jtjxx WHERE  xx_5='"+cId+"' Order By gxx_6,txx_3";
 		try {
 			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjxxMapper());
 		} catch (DataAccessException e) {
@@ -150,6 +152,60 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 		});
 		
 		return null;
+	}
+
+	@Override
+	public Tjjl findTjjlById(String id) {
+		List <Tjjl> list=new ArrayList<Tjjl>();
+		String sql="SELECT * FROM jjlxx WHERE  id="+id;
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjjlMapper());
+			if(list!=null&&list.size()>0)
+				return list.get(0);
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return null;
+	}
+
+	@Override
+	public List<Tjjl> findTjjl(String cId) {
+		List <Tjjl> list=new ArrayList<Tjjl>();
+		String sql="SELECT * FROM jjlxx WHERE  xx_5='"+cId+"'";
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjjlMapper());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return list;
+		}
+		return list;
+	}
+
+	@Override
+	public List<Tjjl> findTjjlByPc(String cId, String tjpc) {
+		List <Tjjl> list=new ArrayList<Tjjl>();
+		String sql="SELECT * FROM jjlxx WHERE  xx_5='"+cId+"' AND  gxx_6='"+tjpc+"'";
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjjlMapper());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return list;
+		}
+		return list;
+	}
+
+	@Override
+	public List<Tjjl> findTjjlByType(String cId, String tjType) {
+		List <Tjjl> list=new ArrayList<Tjjl>();
+		String sql="SELECT * FROM jjlxx WHERE  xx_5='"+cId+"' AND  txx_21='"+tjType+"'";
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjjlMapper());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return list;
+		}
+		return list;
 	}
 
 }

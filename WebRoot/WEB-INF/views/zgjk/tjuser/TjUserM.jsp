@@ -154,12 +154,8 @@
 				{ display: '职务', name: 'zw',  align: 'Centered', width: "6%"},
 				{ display: '手机', name: 'telephone',  align: 'Centered', width: "5%"},
            		{ display: '操作', isAllowHide: false, align: 'center', width:80,
-						 render: function (rowdata, rowindex, value, column){
-	                 	    return '<div class="padding_top4 padding_left5">'
-	                                  + '<span class="img_list hand" title="查看" onclick="onView(' + rowdata.id + ')"></span>'
-	                                 
-	                                + '</div>';
-		                 }
+					render: function (rowdata, rowindex, value, column){return onMainOper(rowdata);}
+		                 
 		            }
 			  ],
 		isScroll: true, 
@@ -172,8 +168,7 @@
 		});
 	}
 	
-	function onView(rowid){
-	 
+	function onView1(rowid){
     	top.Dialog.open({
         	URL:"<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+rowid,
         	Title:"查看",Width:900,Height:600});
@@ -181,6 +176,20 @@
 	}
 	
 	
+	
+	//主表操作
+	function onMainOper(rowdata){		
+		var sss='<div class="padding_top4 padding_left5"><span class="img_list hand" title="体检查询"onclick=onView("'+rowdata.id+'","'+rowdata.name+'")></span></div>';
+		return sss;
+	}
+	
+	//详情查看
+	function onView(pid,title){
+		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+pid;
+		top.frmright.tabAddHandler(pid,title,url);
+		
+	}
+
 	
 	//获取所有选中行获取选中行的id 格式为 ids=1&ids=2 
 	function getSelectIds(grid) {

@@ -199,7 +199,7 @@ a {
 	<div id="bs_footcenter">
 	<div id="bs_footleft">
 	<div id="bs_footright">
-		<span>西宁东车辆段&nbsp;&nbsp;版权所有</span>
+		<span>Copyright&copy;2016 青藏铁路公司&nbsp;&nbsp;版权所有</span>
        
 	</div>
 	</div>

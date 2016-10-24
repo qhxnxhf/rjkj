@@ -75,16 +75,21 @@
 				<tr>
 					<td>体检类别</td>
 					<td>
-						<select  name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="180" ></select>  				
+						<select  name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="150" ></select>  				
 					</td>
 					<td>部门</td>
 					<td>
 						<select  name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
 					</td>
 					
+					<td>姓名</td>
+					<td>
+						<input type="text" id="uname" name="uname"  style="width:150px;"/>
+					</td>
+					
 					<td>身份证</td>
 					<td>
-						<input type="text" id="carId" name="carId"  style="width:180px;"/>
+						<input type="text" id="carId" name="carId"  style="width:150px;"/>
 					</td>
 					
 					
@@ -142,24 +147,24 @@
 				{ display: '身份证', name: 'cardId', align: 'left', width: "5%"},
 				{ display: '姓名', name: 'name',     align: 'center', width: "5%" },
 				{ display: '性别', name: 'sex',     align: 'left', width: "5%"},
-				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "5%"},
 				{ display: '体检类别', name: 'tjType',     align: 'left', width: "5%"},
-				{ display: 'age', name: 'age',     align: 'center', width: "5%"},
-				{ display: 'bmi', name: 'bmi',     align: 'center', width: "5%"},
-				{ display: 'zongdan', name: 'zongdan',     align: 'center', width: "5%"},
-				{ display: 'dimi', name: 'dimi',     align: 'center', width: "5%"},
-				{ display: 'kfxt', name: 'kfxt',     align: 'center', width: "5%"},
-				{ display: 'shzhya', name: 'shzhya',     align: 'center', width: "5%"},
-				{ display: 'gaomi', name: 'gaomi',     align: 'center', width: "5%"},
-				{ display: 'gysz', name: 'gysz',     align: 'center', width: "5%"},
-				{ display: 'fev1', name: 'fev1',     align: 'center', width: "5%"},
-				{ display: 'fev1fvc', name: 'fev1fvc',     align: 'center', width: "5%"},
-				{ display: 'type1', name: 'type1',     align: 'center', width: "5%",
+				{ display: '一类', name: 'type1',     align: 'center', width: "5%",
 				 render : function(rowdata, rowindex, value, column){ return renderType1(rowdata,value);}},
-				{ display: 'type2', name: 'type2',     align: 'center', width: "5%",
+				{ display: '二类', name: 'type2',     align: 'center', width: "5%",
 				 render : function(rowdata, rowindex, value, column){ return renderType2(rowdata,value);}},
-				{ display: 'type3', name: 'type3',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType3(rowdata,value);}}
+				{ display: '三类', name: 'type3',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType3(rowdata,value);}},
+				{ display: '年龄', name: 'age',     align: 'center', width: "5%"},
+				{ display: 'BMI', name: 'bmi',     align: 'center', width: "5%"},
+				{ display: 'TG', name: 'gysz',     align: 'center', width: "5%"},
+				{ display: 'TC', name: 'zongdan',     align: 'center', width: "5%"},
+				{ display: 'HDL-C', name: 'gaomi',     align: 'center', width: "5%"},
+				{ display: 'LDL-C', name: 'dimi',     align: 'center', width: "5%"},
+				{ display: 'GLU', name: 'kfxt',     align: 'center', width: "5%"},
+				{ display: '舒张压', name: 'shzhya',     align: 'center', width: "5%"},
+				{ display: 'FEV1', name: 'fev1',     align: 'center', width: "5%"},
+				{ display: 'FEV1/FVC', name: 'fev1fvc',     align: 'center', width: "5%"}
+				
 				
 			  ],
 		isScroll: true, 
@@ -190,14 +195,14 @@
 		if(rowdata.type1!=0||rowdata.type2!=0||rowdata.type3!=0||rowdata.type4!=0||rowdata.type5!=0||rowdata.type6!=0||rowdata.type7!=0||rowdata.type8!=0){
 			
 			
-			return "<font color=blue>一类人群</font>";
+			return "<font color=purple>一类人群</font>";
 		}
 		
 	}
 	
 	function renderType2(rowdata,value){
 		if(rowdata.type9!=0||rowdata.type10!=0||rowdata.type11!=0){
-			return "<font color=yellow>二类人群</font>";
+			return "<font color=fuchsia>二类人群</font>";
 		}
 		
 	}

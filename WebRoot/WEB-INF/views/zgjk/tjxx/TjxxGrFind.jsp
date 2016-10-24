@@ -133,19 +133,20 @@
 	function initGrid() {
 		grid = $("#dataBasic").quiGrid({
 			columns:[
-				{ display: '身份证', name: 'cardId', align: 'left', width: "18%"},
-				{ display: '医保号', name: 'medicareId',     align: 'left', width: "10%"},
-				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "15%"},
+				
+				{ display: '身份证', name: 'cardId', align: 'left', width: "10%"},
 				{ display: '体检批次', name: 'tjpc',  align: 'left', width: "10%"},
 				{ display: '体检类别', name: 'tjType',     align: 'left', width: "10%"},
 				{ display: '体检科目', name: 'tjkm',     align: 'left', width: "10%"},
 				{ display: '体检项', name: 'tjx',     align: 'center', width: "15%" },
-				{ display: '体检结果', name: 'tjjg',     align: 'center', width: "10%"}
+				{ display: '体检结果', name: 'tjjg',     align: 'center', width: "10%"},
+				{ display: '单位', name: 'tjUnit',  align: 'left', width: "5%"},
+				{ display: '地点', name: 'wkPlace', align: 'left', width: "10%"}
            		
 			  ],
-		isScroll: true, 
+		 isScroll: true, 
 		 url: "<c:url value='/zgjk/tjxx/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
-         height: '100%', width:"100%",pageSize:50,
+         height: '100%', width:'100%',usePager:false,
          onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
          percentWidthMode:true
          

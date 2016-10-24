@@ -16,10 +16,10 @@ public class JkYcxm extends IdEntity{
 	 */
 	private static final long serialVersionUID = 7100570672165163329L;
 
-	@Column(nullable=false, length=64)
+	@Column(nullable=true, length=64)
 	private String name;
 	
-	@Column(nullable=false, length=64)
+	@Column(nullable=true, length=64)
 	private String tjxmMc;
 	
 	@Column(nullable=true)

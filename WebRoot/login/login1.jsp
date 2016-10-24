@@ -72,7 +72,7 @@
 			<div class="login_copyright">
        
       
-        <span>京ICP备15003716号-1&nbsp;&nbsp;Copyright&copy;2015 中国铁路信息技术中心&nbsp;&nbsp;青藏铁路公司&nbsp;&nbsp;版权所有</span>
+        <span>Copyright&copy;2016 青藏铁路公司&nbsp;&nbsp;版权所有</span>
        
 </div>
 		</div>

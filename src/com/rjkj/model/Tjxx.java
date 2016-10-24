@@ -22,7 +22,7 @@ public class Tjxx {
 	
 	private String tjpc;//体检批次
 	
-	private String tjType;//体检批次
+	private String tjType;//体检类别
 	
 	private Long tjxId;//体检项目ID
 	
@@ -31,6 +31,16 @@ public class Tjxx {
 	private String tjx;//体检项目名称
 	
 	private String tjjg;//体检结果
+	
+	private String tjUnit;
+	
+	private String refValueL;
+	
+	private String refValueH;
+	
+	private Integer wkYear;//
+	
+	private String wkPlace;
 
 	public Long getId() {
 		return id;
@@ -145,6 +155,46 @@ public class Tjxx {
 
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+
+	public String getTjUnit() {
+		return tjUnit;
+	}
+
+	public void setTjUnit(String tjUnit) {
+		this.tjUnit = tjUnit;
+	}
+
+	public String getRefValueL() {
+		return refValueL;
+	}
+
+	public void setRefValueL(String refValueL) {
+		this.refValueL = refValueL;
+	}
+
+	public String getRefValueH() {
+		return refValueH;
+	}
+
+	public void setRefValueH(String refValueH) {
+		this.refValueH = refValueH;
+	}
+
+	public Integer getWkYear() {
+		return wkYear;
+	}
+
+	public void setWkYear(Integer wkYear) {
+		this.wkYear = wkYear;
+	}
+
+	public String getWkPlace() {
+		return wkPlace;
+	}
+
+	public void setWkPlace(String wkPlace) {
+		this.wkPlace = wkPlace;
 	}
 	
 	
