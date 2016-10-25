@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.rjkj.dao.JkTjDeptDao;
 import com.rjkj.dao.ZgjkTjxxDao;
 import com.rjkj.model.TjDept;
+import com.rjkj.model.Tjjl;
 import com.rjkj.model.Tjlb;
 import com.rjkj.model.Tjxx;
 import com.rjkj.util.web.JsonUtil;
@@ -87,22 +88,91 @@ public class JkTjxxControl {
 	public @ResponseBody String getTreeList(HttpServletRequest request){
 		String cId = request.getParameter("carId");
 		String tjlb= request.getParameter("tjlb");;
-		//String medId = request.getParameter("medId");
+		//String name = request.getParameter("uname");
 		
 		String sort= request.getParameter("sort");;
 		String direction= request.getParameter("direction");
+		
+		String query=" WHERE 1=1 ";
+		
+		
+		
+		if(StringUtils.isNotBlank(cId)){
+			query=query+" AND xx_5 ='"+cId+"'";
+		}else{
+			return "";
+		}
+		
+		
+		if(StringUtils.isNotBlank(tjlb)){
+			query=query+" AND txx_2 ='"+tjlb+"'";
+		}
+		
 		
 		JSONObject json = new JSONObject();
 		JSONArray jsonArray;
 		List<Tjxx> list;
 		
-		if (StringUtils.isNotBlank(cId)) {
-			list=this.tjService.findByCardId(cId);
+		
+		
+			//list=this.tjService.findByCardId(cId);
+			list=this.tjService.findBySql(query);
 			String[] excludes={"children","users","news","docs"};
 			JsonConfig config =JsonUtil.configJson(excludes, "yyyy-MM-dd HH:mm:ss");
 			jsonArray=JSONArray.fromObject(list, config);
 			json.put("rows", jsonArray);
+		
+		
+		
+		//json.put("pager.pageNo", page.getPageNo());
+		//json.put("pager.totalRows", page.getTotalRows());
+		
+		json.put("sort", sort);
+		json.put("direction", direction);
+		
+		String result=json.toString();
+		return result;
+	}
+	
+	
+	@RequestMapping(value="/listJl", method={RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody String getJlList(HttpServletRequest request){
+		String cId = request.getParameter("carId");
+		String tjlb= request.getParameter("tjlb");;
+		//String name = request.getParameter("uname");
+		
+		String sort= request.getParameter("sort");;
+		String direction= request.getParameter("direction");
+		
+		String query=" WHERE 1=1 ";
+		
+		
+		
+		if(StringUtils.isNotBlank(cId)){
+			query=query+" AND xx_5 ='"+cId+"'";
+		}else{
+			return "";
 		}
+		
+		
+		if(StringUtils.isNotBlank(tjlb)){
+			query=query+" AND txx_21 ='"+tjlb+"'";
+		}
+		
+		
+		JSONObject json = new JSONObject();
+		JSONArray jsonArray;
+		List<Tjjl> list;
+		
+			//list=this.tjService.findByCardId(cId);
+			//list=this.tjService.findTjjlByType(cId, tjlb);
+			list=this.tjService.findTjjlBySql(query);
+			
+			String[] excludes={"children","users","news","docs"};
+			JsonConfig config =JsonUtil.configJson(excludes, "yyyy-MM-dd HH:mm:ss");
+			jsonArray=JSONArray.fromObject(list, config);
+			json.put("rows", jsonArray);
+		
 		
 		
 		//json.put("pager.pageNo", page.getPageNo());

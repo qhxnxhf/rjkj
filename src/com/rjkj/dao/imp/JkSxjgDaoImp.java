@@ -65,8 +65,8 @@ public class JkSxjgDaoImp extends GenericDaoImpl<JkSxjg, Long> implements JkSxjg
 		}else{
 			JkSxjg jg=new JkSxjg();
 			jg.setCardId(yc.getCardId());
-			jg.setName(yc.getName());
-			jg.setTjrId(yc.getTjrId());
+			//jg.setName(yc.getName());
+			//jg.setTjrId(yc.getTjrId());
 			jg.setAge(yc.getTjAges());
 			jg.setSex(yc.getSex());
 			jg.setDeptId(yc.getDeptId());

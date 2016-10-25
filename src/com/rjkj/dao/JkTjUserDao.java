@@ -1,5 +1,6 @@
 package com.rjkj.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.rjkj.model.TjUser;
@@ -11,5 +12,7 @@ public interface JkTjUserDao {
 	
 	public TjUser findById(String cardId);
 
-	TjUser findBycardId(String cid);
+	public TjUser findBycardId(String cid);
+
+	public HashMap<String, TjUser> findAll(String query);
 }

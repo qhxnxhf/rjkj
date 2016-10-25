@@ -16,6 +16,8 @@ public class Tjxx {
 	
 	private String cardId;//体检人身份证
 	
+	private String name;//体检人身份证
+	
 	private String medicareId;//医保号
 	
 	private Date tjDate;//体检日期
@@ -195,6 +197,14 @@ public class Tjxx {
 
 	public void setWkPlace(String wkPlace) {
 		this.wkPlace = wkPlace;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

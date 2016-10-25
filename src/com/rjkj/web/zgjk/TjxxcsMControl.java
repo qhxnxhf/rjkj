@@ -1,5 +1,6 @@
 package com.rjkj.web.zgjk;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +65,7 @@ public class TjxxcsMControl {
 		page.setPageNo(Integer.valueOf(pageNo));
 		page.setPageSize(Integer.valueOf(pageSize));
 		
-		String query=" WHERE 1=1 ";
+		String query=" WHERE tjAges>=0 ";
 		
 		if(StringUtils.isNotBlank(id)){
 			query=query+" AND deptId="+id;
@@ -99,6 +100,9 @@ public class TjxxcsMControl {
 		String result=json.toString();
 		return result;
 	}
+	
+	@Autowired
+	private JkTjUserDao userService;
 
 	//@RequiresPermissions("LmM:save")
 	@RequestMapping(value="/saveXxcs", method={RequestMethod.POST})
@@ -130,7 +134,9 @@ public class TjxxcsMControl {
 		}
 		
 		List<JkTjxm> cstj=this.tjxService.findAll(JkTjxm.class, " WHERE type1Value IS NOT NULL AND type1Value <> ''"); 				
-		String msgs=this.tjService.xxcs(cstj,index,query);
+		HashMap<String, TjUser> userHash=userService.findAll("");
+		
+		String msgs=this.tjService.xxcs(cstj,userHash,index,query);
 	
 		JSONObject json = new JSONObject();				   
 			//this.tjxService.save(dic);
@@ -169,19 +175,16 @@ public class TjxxcsMControl {
 		}
         	
 		query=query.trim();
-		if(StringUtils.isNotBlank(query)){
-			try{
-				String msg=ycService.delByHql(query);
-				json.put("status", "true");
-				json.put("message", msg);
-			}catch(Exception e){
-				json.put("status", "false");
-				json.put("message", e.toString());
-			}
-		}else{
+		
+		try{
+			String msg=ycService.delByHql(query);
+			json.put("status", "true");
+			json.put("message", msg);
+		}catch(Exception e){
 			json.put("status", "false");
-			json.put("message", "删除条件不能为空！");
+			json.put("message", e.toString());
 		}
+		
 		
 		String result=json.toString();
 		return result;

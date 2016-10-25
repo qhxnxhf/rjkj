@@ -3,6 +3,7 @@ package com.rjkj.dao.imp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,7 @@ public class JkTjUserDaoImp implements JkTjUserDao {
 		}
 	}
 	
+	
 	public List<TjUser> findAll(String query, Integer ss,Integer ee) {
 //		String sql="SELECT * FROM TjUser "+query+" ORDER BY id  LIMIT "+ss+","+ee;
 		String sql="SELECT TOP "+ee+" * FROM jbxx "+query+" AND ID NOT IN(SELECT TOP "+ss+" ID FROM jbxx " +query+ ")";
@@ -69,7 +71,26 @@ public class JkTjUserDaoImp implements JkTjUserDao {
 		}
 		return list;
 	}
-
+	
+	@Override
+	public HashMap<String,TjUser> findAll(String query) {
+		String sql="SELECT * FROM jbxx "+query+" ORDER BY id ";
+			List<TjUser> list=new ArrayList<TjUser>();
+			HashMap<String,TjUser> hash=new HashMap<String,TjUser>();
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjUserMapper());
+			if(list!=null&&list.size()>0){
+				for(TjUser user:list){
+					hash.put(user.getCardId(), user);
+				}
+				return hash;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return null;
+	}
 	
 
 	@Override

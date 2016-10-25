@@ -3,6 +3,7 @@ package com.rjkj.dao.imp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.rjkj.dao.JkYcxmDao;
 import com.rjkj.dao.ZgjkTjxxDao;
 import com.rjkj.entities.JkTjxm;
 import com.rjkj.entities.JkYcxm;
+import com.rjkj.model.TjUser;
 import com.rjkj.model.Tjjl;
 import com.rjkj.model.Tjlb;
 import com.rjkj.model.Tjxx;
@@ -59,7 +61,7 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 	@Override
 	public List<Tjxx> findByMedicareId(String cId) {
 		List <Tjxx> list=new ArrayList<Tjxx>();
-		String sql="SELECT * FROM jtjxx WHERE  xx_4='"+cId+"'";
+		String sql="SELECT * FROM jtjxx WHERE  xx_4='"+cId+"'"+"' Order By gxx_6,txx_3";;
 		try {
 			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjxxMapper());
 		} catch (DataAccessException e) {
@@ -68,6 +70,21 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 		}
 		return list;
 	}
+	
+	@Override
+	public List<Tjxx> findBySql(String query) {
+		List <Tjxx> list=new ArrayList<Tjxx>();
+		String sql="SELECT * FROM jtjxx "+query+" Order By gxx_6,txx_3";;
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjxxMapper());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return list;
+		}
+		return list;
+	}
+	
+	
 
 	@Override
 	public List<Tjlb> findTjlb() {
@@ -86,7 +103,7 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 	private JkYcxmDao ycService;
 
 	@Override
-	public String xxcs(final List<JkTjxm> cstj, Long index,String qu) {
+	public String xxcs(final List<JkTjxm> cstj, final HashMap<String, TjUser> userHash,Long index,String qu) {
 		
 		String sql="SELECT * FROM jtjxx WHERE  id>"+index+qu+" order by id asc";
 		jdbcTemplate.query(sql.toString(),new ResultSetExtractor<List<Tjxx>>(){
@@ -97,13 +114,17 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 				List<Tjxx> xxs=new ArrayList<Tjxx>();
 				Tjxx tjx = new Tjxx();
 				while(rs.next()){ 
+					TjUser user=userHash.get(rs.getString("xx_5"));
+					tjx.setTjrId(user.getId());
+					tjx.setName(user.getName());
+					
 					tjx.setId(rs.getLong("id"));
 					tjx.setMedicareId(rs.getString("xx_4"));
 					tjx.setCardId(rs.getString("xx_5"));
 					tjx.setTjDate(rs.getDate("txx_1"));
 					tjx.setTjpc(rs.getString("gxx_6"));
 					tjx.setTjType(rs.getString("txx_2"));
-					//tjx.setTjrId(tjrId);
+					
 					tjx.setTjkm(rs.getString("txx_3"));
 					tjx.setTjx(rs.getString("txx_4"));
 					//tjx.setTjxId(tjxId);
@@ -119,6 +140,7 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 					JkYcxm ycxm=new JkYcxm();
 					ycxm.setTjxxId(tjx.getId());
 					ycxm.setName("Index");
+					ycxm.setTjAges(-1);
 					ycService.save(ycxm);
 				}
 				return xxs;
@@ -207,5 +229,35 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 		}
 		return list;
 	}
+
+	@Override
+	public List<Tjxx> findByCardId(String cId, String type) {
+		List <Tjxx> list=new ArrayList<Tjxx>();
+		String sql="SELECT * FROM jtjxx  xx_4='"+cId+"'"+"' AND txx_2='"+type+"' Order By gxx_6,txx_3";;
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjxxMapper());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return list;
+		}
+		return list;
+	}
+	
+	
+
+	@Override
+	public List<Tjjl> findTjjlBySql(String query) {
+		List <Tjjl> list=new ArrayList<Tjjl>();
+		String sql="SELECT * FROM jjlxx "+query;;
+		try {
+			list = jdbcTemplate.query(sql.toString(), new Object[]{},new TjjlMapper());
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			return list;
+		}
+		return list;
+	}
+
+	
 
 }

@@ -142,18 +142,18 @@
 				{ display: '姓名', name: 'name', align: 'Centered', width: "5%"},
 				{ display: '性别', name: 'sex', align: 'Centered', width: "2%"},
 				{ display: '民族', name: 'minzu', align: 'Centered', width: "5%"},
-				{ display: '出生日期', name: 'csrq', align: 'Centered', width: "5%"},
+				//{ display: '出生日期', name: 'csrq', align: 'Centered', width: "5%"},
 				{ display: '身份证', name: 'cardId', align: 'Centered', width: "10%"},
 				{ display: '医保号', name: 'medicareId',     align: 'Centered', width: "5%"},
 				{ display: '单位电话', name: 'dwPhone',  align: 'Centered', width: "6%"},
-				{ display: '文化程度', name: 'whcd',  align: 'Centered', width: "4%"},
-				{ display: '单位类型', name: 'dwlx',  align: 'Centered', width: "6%"},
-				{ display: '单位编码', name: 'dwbm',  align: 'Centered', width: "4%"},
-				{ display: '婚姻', name: 'hf',  align: 'Centered', width: "2%"},
+				//{ display: '文化程度', name: 'whcd',  align: 'Centered', width: "4%"},
+				//{ display: '单位类型', name: 'dwlx',  align: 'Centered', width: "6%"},
+				//{ display: '单位编码', name: 'dwbm',  align: 'Centered', width: "4%"},
+				//{ display: '婚姻', name: 'hf',  align: 'Centered', width: "2%"},
 				{ display: '工作地点', name: 'gzdd',  align: 'Centered', width: "10%"},
 				{ display: '职务', name: 'zw',  align: 'Centered', width: "6%"},
 				{ display: '手机', name: 'telephone',  align: 'Centered', width: "5%"},
-           		{ display: '操作', isAllowHide: false, align: 'center', width:80,
+           		{ display: '查询操作', isAllowHide: false, align: 'center', width:150,
 					render: function (rowdata, rowindex, value, column){return onMainOper(rowdata);}
 		                 
 		            }
@@ -177,16 +177,34 @@
 	
 	
 	
+	
+	
 	//主表操作
 	function onMainOper(rowdata){		
-		var sss='<div class="padding_top4 padding_left5"><span class="img_list hand" title="体检查询"onclick=onView("'+rowdata.id+'","'+rowdata.name+'")></span></div>';
+		var sss='<div class="padding_top4 padding_left5"><span class="img_find2 hand" title="体检指标"onclick=onView("'+rowdata.id+'","'+rowdata.name+'")></span>';
+		sss=sss+'<span class="img_edit hand" title="体检结论"onclick=onView2("'+rowdata.id+'","'+rowdata.name+'")></span>';
+		sss=sss+'<span class="img_poll hand" title="统计结论"onclick=onView3("'+rowdata.id+'","'+rowdata.name+'")></span></div>';
 		return sss;
 	}
 	
 	//详情查看
 	function onView(pid,title){
 		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+pid;
-		top.frmright.tabAddHandler(pid,title,url);
+		top.frmright.tabAddHandler(pid,"体检项_"+title,url);
+		
+	}
+	
+	//详情查看
+	function onView2(pid,title){
+		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjjlGrFind&userid="+pid;
+		top.frmright.tabAddHandler(pid+1000,"结论_"+title,url);
+		
+	}
+	
+	//详情查看
+	function onView3(pid,title){
+		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/sxjg/SxjgFind&userid="+pid;
+		top.frmright.tabAddHandler(pid+2000,"统计_"+title,url);
 		
 	}
 

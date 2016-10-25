@@ -112,7 +112,7 @@ public class JkSxjgMControl {
 		String tjdate = request.getParameter("tjdate");	
 		Long index=0L;
 		
-		String query=" WHERE 1=1 ";
+		String query=" WHERE tjAges>=0 ";
 		
 		if(StringUtils.isNotBlank(tjbm)){
 			query=query+" AND deptId="+tjbm;

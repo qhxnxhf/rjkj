@@ -73,29 +73,37 @@
 			
 			<table width="100%">
 				<tr>
-					<td>体检类别</td>
+					<td>类别</td>
 					<td>
-						<select  name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="150" ></select>  				
+						<select  name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="120" ></select>  				
 					</td>
 					<td>部门</td>
 					<td>
-						<select  name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
-					</td>
-					
-					<td>姓名</td>
-					<td>
-						<input type="text" id="uname" name="uname"  style="width:150px;"/>
+						<select  name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="150" ></select>  				
 					</td>
 					
 					<td>身份证</td>
 					<td>
-						<input type="text" id="carId" name="carId"  style="width:150px;"/>
+						<input type="text" id="carId" name="carId"  value="${user.cardId}" style="width:150px;"/>
 					</td>
 					
+					<td>姓名</td>
+					<td>
+						<input type="text" id="uname" name="uname"  style="width:100px;"/>
+					</td>
 					
+					<td>开始</td>
+					<td>
+						<input type="text" class="date validate[custom[date]]" name="beginTime" style="width:100px;" dateFmt="yyyy-MM-dd"/>			
+					</td>
+					<td>截止</td>
+					<td>
+						<input type="text" class="date validate[custom[date]]" name="endTime" style="width:100px;" dateFmt="yyyy-MM-dd"/>			
+				
+					</td>
 					
 					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
-					
+					<td><button type="button" onclick="excel()"><span class="icon_export">导出</span></button></td>
 				</tr>
 			</table>
 			</div>
@@ -168,7 +176,7 @@
 				
 			  ],
 		isScroll: true, 
-		 url: "<c:url value='/zgjk/sxjg/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
+		 url: "<c:url value='/zgjk/sxjgf/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
          height: '100%', width:"100%",pageSize:50,
          onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
          percentWidthMode:true
@@ -250,7 +258,13 @@
 		}
 	}
     
-       
+       //导出Excel
+    function excel(){   
+			var frm=document.getElementById("queryForm");
+    		frm.action="<%=path%>/zgjk/sxjgf/excel";
+    		frm.submit();
+		
+    } 
   
     
      //查询

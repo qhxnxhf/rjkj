@@ -100,8 +100,7 @@ public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxm
 		
 	}
 	
-	@Autowired
-	private JkTjUserDao userService;
+	
 	
 	public void saveXm(Tjxx tjx,JkTjxm tjxm,double jg){
 		JkYcxm ycxm=new JkYcxm();
@@ -116,9 +115,9 @@ public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxm
 		ycxm.setTjxm(tjxm);
 		ycxm.setTjValue(jg);
 		ycxm.setTjxxId(tjx.getId());
-		TjUser user=userService.findBycardId(tjx.getCardId());
-		ycxm.setName(user.getName());
-		ycxm.setTjrId(user.getId());;
+		//TjUser user=userService.findBycardId(tjx.getCardId());
+		ycxm.setName(tjx.getName());
+		ycxm.setTjrId(tjx.getTjrId());;
 		this.save(ycxm);
 		
 	}
