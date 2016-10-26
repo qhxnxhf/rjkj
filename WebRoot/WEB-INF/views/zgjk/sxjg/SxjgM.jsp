@@ -144,27 +144,31 @@
 	function initGrid() {
 		grid = $("#dataBasic").quiGrid({
 			columns:[
-				{ display: '身份证', name: 'cardId', align: 'left', width: "5%"},
+				{ display: '查询操作', isAllowHide: false, align: 'center', width:80,
+					render: function (rowdata, rowindex, value, column){return onMainOper(rowdata);}
+		                 
+		            },
+				{ display: '身份证', name: 'cardId', align: 'left', width: "10%"},
 				{ display: '姓名', name: 'name',     align: 'center', width: "5%" },
 				{ display: '性别', name: 'sex',     align: 'left', width: "5%"},
-				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "5%"},
 				{ display: '体检类别', name: 'tjType',     align: 'left', width: "5%"},
+				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "5%"},
 				{ display: '一类', name: 'tongji1',     align: 'center', width: "5%",
 				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
 				{ display: '二类', name: 'tongji2',     align: 'center', width: "5%",
 				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
 				{ display: '三类', name: 'tongji3',     align: 'center', width: "5%",
 				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
-				{ display: 'age', name: 'age',     align: 'center', width: "5%"},
-				{ display: 'bmi', name: 'bmi',     align: 'center', width: "5%"},
-				{ display: 'zongdan', name: 'zongdan',     align: 'center', width: "5%"},
-				{ display: 'dimi', name: 'dimi',     align: 'center', width: "5%"},
-				{ display: 'kfxt', name: 'kfxt',     align: 'center', width: "5%"},
-				{ display: 'shzhya', name: 'shzhya',     align: 'center', width: "5%"},
-				{ display: 'gaomi', name: 'gaomi',     align: 'center', width: "5%"},
-				{ display: 'gysz', name: 'gysz',     align: 'center', width: "5%"},
-				{ display: 'fev1', name: 'fev1',     align: 'center', width: "5%"},
-				{ display: 'fev1fvc', name: 'fev1fvc',     align: 'center', width: "5%"}
+				{ display: '年龄', name: 'age',     align: 'center', width: "5%"},
+				{ display: '体重指数', name: 'bmi',     align: 'center', width: "5%"},
+				{ display: '甘油三酯', name: 'gysz',     align: 'center', width: "5%"},
+				{ display: '总胆固醇', name: 'zongdan',     align: 'center', width: "5%"},
+				{ display: '高密度脂蛋白', name: 'gaomi',     align: 'center', width: "5%"},
+				{ display: '低密度脂蛋白', name: 'dimi',     align: 'center', width: "5%"},
+				{ display: '空腹血糖', name: 'kfxt',     align: 'center', width: "5%"},
+				{ display: '舒张压', name: 'shzhya',     align: 'center', width: "5%"},
+				{ display: 'FEV1%', name: 'fev1',     align: 'center', width: "5%"},
+				{ display: '实测值/预期值(%)', name: 'fev1fvc',     align: 'center', width: "5%"}
 				
 			  ],
 		isScroll: true, 
@@ -177,17 +181,26 @@
 		});
 	}
 	
-	//渲染节点
-	function renderType1(value){
-		if(value=="r"){
-           return "<font color=blue>根 </font>";
-		}if(value=="b"){
-           return "<font color=blue>分类 </font>";
-        }if(value=="d"){
-           return "<font color=blue>分支</font>";
-        }if(value=="y"){
-           return "<font color=blue>叶节点 </font>";
-        }
+	//主表操作
+	function onMainOper(rowdata){		
+		var sss='<div class="padding_top4 padding_left5"><span class="img_find2 hand" title="体检指标"onclick=onView1("'+rowdata.tjrId+'","'+rowdata.name+'")></span>';
+		sss=sss+'<span class="img_edit hand" title="体检结论"onclick=onView2("'+rowdata.tjrId+'","'+rowdata.name+'")></span>';
+		//sss=sss+'<span class="img_poll hand" title="统计结论"onclick=onView3("'+rowdata.id+'","'+rowdata.name+'")></span></div>';
+		return sss;
+	}
+	
+	//详情查看
+	function onView1(pid,title){
+		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+pid;
+		top.frmright.tabAddHandler(pid,"体检项_"+title,url);
+		
+	}
+	
+	//详情查看
+	function onView2(pid,title){
+		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjjlGrFind&userid="+pid;
+		top.frmright.tabAddHandler(pid+1000,"结论_"+title,url);
+		
 	}
 	
 	//渲染节点
@@ -198,6 +211,8 @@
 			return "";
 		}
 	}
+	
+	
 	
 	//渲染节点
 	function renderType1(rowdata,value){

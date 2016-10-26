@@ -73,13 +73,13 @@
 			
 			<table width="100%">
 				<tr>
-					<td>类别</td>
+					
 					<td>
-						<select  name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="120" ></select>  				
+						<select  name='tjlb' id="tjlb" prompt="请选择类别" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="120" ></select>  				
 					</td>
-					<td>部门</td>
+					
 					<td>
-						<select  name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="150" ></select>  				
+						<select  name='tjbm' id="tjbm" prompt="请选择部门" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="150" ></select>  				
 					</td>
 					
 					<td>身份证</td>
@@ -159,7 +159,11 @@
 	function initGrid() {
 		grid = $("#dataBasic").quiGrid({
 			columns:[
-				{ display: '身份证', name: 'cardId', align: 'left', width: "5%"},
+				{ display: '查询操作', isAllowHide: false, align: 'center', width:80,
+					render: function (rowdata, rowindex, value, column){return onMainOper(rowdata);}
+		                 
+		            },
+				{ display: '身份证', name: 'cardId', align: 'left', width: "10%"},
 				{ display: '姓名', name: 'name',     align: 'center', width: "5%" },
 				{ display: '性别', name: 'sex',     align: 'left', width: "5%"},
 				{ display: '体检类别', name: 'tjType',     align: 'left', width: "5%"},
@@ -170,21 +174,16 @@
 				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
 				{ display: '三类', name: 'tongji3',     align: 'center', width: "5%",
 				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
-				 
-           		{ display: '查询操作', isAllowHide: false, align: 'center', width:80,
-					render: function (rowdata, rowindex, value, column){return onMainOper(rowdata);}
-		                 
-		            },
 				{ display: '年龄', name: 'age',     align: 'center', width: "5%"},
-				{ display: 'BMI', name: 'bmi',     align: 'center', width: "5%"},
-				{ display: 'TG', name: 'gysz',     align: 'center', width: "5%"},
-				{ display: 'TC', name: 'zongdan',     align: 'center', width: "5%"},
-				{ display: 'HDL-C', name: 'gaomi',     align: 'center', width: "5%"},
-				{ display: 'LDL-C', name: 'dimi',     align: 'center', width: "5%"},
-				{ display: 'GLU', name: 'kfxt',     align: 'center', width: "5%"},
+				{ display: '体重指数', name: 'bmi',     align: 'center', width: "5%"},
+				{ display: '甘油三酯', name: 'gysz',     align: 'center', width: "5%"},
+				{ display: '总胆固醇', name: 'zongdan',     align: 'center', width: "5%"},
+				{ display: '高密度脂蛋白', name: 'gaomi',     align: 'center', width: "5%"},
+				{ display: '低密度脂蛋白', name: 'dimi',     align: 'center', width: "5%"},
+				{ display: '空腹血糖', name: 'kfxt',     align: 'center', width: "5%"},
 				{ display: '舒张压', name: 'shzhya',     align: 'center', width: "5%"},
-				{ display: 'FEV1', name: 'fev1',     align: 'center', width: "5%"},
-				{ display: 'FEV1/FVC', name: 'fev1fvc',     align: 'center', width: "5%"}
+				{ display: 'FEV1%', name: 'fev1',     align: 'center', width: "5%"},
+				{ display: '实测值/预期值(%)', name: 'fev1fvc',     align: 'center', width: "5%"}
 				
 				
 			  ],
@@ -209,8 +208,8 @@
 	
 	//主表操作
 	function onMainOper(rowdata){		
-		var sss='<div class="padding_top4 padding_left5"><span class="img_find2 hand" title="体检指标"onclick=onView1("'+rowdata.id+'","'+rowdata.name+'")></span>';
-		sss=sss+'<span class="img_edit hand" title="体检结论"onclick=onView2("'+rowdata.id+'","'+rowdata.name+'")></span>';
+		var sss='<div class="padding_top4 padding_left5"><span class="img_find2 hand" title="体检指标"onclick=onView1("'+rowdata.tjrId+'","'+rowdata.name+'")></span>';
+		sss=sss+'<span class="img_edit hand" title="体检结论"onclick=onView2("'+rowdata.tjrId+'","'+rowdata.name+'")></span>';
 		//sss=sss+'<span class="img_poll hand" title="统计结论"onclick=onView3("'+rowdata.id+'","'+rowdata.name+'")></span></div>';
 		return sss;
 	}
