@@ -91,9 +91,10 @@
 					
 					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
 					<td><button type="button" onclick="delHandler()"><span class="icon_find">批量删除</span></button></td>					
-					<td><button type="button" onclick="xxcsHandler()"><span class="icon_find">统计预处理</span></button></td>
-					<td><button type="button" onclick="tjflHandler()"><span class="icon_find">生成统计</span></button></td>
-					<td><button type="button" onclick="resetTjHandler()"><span class="icon_find">统计重置</span></button></td>
+					<td><button type="button" onclick="xxcsHandler()"><span class="icon_find">预处理</span></button></td>
+					<td><button type="button" onclick="tjflHandler()"><span class="icon_find">统计</span></button></td>
+					<td><button type="button" onclick="tjHandler()"><span class="icon_find">分类</span></button></td>
+					<td><button type="button" onclick="resetTjHandler()"><span class="icon_find">重置</span></button></td>
 					
 				</tr>
 			</table>
@@ -148,6 +149,12 @@
 				{ display: '性别', name: 'sex',     align: 'left', width: "5%"},
 				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "5%"},
 				{ display: '体检类别', name: 'tjType',     align: 'left', width: "5%"},
+				{ display: '一类', name: 'tongji1',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
+				{ display: '二类', name: 'tongji2',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
+				{ display: '三类', name: 'tongji3',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
 				{ display: 'age', name: 'age',     align: 'center', width: "5%"},
 				{ display: 'bmi', name: 'bmi',     align: 'center', width: "5%"},
 				{ display: 'zongdan', name: 'zongdan',     align: 'center', width: "5%"},
@@ -157,13 +164,7 @@
 				{ display: 'gaomi', name: 'gaomi',     align: 'center', width: "5%"},
 				{ display: 'gysz', name: 'gysz',     align: 'center', width: "5%"},
 				{ display: 'fev1', name: 'fev1',     align: 'center', width: "5%"},
-				{ display: 'fev1fvc', name: 'fev1fvc',     align: 'center', width: "5%"},
-				{ display: 'type1', name: 'type1',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType1(rowdata,value);}},
-				{ display: 'type2', name: 'type2',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType2(rowdata,value);}},
-				{ display: 'type3', name: 'type3',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType3(rowdata,value);}}
+				{ display: 'fev1fvc', name: 'fev1fvc',     align: 'center', width: "5%"}
 				
 			  ],
 		isScroll: true, 
@@ -187,6 +188,15 @@
         }if(value=="y"){
            return "<font color=blue>叶节点 </font>";
         }
+	}
+	
+	//渲染节点
+	function renderType(value){
+		if(value=="1"||value==1){
+           return "<font color=red>是 </font>";
+		}else{
+			return "";
+		}
 	}
 	
 	//渲染节点
@@ -252,7 +262,7 @@
     //查询
     function xxcsHandler(){
     	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行体检信息初筛吗？",function(){
+		 	top.Dialog.confirm("确定要进行体检信息预处理吗？",function(){
 			$.post("<c:url value='/zgjk/sxjg/saveSxjg'/>",
 					//获取所有选中行
 					query,
@@ -267,7 +277,7 @@
      //查询
     function tjflHandler(){
     	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行体检信息初筛吗？",function(){
+		 	top.Dialog.confirm("确定要进行体检信息统计吗？",function(){
 			$.post("<c:url value='/zgjk/sxjg/saveTjfl'/>",
 					//获取所有选中行
 					query,
@@ -278,6 +288,19 @@
 		});
     }
     
+   
+    function  tjHandler(){
+    	 var query = $("#queryForm").formToArray(); 
+		 	top.Dialog.confirm("确定要进行体检信息分类吗？",function(){
+			$.post("<c:url value='/zgjk/sxjg/saveTj'/>",
+					//获取所有选中行
+					query,
+					function(result){
+						handleResult(result);
+					},
+					"json");
+		});
+    }
     
       //查询
     function resetTjHandler(){

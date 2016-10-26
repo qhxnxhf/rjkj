@@ -121,6 +121,19 @@ public class JkSxjgDaoImp extends GenericDaoImpl<JkSxjg, Long> implements JkSxjg
 		}
 		return null;
 	}
+	
+	@Override
+	public String updateToTj( String query) {
+		String hql1="update JkSxjg o set o.tongji1=1 where (o.type1>0 OR o.type2>0 OR o.type3>0 OR o.type4>0 OR o.type5>0 OR o.type6>0 OR o.type7>0 OR o.type8>0)"+query;
+		String hql2="update JkSxjg o set o.tongji2=1 where (o.type9>0 OR o.type10>0 OR o.type11>0 )"+query;
+		String hql3="update JkSxjg o set o.tongji3=1 where (o.type12>0 OR o.type13>0 OR o.type14>0 OR o.type15>0)"+query;
+		this.update(hql1);
+		this.update(hql2);
+		this.update(hql3);
+		
+		return "ok";
+		
+	}
 
 	@Override
 	public String reseTjfl(String query) {

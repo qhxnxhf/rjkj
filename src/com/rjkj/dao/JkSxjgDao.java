@@ -21,6 +21,8 @@ public interface JkSxjgDao extends GenericDao<JkSxjg, Long>{
 
 	public String reseTjfl(String query);
 
+	public String updateToTj(String query);
+
 	
 
 

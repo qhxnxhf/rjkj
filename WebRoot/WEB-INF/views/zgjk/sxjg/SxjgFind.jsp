@@ -101,6 +101,13 @@
 						<input type="text" class="date validate[custom[date]]" name="endTime" style="width:100px;" dateFmt="yyyy-MM-dd"/>			
 				
 					</td>
+					<td>
+						<input type="checkbox"  id="checkbox-1" name="tj1" value="1"  /><label for="checkbox-1" class="hand">一类</label>
+						<input type="checkbox"  id="checkbox-2" name="tj2" value="1"  /><label for="checkbox-2" class="hand">二类</label>
+						<input type="checkbox"  id="checkbox-3" name="tj3" value="1"  /><label for="checkbox-3" class="hand">三类</label>
+					
+					
+					</td>
 					
 					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
 					<td><button type="button" onclick="excel()"><span class="icon_export">导出</span></button></td>
@@ -156,12 +163,18 @@
 				{ display: '姓名', name: 'name',     align: 'center', width: "5%" },
 				{ display: '性别', name: 'sex',     align: 'left', width: "5%"},
 				{ display: '体检类别', name: 'tjType',     align: 'left', width: "5%"},
-				{ display: '一类', name: 'type1',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType1(rowdata,value);}},
-				{ display: '二类', name: 'type2',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType2(rowdata,value);}},
-				{ display: '三类', name: 'type3',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType3(rowdata,value);}},
+				{ display: '体检日期', name: 'tjDate',     align: 'left', width: "5%"},
+				{ display: '一类', name: 'tongji1',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
+				{ display: '二类', name: 'tongji2',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
+				{ display: '三类', name: 'tongji3',     align: 'center', width: "5%",
+				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
+				 
+           		{ display: '查询操作', isAllowHide: false, align: 'center', width:80,
+					render: function (rowdata, rowindex, value, column){return onMainOper(rowdata);}
+		                 
+		            },
 				{ display: '年龄', name: 'age',     align: 'center', width: "5%"},
 				{ display: 'BMI', name: 'bmi',     align: 'center', width: "5%"},
 				{ display: 'TG', name: 'gysz',     align: 'center', width: "5%"},
@@ -186,16 +199,34 @@
 	}
 	
 	//渲染节点
-	function renderType1(value){
-		if(value=="r"){
-           return "<font color=blue>根 </font>";
-		}if(value=="b"){
-           return "<font color=blue>分类 </font>";
-        }if(value=="d"){
-           return "<font color=blue>分支</font>";
-        }if(value=="y"){
-           return "<font color=blue>叶节点 </font>";
-        }
+	function renderType(value){
+		if(value=="1"||value==1){
+           return "<font color=red>是 </font>";
+		}else{
+			return "";
+		}
+	}
+	
+	//主表操作
+	function onMainOper(rowdata){		
+		var sss='<div class="padding_top4 padding_left5"><span class="img_find2 hand" title="体检指标"onclick=onView1("'+rowdata.id+'","'+rowdata.name+'")></span>';
+		sss=sss+'<span class="img_edit hand" title="体检结论"onclick=onView2("'+rowdata.id+'","'+rowdata.name+'")></span>';
+		//sss=sss+'<span class="img_poll hand" title="统计结论"onclick=onView3("'+rowdata.id+'","'+rowdata.name+'")></span></div>';
+		return sss;
+	}
+	
+	//详情查看
+	function onView1(pid,title){
+		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+pid;
+		top.frmright.tabAddHandler(pid,"体检项_"+title,url);
+		
+	}
+	
+	//详情查看
+	function onView2(pid,title){
+		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjjlGrFind&userid="+pid;
+		top.frmright.tabAddHandler(pid+1000,"结论_"+title,url);
+		
 	}
 	
 	//渲染节点

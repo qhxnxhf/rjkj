@@ -190,6 +190,40 @@ public class JkSxjgMControl {
 		return result;
 	}
 	
+	@RequestMapping(value="/saveTj", method={RequestMethod.POST})
+	public @ResponseBody String restTj(Map<String, Object> map ,HttpServletRequest request){
+		String tjlb= request.getParameter("tjlb");
+		String tjbm = request.getParameter("tjbm");
+		String cId = request.getParameter("carId");
+		String tjdate = request.getParameter("tjdate");	
+		Long index=0L;
+		
+		String query="";
+		
+		if(StringUtils.isNotBlank(tjbm)){
+			query=query+" AND deptId="+tjbm;
+		}
+		if(StringUtils.isNotBlank(tjlb)){
+			query=query+" AND tjType ='"+tjlb+"'";
+		}
+		
+		
+		
+		if(StringUtils.isNotBlank(cId)){
+			query=query+" AND cardId ='"+cId+"'";
+		}	
+		
+		String msgs=this.sxService.updateToTj(query);
+	
+		JSONObject json = new JSONObject();				   
+			//this.tjxService.save(dic);
+		json.put("status", "true");
+		json.put("message", msgs);
+			//map.put("dic", dic);
+		String result=json.toString();
+		return result;
+	}
+	
 	@RequestMapping(value="/resetTjfl", method={RequestMethod.POST})
 	public @ResponseBody String restTjfl(Map<String, Object> map ,HttpServletRequest request){
 		String tjlb= request.getParameter("tjlb");
