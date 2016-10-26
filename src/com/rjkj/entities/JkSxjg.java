@@ -91,6 +91,15 @@ public class JkSxjg extends IdEntity{
 	private Double zhongliu;
 	
 	@Column(nullable=true)
+	private Long tongji1;
+	
+	@Column(nullable=true)
+	private Long tongji2;
+	
+	@Column(nullable=true)
+	private Long tongji3;
+	
+	@Column(nullable=true)
 	private Long type1;
 	
 	@Column(nullable=true)
@@ -532,6 +541,30 @@ public class JkSxjg extends IdEntity{
 
 	public void setType20(Long type20) {
 		this.type20 = type20;
+	}
+
+	public Long getTongji1() {
+		return tongji1;
+	}
+
+	public void setTongji1(Long tongji1) {
+		this.tongji1 = tongji1;
+	}
+
+	public Long getTongji2() {
+		return tongji2;
+	}
+
+	public void setTongji2(Long tongji2) {
+		this.tongji2 = tongji2;
+	}
+
+	public Long getTongji3() {
+		return tongji3;
+	}
+
+	public void setTongji3(Long tongji3) {
+		this.tongji3 = tongji3;
 	}
 	
 	

@@ -112,7 +112,7 @@ public class JkSxjgMControl {
 		String tjdate = request.getParameter("tjdate");	
 		Long index=0L;
 		
-		String query=" WHERE tjAges>=0 ";
+		String query=" WHERE tjAges <> -1 ";
 		
 		if(StringUtils.isNotBlank(tjbm)){
 			query=query+" AND deptId="+tjbm;
@@ -253,19 +253,16 @@ public class JkSxjgMControl {
 		}
         	
 		query=query.trim();
-		if(StringUtils.isNotBlank(query)){
-			try{
-				String msg=sxService.delByHql(query);
-				json.put("status", "true");
-				json.put("message", msg);
-			}catch(Exception e){
-				json.put("status", "false");
-				json.put("message", e.toString());
-			}
-		}else{
+		try{
+			String msg=sxService.delByHql(query);
+			json.put("status", "true");
+			json.put("message", msg);
+		}catch(Exception e){
 			json.put("status", "false");
-			json.put("message", "删除条件不能为空！");
+			json.put("message", e.toString());
 		}
+		
+		
 		
 		String result=json.toString();
 		return result;

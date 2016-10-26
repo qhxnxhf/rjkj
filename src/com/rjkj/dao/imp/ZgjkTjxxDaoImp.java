@@ -2,7 +2,10 @@ package com.rjkj.dao.imp;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -114,13 +117,10 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 				List<Tjxx> xxs=new ArrayList<Tjxx>();
 				Tjxx tjx = new Tjxx();
 				while(rs.next()){ 
-					TjUser user=userHash.get(rs.getString("xx_5"));
-					tjx.setTjrId(user.getId());
-					tjx.setName(user.getName());
 					
 					tjx.setId(rs.getLong("id"));
 					tjx.setMedicareId(rs.getString("xx_4"));
-					tjx.setCardId(rs.getString("xx_5"));
+					tjx.setCardId(rs.getString("xx_5").trim());
 					tjx.setTjDate(rs.getDate("txx_1"));
 					tjx.setTjpc(rs.getString("gxx_6"));
 					tjx.setTjType(rs.getString("txx_2"));
@@ -132,7 +132,7 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 					tjx.setDeptId(rs.getLong("txx_16"));
 					tjx.setTjAges(rs.getInt("txx_15"));
 					tjx.setSex(rs.getString("txx_14"));
-					ycService.saveXxcs(tjx,cstj);
+					ycService.saveXxcs(tjx,cstj,userHash);
 				}
 				
 				//添加检索ID的位置记录
@@ -149,6 +149,9 @@ public class ZgjkTjxxDaoImp implements ZgjkTjxxDao {
 		
 		return null;
 	}
+	
+	
+	
 	
 	public String xxcs2(List<JkTjxm> cstj, Long index) {
 		String sql="SELECT * FROM jtjxx WHERE  id>"+index;

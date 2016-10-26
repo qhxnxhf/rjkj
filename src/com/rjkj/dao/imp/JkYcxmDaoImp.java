@@ -1,5 +1,10 @@
 package com.rjkj.dao.imp;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +44,7 @@ public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxm
 	}
 
 	@Override
-	public void saveXxcs(Tjxx tjx, List<JkTjxm> cstj) {
+	public void saveXxcs(Tjxx tjx, List<JkTjxm> cstj,final HashMap<String, TjUser> userHash) {
 		String name=tjx.getTjx().trim().toLowerCase();
 		//String jg=tjx.getTjjg().trim().toLowerCase();
 		
@@ -62,25 +67,25 @@ public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxm
 				switch(tjxm.getType1Value()){
 					case ">":{
 						if(yy>=sxl){
-							saveXm(tjx,tjxm,yy);
+							saveXm(tjx,tjxm,yy,userHash);
 						}
 						break;
 					}
 					case "<":{
-						if(yy<=sxl){
-							saveXm(tjx,tjxm,yy);
+						if(yy>0&&yy<=sxl){
+							saveXm(tjx,tjxm,yy,userHash);
 						}
 						break;
 					}
 					case "=":{
 						if(yy==sxl){
-							saveXm(tjx,tjxm,yy);
+							saveXm(tjx,tjxm,yy,userHash);
 						}
 						break;
 					}
 					case "!":{
 						if(yy!=sxl){
-							saveXm(tjx,tjxm,yy);
+							saveXm(tjx,tjxm,yy,userHash);
 						}
 						break;
 					}
@@ -88,7 +93,7 @@ public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxm
 						if(tjxm.getSxValueH()!=null)
 							sxh=tjxm.getSxValueH();
 						if(sxl<=yy&&yy<=sxh){
-							saveXm(tjx,tjxm,yy);
+							saveXm(tjx,tjxm,yy,userHash);
 						}
 						break;
 					}
@@ -102,11 +107,11 @@ public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxm
 	
 	
 	
-	public void saveXm(Tjxx tjx,JkTjxm tjxm,double jg){
+	public void saveXm(Tjxx tjx,JkTjxm tjxm,double jg,final HashMap<String, TjUser> userHash){
 		JkYcxm ycxm=new JkYcxm();
 		ycxm.setCardId(tjx.getCardId());
 		ycxm.setDeptId(tjx.getDeptId());
-		ycxm.setTjAges(tjx.getTjAges());
+		
 		ycxm.setSex(tjx.getSex());
 		ycxm.setTjxmMc(tjx.getTjx());
 		ycxm.setTjDate(tjx.getTjDate());
@@ -115,11 +120,46 @@ public class JkYcxmDaoImp extends GenericDaoImpl<JkYcxm, Long> implements JkYcxm
 		ycxm.setTjxm(tjxm);
 		ycxm.setTjValue(jg);
 		ycxm.setTjxxId(tjx.getId());
-		//TjUser user=userService.findBycardId(tjx.getCardId());
-		ycxm.setName(tjx.getName());
-		ycxm.setTjrId(tjx.getTjrId());;
+		
+		int ages=this.getAges(tjx);
+		ycxm.setTjAges(ages);
+		
+		TjUser user=userHash.get(tjx.getCardId());
+		if(user!=null){
+			if(user.getId()!=null)
+			ycxm.setTjrId(user.getId());;
+			if(user.getName()!=null)
+			ycxm.setName(user.getName());
+		}
+		
 		this.save(ycxm);
 		
+	}
+	
+	
+	public int getAges(Tjxx tjx){
+		if(tjx.getTjAges()<-1){
+			String carid=tjx.getCardId().trim();
+			String yy=carid.substring(6,8);
+			//SimpleDateFormat sfmt = new SimpleDateFormat("yyyyMMdd");
+			 try {
+				// Date brithDay=sfmt.parse(carid);
+				 yy="19"+yy;
+				 int tt=Integer.valueOf(yy);
+				 Date today = tjx.getTjDate();
+				  
+				 int age= today.getYear()+1900 - tt;
+				 return age;
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return 40;
+			}
+			
+		}else{
+			return tjx.getTjAges();
+		}
 	}
 	
 	//对tjx 体检结果进行语义转换

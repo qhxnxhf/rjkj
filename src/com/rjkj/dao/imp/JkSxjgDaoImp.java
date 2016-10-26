@@ -1,5 +1,8 @@
 package com.rjkj.dao.imp;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -65,8 +68,8 @@ public class JkSxjgDaoImp extends GenericDaoImpl<JkSxjg, Long> implements JkSxjg
 		}else{
 			JkSxjg jg=new JkSxjg();
 			jg.setCardId(yc.getCardId());
-			//jg.setName(yc.getName());
-			//jg.setTjrId(yc.getTjrId());
+			jg.setName(yc.getName());
+			jg.setTjrId(yc.getTjrId());
 			jg.setAge(yc.getTjAges());
 			jg.setSex(yc.getSex());
 			jg.setDeptId(yc.getDeptId());
@@ -97,6 +100,8 @@ public class JkSxjgDaoImp extends GenericDaoImpl<JkSxjg, Long> implements JkSxjg
 			return jg;
 		}
 	}
+	
+	
 
 	@Override
 	public String delByHql(String query) {

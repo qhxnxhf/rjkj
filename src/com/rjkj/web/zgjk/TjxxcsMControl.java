@@ -65,7 +65,7 @@ public class TjxxcsMControl {
 		page.setPageNo(Integer.valueOf(pageNo));
 		page.setPageSize(Integer.valueOf(pageSize));
 		
-		String query=" WHERE tjAges>=0 ";
+		String query=" WHERE tjAges <> -1 ";
 		
 		if(StringUtils.isNotBlank(id)){
 			query=query+" AND deptId="+id;

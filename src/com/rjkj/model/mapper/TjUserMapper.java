@@ -16,7 +16,7 @@ public class TjUserMapper implements RowMapper<TjUser>{
 		xx.setSex(arg0.getString("xx_2"));
 		xx.setCsrq(arg0.getDate("xx_3"));
 		xx.setMedicareId(arg0.getString("xx_4"));
-		xx.setCardId(arg0.getString("xx_5"));
+		xx.setCardId(arg0.getString("xx_5").trim());
 		xx.setMinzu(arg0.getString("xx_6"));
 		xx.setJiguan(arg0.getString("xx_7"));
 		xx.setJtzz(arg0.getString("xx_8"));
