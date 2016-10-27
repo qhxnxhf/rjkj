@@ -12,7 +12,8 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,10 @@ import com.rjkj.web.interceptor.CsrfTokenUtils;
 @Controller
 @RequestMapping("/zgjk/sxtj")
 public class JkSxtjMControl {
+	
+	private static final Log log = LogFactory.getLog(JkSxtjMControl.class);  
+	//protected ErrMg error; 
+	 
 	
 	@Autowired
 	private JkSxtjDao sxService;

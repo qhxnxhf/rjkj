@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>95306</title>
+<title></title>
 <link href="<c:url value='/resources/login/skin1/style.css' />" rel="stylesheet" type="text/css" id="skin"/>
 
 <script type="text/javascript" src="<c:url value='/resources/libs/js/jquery.js'/>" ></script>

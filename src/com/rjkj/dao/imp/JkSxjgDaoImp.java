@@ -1,8 +1,6 @@
 package com.rjkj.dao.imp;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -12,6 +10,7 @@ import com.rjkj.dao.JkSxjgDao;
 import com.rjkj.entities.JkSxjg;
 import com.rjkj.entities.JkSxtj;
 import com.rjkj.entities.JkYcxm;
+import com.rjkj.model.TjUser;
 import com.rjkj.util.web.Page;
 
 @Transactional
@@ -40,12 +39,12 @@ public class JkSxjgDaoImp extends GenericDaoImpl<JkSxjg, Long> implements JkSxjg
 	}
 
 	@Override
-	public String saveToSxjg(List<JkYcxm> list) {
+	public String saveToSxjg(List<JkYcxm> list,HashMap<String, TjUser> userHash) {
 		
 		JkSxjg sxjg;
 		if(list!=null&&list.size()>0){
 			for(JkYcxm yc :list){
-				sxjg=findByYcxm(yc);
+				sxjg=findByYcxm(yc,userHash);
 				updateToSxjg(yc,sxjg);
 			}
 		}
@@ -60,13 +59,20 @@ public class JkSxjgDaoImp extends GenericDaoImpl<JkSxjg, Long> implements JkSxjg
 		this.update(hql);
 	}
 	
-	public JkSxjg findByYcxm(JkYcxm yc){
+	public JkSxjg findByYcxm(JkYcxm yc,HashMap<String, TjUser> userHash){
 		String hql="WHERE o.cardId='"+yc.getCardId()+"' AND o.tjDate='"+yc.getTjDate()+"'";
 		List<JkSxjg> list=this.findAll(JkSxjg.class, hql);
 		if(list!=null&&list.size()>0){
 			return list.get(0);
 		}else{
 			JkSxjg jg=new JkSxjg();
+			
+			TjUser user=userHash.get(yc.getCardId());
+			if(user!=null){
+				if(user.getGzdd()!=null)
+					jg.setWorkplace(user.getGzdd());
+			}
+			
 			jg.setCardId(yc.getCardId());
 			jg.setName(yc.getName());
 			jg.setTjrId(yc.getTjrId());
@@ -137,7 +143,7 @@ public class JkSxjgDaoImp extends GenericDaoImpl<JkSxjg, Long> implements JkSxjg
 
 	@Override
 	public String reseTjfl(String query) {
-		String hql="update JkSxjg o set o.type1=0,o.type2=0,o.type3=0,o.type4=0,o.type5=0,o.type6=0,o.type7=0,o.type8=0,o.type9=0,o.type10=0,o.type11=0,o.type12=0,o.type13=0,o.type14=0,o.type15=0,o.type16=0,o.type17=0,o.type18=0,o.type19=0,o.type20=0";
+		String hql="update JkSxjg o set o.tongji1=0,o.tongji2=0,o.tongji3=0,o.type1=0,o.type2=0,o.type3=0,o.type4=0,o.type5=0,o.type6=0,o.type7=0,o.type8=0,o.type9=0,o.type10=0,o.type11=0,o.type12=0,o.type13=0,o.type14=0,o.type15=0,o.type16=0,o.type17=0,o.type18=0,o.type19=0,o.type20=0";
 		this.update(hql+query);
 		return null;
 	}

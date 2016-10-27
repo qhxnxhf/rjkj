@@ -73,31 +73,25 @@
 			
 			<table width="100%">
 				<tr>
-					<shiro:hasPermission name="UserM:delete">
-					<td>体检类别</td>
-					<td>
-						<select  name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="180" ></select>  				
-					</td>
+					<shiro:hasPermission name="TjUserFind:search">
 					<td>部门</td>
 					<td>
 						<select  name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
 					</td>
 					
-					<td>身份证</td>
+					<td>姓名</td>
 					<td>
-						<input type="text" id="carId" name="carId"  style="width:180px;"/>
+						<input type="text" id="uname" name="uname"  style="width:180px;"/>
+					</td>
+					</shiro:hasPermission>
+					<td>身份证：</td>
+					<td>
+						<input type="text" id="carId" name="carId" value="${user.cardId}" style="width:180px;"/>
 					</td>
 					
 					
-					
 					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
-					</shiro:hasPermission>
-					<td><button type="button" onclick="delHandler()"><span class="icon_find">批量删除</span></button></td>					
 					
-					<td><button type="button" onclick="xxcsHandler()"><span class="icon_find">预处理</span></button></td>
-					<td><button type="button" onclick="tjflHandler()"><span class="icon_find">统计</span></button></td>
-					<td><button type="button" onclick="tjHandler()"><span class="icon_find">分类</span></button></td>
-					<td><button type="button" onclick="resetTjHandler()"><span class="icon_find">重置</span></button></td>
 					
 				</tr>
 			</table>
@@ -147,35 +141,27 @@
 	function initGrid() {
 		grid = $("#dataBasic").quiGrid({
 			columns:[
-				{ display: '查询操作', isAllowHide: false, align: 'center', width:80,
+				{ display: '姓名', name: 'name', align: 'Centered', width: "5%"},
+				{ display: '性别', name: 'sex', align: 'Centered', width: "2%"},
+				{ display: '民族', name: 'minzu', align: 'Centered', width: "5%"},
+				//{ display: '出生日期', name: 'csrq', align: 'Centered', width: "5%"},
+				{ display: '身份证', name: 'cardId', align: 'Centered', width: "10%"},
+				{ display: '医保号', name: 'medicareId',     align: 'Centered', width: "5%"},
+				{ display: '单位电话', name: 'dwPhone',  align: 'Centered', width: "6%"},
+				//{ display: '文化程度', name: 'whcd',  align: 'Centered', width: "4%"},
+				//{ display: '单位类型', name: 'dwlx',  align: 'Centered', width: "6%"},
+				//{ display: '单位编码', name: 'dwbm',  align: 'Centered', width: "4%"},
+				//{ display: '婚姻', name: 'hf',  align: 'Centered', width: "2%"},
+				{ display: '工作地点', name: 'gzdd',  align: 'Centered', width: "10%"},
+				{ display: '职务', name: 'zw',  align: 'Centered', width: "6%"},
+				{ display: '手机', name: 'telephone',  align: 'Centered', width: "5%"},
+           		{ display: '查询操作', isAllowHide: false, align: 'center', width:150,
 					render: function (rowdata, rowindex, value, column){return onMainOper(rowdata);}
 		                 
-		            },
-				{ display: '身份证', name: 'cardId', align: 'left', width: "10%"},
-				{ display: '姓名', name: 'name',     align: 'center', width: "5%" },
-				{ display: '性别', name: 'sex',     align: 'left', width: "5%"},
-				{ display: '体检类别', name: 'tjType',     align: 'left', width: "5%"},
-				{ display: '体检日期', name: 'tjDate',  align: 'left', width: "5%"},
-				{ display: '一类', name: 'tongji1',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
-				{ display: '二类', name: 'tongji2',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
-				{ display: '三类', name: 'tongji3',     align: 'center', width: "5%",
-				 render : function(rowdata, rowindex, value, column){ return renderType(value);}},
-				{ display: '年龄', name: 'age',     align: 'center', width: "5%"},
-				{ display: '体重指数', name: 'bmi',     align: 'center', width: "5%"},
-				{ display: '甘油三酯', name: 'gysz',     align: 'center', width: "5%"},
-				{ display: '总胆固醇', name: 'zongdan',     align: 'center', width: "5%"},
-				{ display: '高密度脂蛋白', name: 'gaomi',     align: 'center', width: "5%"},
-				{ display: '低密度脂蛋白', name: 'dimi',     align: 'center', width: "5%"},
-				{ display: '空腹血糖', name: 'kfxt',     align: 'center', width: "5%"},
-				{ display: '舒张压', name: 'shzhya',     align: 'center', width: "5%"},
-				{ display: 'FEV1%', name: 'fev1',     align: 'center', width: "5%"},
-				{ display: '实测值/预期值(%)', name: 'fev1fvc',     align: 'center', width: "5%"}
-				
+		            }
 			  ],
 		isScroll: true, 
-		 url: "<c:url value='/zgjk/sxjg/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
+		 url: "<c:url value='/zgjk/tjuser/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
          height: '100%', width:"100%",pageSize:50,
          onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
          percentWidthMode:true
@@ -184,16 +170,27 @@
 		});
 	}
 	
+	function onView1(rowid){
+    	top.Dialog.open({
+        	URL:"<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+rowid,
+        	Title:"查看",Width:900,Height:600});
+
+	}
+	
+	
+	
+	
+	
 	//主表操作
 	function onMainOper(rowdata){		
-		var sss='<div class="padding_top4 padding_left5"><span class="img_find2 hand" title="体检指标"onclick=onView1("'+rowdata.tjrId+'","'+rowdata.name+'")></span>';
-		sss=sss+'<span class="img_edit hand" title="体检结论"onclick=onView2("'+rowdata.tjrId+'","'+rowdata.name+'")></span>';
-		//sss=sss+'<span class="img_poll hand" title="统计结论"onclick=onView3("'+rowdata.id+'","'+rowdata.name+'")></span></div>';
+		var sss='<div class="padding_top4 padding_left5"><span class="img_find2 hand" title="体检指标"onclick=onView("'+rowdata.id+'","'+rowdata.name+'")></span>';
+		sss=sss+'<span class="img_edit hand" title="体检结论"onclick=onView2("'+rowdata.id+'","'+rowdata.name+'")></span>';
+		sss=sss+'<span class="img_poll hand" title="统计结论"onclick=onView3("'+rowdata.id+'","'+rowdata.name+'")></span></div>';
 		return sss;
 	}
 	
 	//详情查看
-	function onView1(pid,title){
+	function onView(pid,title){
 		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+pid;
 		top.frmright.tabAddHandler(pid,"体检项_"+title,url);
 		
@@ -206,50 +203,13 @@
 		
 	}
 	
-	//渲染节点
-	function renderType(value){
-		if(value=="1"||value==1){
-           return "<font color=red>是 </font>";
-		}else{
-			return "";
-		}
-	}
-	
-	
-	
-	//渲染节点
-	function renderType1(rowdata,value){
-		if(rowdata.type1!=0||rowdata.type2!=0||rowdata.type3!=0||rowdata.type4!=0||rowdata.type5!=0||rowdata.type6!=0||rowdata.type7!=0||rowdata.type8!=0){
-			
-			
-			return "<font color=blue>一类人群</font>";
-		}
+	//详情查看
+	function onView3(pid,title){
+		var url="<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/sxjg/SxjgFind&userid="+pid;
+		top.frmright.tabAddHandler(pid+2000,"统计_"+title,url);
 		
 	}
-	
-	function renderType2(rowdata,value){
-		if(rowdata.type9!=0||rowdata.type10!=0||rowdata.type11!=0){
-			return "<font color=yellow>二类人群</font>";
-		}
-		
-	}
-	
-	function renderType3(rowdata,value){
-		if(rowdata.type12!=0||rowdata.type13!=0||rowdata.type14!=0||rowdata.type15!=0){
-			return "<font color=red>三类人群</font>";
-		}
-		
-	}
-	
-	function onView(rowid){
-	 
-    	top.Dialog.open({
-        	URL:"<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+rowid,
-        	Title:"查看",Width:900,Height:600});
 
-	}
-	
-	
 	
 	//获取所有选中行获取选中行的id 格式为 ids=1&ids=2 
 	function getSelectIds(grid) {
@@ -268,7 +228,7 @@
 	
 	//删除后的提示
 	function handleResult(result){
-		if(result.status == "true"||result.status == true){
+		if(result.status == "true"){
 			top.Dialog.alert(result.message,null,null,null,1);
 			grid.loadData();
 			//treeOrg.reAsyncChildNodes(selectTreeNode, "refresh");
@@ -278,77 +238,6 @@
 	}
     
     //查询
-    function xxcsHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行体检信息预处理吗？",function(){
-			$.post("<c:url value='/zgjk/sxjg/saveSxjg'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						handleResult(result);
-					},
-					"json");
-		});
-    }
-    
-    
-     //查询
-    function tjflHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行体检信息统计吗？",function(){
-			$.post("<c:url value='/zgjk/sxjg/saveTjfl'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						handleResult(result);
-					},
-					"json");
-		});
-    }
-    
-   
-    function  tjHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行体检信息分类吗？",function(){
-			$.post("<c:url value='/zgjk/sxjg/saveTj'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						handleResult(result);
-					},
-					"json");
-		});
-    }
-    
-      //查询
-    function resetTjHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行体检信息初筛吗？",function(){
-			$.post("<c:url value='/zgjk/sxjg/resetTjfl'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						handleResult(result);
-					},
-					"json");
-		});
-    }
-    //查询
-    function delHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行批量删除吗？",function(){
-			$.post("<c:url value='/zgjk/sxjg/delSxjg'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						
-						handleResult(result);
-					},
-					"json");
-		});
-    }
-    
-     //查询
     function searchHandler(){
     	 var query = $("#queryForm").formToArray(); 
 		 grid.setOptions({ params : query});

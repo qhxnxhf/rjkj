@@ -73,15 +73,7 @@
 			
 			<table width="100%">
 				<tr>
-					<td>部门</td>
-					<td>
-						<select  name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
-					</td>
 					
-					<td>姓名</td>
-					<td>
-						<input type="text" id="uname" name="uname"  style="width:180px;"/>
-					</td>
 					<td>身份证：</td>
 					<td>
 						<input type="text" id="carId" name="carId" value="${user.cardId}" style="width:180px;"/>
@@ -159,7 +151,7 @@
 		            }
 			  ],
 		isScroll: true, 
-		 url: "<c:url value='/zgjk/tjuser/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
+		 url: "<c:url value='/zgjk/tjuser/list2'/>", sortName: 'id',rownumbers:true,checkbox:false,
          height: '100%', width:"100%",pageSize:50,
          onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
          percentWidthMode:true

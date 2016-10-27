@@ -9,7 +9,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class JkTjUserControl {
 	
 	
 	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
-	public @ResponseBody String getTreeList(HttpServletRequest request){
+	public @ResponseBody String getList(HttpServletRequest request){
 		String id = request.getParameter("tjbm");
 		String name = request.getParameter("uname");
 		String cId = request.getParameter("carId");
@@ -80,6 +79,53 @@ public class JkTjUserControl {
 		
 		if(cId!=null&&!cId.equals("")){
 			query=query+" AND xx_5 ='"+cId+"'";
+		}
+		
+		JSONObject json = new JSONObject();
+		JSONArray jsonArray;
+		List<TjUser> list;
+		
+		
+		list=this.userService.findAll(query, page);
+		String[] excludes={"children","users","news","docs"};
+		JsonConfig config =JsonUtil.configJson(excludes, "yyyy-MM-dd HH:mm:ss");
+		jsonArray=JSONArray.fromObject(list, config);
+		
+		
+		
+		
+		json.put("pager.pageNo", page.getPageNo());
+		json.put("pager.totalRows", page.getTotalRows());
+		json.put("rows", jsonArray);
+		json.put("sort", sort);
+		json.put("direction", direction);
+		
+		String result=json.toString();
+		return result;
+	}
+	
+	@RequestMapping(value="/list2", method={RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody String getList2(HttpServletRequest request){
+		String id = request.getParameter("tjbm");
+		String name = request.getParameter("uname");
+		String cId = request.getParameter("carId");
+		String sort= request.getParameter("sort");;
+		String direction= request.getParameter("direction");
+		String pageNo= request.getParameter("pager.pageNo");
+		String pageSize= request.getParameter("pager.pageSize");
+		
+		//String deptName= request.getParameter("deptName");
+		
+		Page page=new Page();
+		page.setPageNo(Integer.valueOf(pageNo));
+		page.setPageSize(Integer.valueOf(pageSize));
+		
+		String query=" WHERE 1=1 ";
+		
+		if(cId!=null&&!cId.equals("")){
+			query=query+" AND xx_5 ='"+cId+"'";
+		}else{
+			return "";
 		}
 		
 		JSONObject json = new JSONObject();

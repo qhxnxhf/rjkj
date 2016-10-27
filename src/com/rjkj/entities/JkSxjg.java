@@ -24,6 +24,9 @@ public class JkSxjg extends IdEntity{
 	@Column(nullable=true)
 	private Long deptId;//单位ID
 	
+	@Column(nullable=true, length=256)
+	private String workplace;//工作地点
+	
 	@Column(nullable=true,length=64)
 	private String tjpc;//体检批次
 	
@@ -565,6 +568,14 @@ public class JkSxjg extends IdEntity{
 
 	public void setTongji3(Long tongji3) {
 		this.tongji3 = tongji3;
+	}
+
+	public String getWorkplace() {
+		return workplace;
+	}
+
+	public void setWorkplace(String workplace) {
+		this.workplace = workplace;
 	}
 	
 	

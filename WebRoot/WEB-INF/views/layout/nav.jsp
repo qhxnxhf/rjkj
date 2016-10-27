@@ -99,9 +99,9 @@ img {
 						<div class="navIcon" onclick="openTab(15,'收件箱','<%=path%>/layout/openUrl?url=/cms/news/InboxM')" style="display:none;">
 							<div class="navIcon_left"><img src="<c:url value='/resources/libs/icons/png/04.png' />"/></div>
 							<div class="navIcon_right">
-								<div class="navIcon_right_title">收件箱</div>
+								<div class="navIcon_right_title">预留</div>
 								<div class="navIcon_right_con">
-									收件查看<br />
+								
 									
 								</div>
 							</div>
@@ -112,9 +112,9 @@ img {
 						<div class="navIcon" onclick="openTab(14,'发件箱','<%=path%>/layout/openUrl?url=/cms/news/NewsM')" style="display:none;">
 							<div class="navIcon_left"><img src="<c:url value='/resources/libs/icons/png/32.png' />"/></div>
 							<div class="navIcon_right">
-								<div class="navIcon_right_title">发件箱</div>
+								<div class="navIcon_right_title">预留</div>
 								<div class="navIcon_right_con">
-									信息发布，信息互递。
+									
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -127,14 +127,14 @@ img {
 				<tr height="146">
 					
 					<td width="260">
-						<div class="navIcon"  style="display:none;" onclick="openUrl('<%=path%>/index.jsp')">
+						<div class="navIcon" onclick="top.Dialog.alert('预留')" style="display:none;">
 							<div class="navIcon_left"><img src="<%=path%>/resources/libs/icons/png/02.png"/></div>
 							<div class="navIcon_right">
-								<div class="navIcon_right_title">网站首页</div>
+								<div class="navIcon_right_title">预留</div>
 								<div class="navIcon_right_con">
 									
 									<div class="navIcon_right_con" >
-									点击打开
+									
 									</div>
 									
 								</div>
@@ -143,14 +143,14 @@ img {
 						</div>
 					</td>
 					<td width="260">
-						<div class="navIcon"  style="display:none;" onclick="openUrl('<%=path%>/layout/openUrl?url=/web/jj/Index')">
+						<div class="navIcon" onclick="top.Dialog.alert('预留')" style="display:none;">
 							<div class="navIcon_left"><img src="<%=path%>/resources/libs/icons/png/69.png"/></div>
 							<div class="navIcon_right">
-								<div class="navIcon_right_title">纪检监查网</div>
+								<div class="navIcon_right_title">预留</div>
 								<div class="navIcon_right_con">
 									
 									<div class="navIcon_right_con" >
-									点击打开
+									
 									</div>
 									
 								</div>
@@ -160,14 +160,14 @@ img {
 					</td>
 					
 					<td width="260">
-						<div class="navIcon"  style="display:none;" onclick="openUrl('<%=path%>/layout/openUrl?url=/web/zg/Index')">
+						<div class="navIcon" onclick="top.Dialog.alert('预留')" style="display:none;">
 							<div class="navIcon_left"><img src="<%=path%>/resources/libs/icons/png/38.png"/></div>
 							<div class="navIcon_right">
-								<div class="navIcon_right_title">政工网</div>
+								<div class="navIcon_right_title">预留</div>
 								<div class="navIcon_right_con">
 									
 									<div class="navIcon_right_con">
-									点击打开
+									
 									</div>
 									
 								</div>
@@ -182,14 +182,14 @@ img {
 				<tr height="146">
 					
 					<td width="260">
-						<div class="navIcon"  style="display:none;" onclick="openUrl('<%=path%>/layout/openUrl?url=/web/gh/Index')">
+						<div class="navIcon" onclick="top.Dialog.alert('预留')" style="display:none;">
 							<div class="navIcon_left"><img src="<%=path%>/resources/libs/icons/png/71.png"/></div>
 							<div class="navIcon_right">
-								<div class="navIcon_right_title">段工会网</div>
+								<div class="navIcon_right_title">预留</div>
 								<div class="navIcon_right_con">
 									
 									<div class="navIcon_right_con" >
-									点击打开
+								
 									</div>
 									
 								</div>

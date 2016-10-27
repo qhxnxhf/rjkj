@@ -1,5 +1,6 @@
 package com.rjkj.web.zgjk;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,17 +21,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rjkj.dao.JkSxjgDao;
 import com.rjkj.dao.JkSxtjDao;
-import com.rjkj.dao.JkTjDeptDao;
+import com.rjkj.dao.JkTjUserDao;
 import com.rjkj.dao.JkTjxmDao;
 import com.rjkj.dao.JkYcxmDao;
-import com.rjkj.dao.ZgjkTjxxDao;
 import com.rjkj.entities.JkSxjg;
 import com.rjkj.entities.JkSxtj;
-import com.rjkj.entities.JkTjxm;
 import com.rjkj.entities.JkYcxm;
-import com.rjkj.model.TjDept;
-import com.rjkj.model.Tjlb;
-import com.rjkj.model.Tjxx;
+import com.rjkj.model.TjUser;
 import com.rjkj.util.web.JsonUtil;
 import com.rjkj.util.web.Page;
 
@@ -38,7 +35,7 @@ import com.rjkj.util.web.Page;
 @RequestMapping("/zgjk/sxjg")
 public class JkSxjgMControl {
 	
-	private static final Log log = LogFactory.getLog(JkTjxxControl.class);  
+	private static final Log log = LogFactory.getLog(JkSxjgMControl.class);  
 	//protected ErrMg error; 
 	 
 	@Autowired
@@ -52,6 +49,9 @@ public class JkSxjgMControl {
 	
 	@Autowired
 	private JkSxtjDao sxtjService;
+	
+	@Autowired
+	private JkTjUserDao userService;
 	
 	
 	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
@@ -138,7 +138,9 @@ public class JkSxjgMControl {
 		
 		List<JkYcxm> ycList=this.ycService.findAll(JkYcxm.class,query);
 		
-		String msgs=this.sxService.saveToSxjg(ycList);
+		HashMap<String, TjUser> userHash=userService.findAll("");
+		
+		String msgs=this.sxService.saveToSxjg(ycList,userHash);
 		
 		
 		//List<JkTjxm> cstj=this.tjxService.findAll(JkTjxm.class, " WHERE type1Value IS NOT NULL AND type1Value <> ''"); 				

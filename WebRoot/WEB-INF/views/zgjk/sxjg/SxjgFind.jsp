@@ -73,24 +73,28 @@
 			
 			<table width="100%">
 				<tr>
-					
 					<td>
 						<select  name='tjlb' id="tjlb" prompt="请选择类别" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="120" ></select>  				
 					</td>
 					
+					<shiro:hasPermission name="TjUserFind:search">
 					<td>
 						<select  name='tjbm' id="tjbm" prompt="请选择部门" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="150" ></select>  				
-					</td>
-					
-					<td>身份证</td>
-					<td>
-						<input type="text" id="carId" name="carId"  value="${user.cardId}" style="width:150px;"/>
 					</td>
 					
 					<td>姓名</td>
 					<td>
 						<input type="text" id="uname" name="uname"  style="width:100px;"/>
 					</td>
+					
+					</shiro:hasPermission>
+					
+					<td>身份证</td>
+					<td>
+						<input type="text" id="carId" name="carId"  value="${user.cardId}" style="width:150px;"/>
+					</td>
+					
+					
 					
 					<td>开始</td>
 					<td>
@@ -110,7 +114,9 @@
 					</td>
 					
 					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
+					<shiro:hasPermission name="SxjgFind:excel">
 					<td><button type="button" onclick="excel()"><span class="icon_export">导出</span></button></td>
+					</shiro:hasPermission>
 				</tr>
 			</table>
 			</div>
@@ -188,12 +194,10 @@
 				
 			  ],
 		isScroll: true, 
-		 url: "<c:url value='/zgjk/sxjgf/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
+		 url: "<%=path%>/zgjk/sxjgf/list?ucid=${user.cardId}", sortName: 'id',rownumbers:true,checkbox:false,
          height: '100%', width:"100%",pageSize:50,
          onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
          percentWidthMode:true
-         
-         
 		});
 	}
 	
@@ -228,29 +232,7 @@
 		
 	}
 	
-	//渲染节点
-	function renderType1(rowdata,value){
-		if(rowdata.type1!=0||rowdata.type2!=0||rowdata.type3!=0||rowdata.type4!=0||rowdata.type5!=0||rowdata.type6!=0||rowdata.type7!=0||rowdata.type8!=0){
-			
-			
-			return "<font color=purple>一类人群</font>";
-		}
-		
-	}
 	
-	function renderType2(rowdata,value){
-		if(rowdata.type9!=0||rowdata.type10!=0||rowdata.type11!=0){
-			return "<font color=fuchsia>二类人群</font>";
-		}
-		
-	}
-	
-	function renderType3(rowdata,value){
-		if(rowdata.type12!=0||rowdata.type13!=0||rowdata.type14!=0||rowdata.type15!=0){
-			return "<font color=red>三类人群</font>";
-		}
-		
-	}
 	
 	function onView(rowid){
 	 
@@ -325,7 +307,7 @@
     	}
     	
     	grid.loadData();
-    	//treeOrg.reAsyncChildNodes(selectTreeNode, "refresh");
+    	
     	
     }
 	

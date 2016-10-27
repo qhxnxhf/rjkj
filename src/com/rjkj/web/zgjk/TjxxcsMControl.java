@@ -19,27 +19,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.rjkj.dao.JkTjDeptDao;
 import com.rjkj.dao.JkTjUserDao;
 import com.rjkj.dao.JkTjxmDao;
 import com.rjkj.dao.JkYcxmDao;
 import com.rjkj.dao.ZgjkTjxxDao;
 import com.rjkj.entities.JkTjxm;
 import com.rjkj.entities.JkYcxm;
-import com.rjkj.model.TjDept;
 import com.rjkj.model.TjUser;
-import com.rjkj.model.Tjlb;
-import com.rjkj.model.Tjxx;
 import com.rjkj.util.web.JsonUtil;
 import com.rjkj.util.web.Page;
-import com.rjkj.web.interceptor.CsrfTokenUtils;
 import com.rjkj.web.sys.OrgMControl;
 
 @Controller
 @RequestMapping("/zgjk/xxcs")
 public class TjxxcsMControl {
 	
-	private static final Log log = LogFactory.getLog(OrgMControl.class);  
+	private static final Log log = LogFactory.getLog(TjxxcsMControl.class);  
 	//protected ErrMg error; 
 	 
 	@Autowired
@@ -50,6 +45,9 @@ public class TjxxcsMControl {
 	
 	@Autowired
 	private JkTjxmDao tjxService;
+	
+	@Autowired
+	private JkTjUserDao userService;
 	
 	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody String getTreeList(HttpServletRequest request){
@@ -101,8 +99,7 @@ public class TjxxcsMControl {
 		return result;
 	}
 	
-	@Autowired
-	private JkTjUserDao userService;
+	
 
 	//@RequiresPermissions("LmM:save")
 	@RequestMapping(value="/saveXxcs", method={RequestMethod.POST})

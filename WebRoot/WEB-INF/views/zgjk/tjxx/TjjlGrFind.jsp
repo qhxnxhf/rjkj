@@ -73,28 +73,17 @@
 			
 			<table width="100%">
 				<tr>
-					<shiro:hasPermission name="UserM:delete">
 					<td>体检类别</td>
 					<td>
 						<select  name='tjlb' id="tjlb" prompt="请选择" url="<%=path%>/zgjk/tjxx/typeTj"  selWidth="180" ></select>  				
 					</td>
-					<td>部门</td>
+					<td>身份证：</td>
 					<td>
-						<select name='tjbm' id="tjbm" prompt="请选择" url="<%=path%>/zgjk/tjxx/deptTj"  selWidth="180" ></select>  				
+						<input type="text" id="carId" name="carId" value="${user.cardId}" style="width:180px;"/>
 					</td>
-					
-					<td>身份证</td>
-					<td>
-						<input type="text" id="carId" name="carId"  style="width:180px;"/>
-					</td>
-					
-					
 					
 					<td><button type="button" onclick="searchHandler()"><span class="icon_find">查询</span></button></td>
-					</shiro:hasPermission>
-					<td><button type="button" onclick="delHandler()"><span class="icon_find">批量删除</span></button></td>
 					
-					<td><button type="button" onclick="xxcsHandler()"><span class="icon_find">体检信息初筛</span></button></td>
 					
 				</tr>
 			</table>
@@ -119,7 +108,7 @@
 	//初始化函数
 	function initComplete(){
 		//当提交表单刷新本页面时关闭弹窗
-		top.Dialog.close();
+		//top.Dialog.close();
 		
 		$("#layout1").layout({ leftWidth: 180,onEndResize:function(){
 			  	grid.resetWidth();
@@ -144,32 +133,30 @@
 	function initGrid() {
 		grid = $("#dataBasic").quiGrid({
 			columns:[
+				
 				{ display: '身份证', name: 'cardId', align: 'left', width: "10%"},
-				{ display: '姓名', name: 'name',     align: 'center', width: "10%" },
-				{ display: '性别', name: 'sex',     align: 'left', width: "5%"},
-				{ display: '年龄', name: 'tjAges',     align: 'left', width: "5%"},
 				{ display: '体检批次', name: 'tjpc',  align: 'left', width: "10%"},
 				{ display: '体检类别', name: 'tjType',     align: 'left', width: "10%"},
-				{ display: '体检项', name: 'tjxmMc',     align: 'center', width: "15%" },
-				{ display: '体检结果', name: 'tjValue',     align: 'center', width: "10%"}
+				{ display: '体检结论', name: 'tjjl',     align: 'center', width: "15%" ,
+					render : function(rowdata, rowindex, value, column){ 
+                		return '<div title="'+value+'" class="qTip" ><font color=blue>'+value+'</font></div>';}},
+			
+				{ display: '鉴定结论', name: 'jdjl',     align: 'center', width: "10%"},
+				{ display: '工作单位', name: 'deptName', align: 'left', width: "10%"},
+				{ display: '体检医院', name: 'hospital',     align: 'left', width: "10%"}
+           		
 			  ],
-		isScroll: true, 
-		 url: "<c:url value='/zgjk/xxcs/list'/>", sortName: 'id',rownumbers:true,checkbox:false,
-         height: '100%', width:"100%",pageSize:50,
-         onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"up"});},
+		 isScroll: true, 
+		 url: "<c:url value='/zgjk/tjxx/listJl'/>", sortName: 'id',rownumbers:true,checkbox:false,
+         height: '100%', width:'100%',usePager:false,
+         onAfterShowData:function(data){$(".qTip").tip({ auto:true ,arrowDirection:"right"});},
          percentWidthMode:true
          
          
 		});
 	}
 	
-	function onView(rowid){
-	 
-    	top.Dialog.open({
-        	URL:"<%=path%>/zgjk/tjuser/openUrl?url=/zgjk/tjxx/TjxxGrFind&userid="+rowid,
-        	Title:"查看",Width:900,Height:600});
-
-	}
+	
 	
 	
 	
@@ -190,7 +177,7 @@
 	
 	//删除后的提示
 	function handleResult(result){
-		if(result.status == "true"||result.status == true){
+		if(result.status == "true"){
 			top.Dialog.alert(result.message,null,null,null,1);
 			grid.loadData();
 			//treeOrg.reAsyncChildNodes(selectTreeNode, "refresh");
@@ -200,35 +187,6 @@
 	}
     
     //查询
-    function xxcsHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行体检信息初筛吗？",function(){
-			$.post("<c:url value='/zgjk/xxcs/saveXxcs'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						handleResult(result);
-					},
-					"json");
-		});
-    }
-    
-    //查询
-    function delHandler(){
-    	 var query = $("#queryForm").formToArray(); 
-		 	top.Dialog.confirm("确定要进行批量删除吗？",function(){
-			$.post("<c:url value='/zgjk/xxcs/delXxcs'/>",
-					//获取所有选中行
-					query,
-					function(result){
-						
-						handleResult(result);
-					},
-					"json");
-		});
-    }
-    
-     //查询
     function searchHandler(){
     	 var query = $("#queryForm").formToArray(); 
 		 grid.setOptions({ params : query});

@@ -24,7 +24,6 @@ import com.rjkj.model.Tjjl;
 import com.rjkj.model.Tjlb;
 import com.rjkj.model.Tjxx;
 import com.rjkj.util.web.JsonUtil;
-import com.rjkj.web.sys.OrgMControl;
 
 @Controller
 @RequestMapping("/zgjk/tjxx")

@@ -1,10 +1,12 @@
 package com.rjkj.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.rjkj.entities.JkSxjg;
 import com.rjkj.entities.JkSxtj;
 import com.rjkj.entities.JkYcxm;
+import com.rjkj.model.TjUser;
 import com.rjkj.util.web.Page;
 
 public interface JkSxjgDao extends GenericDao<JkSxjg, Long>{
@@ -13,7 +15,7 @@ public interface JkSxjgDao extends GenericDao<JkSxjg, Long>{
 
 	public JkSxjg findMaxId();
 
-	public String saveToSxjg(List<JkYcxm> list);
+	public String saveToSxjg(List<JkYcxm> list,HashMap<String, TjUser> userHash);
 
 	public String delByHql(String query);
 
