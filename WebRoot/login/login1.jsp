@@ -9,14 +9,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title></title>
-<link href="<c:url value='/resources/login/skin1/style.css' />" rel="stylesheet" type="text/css" id="skin"/>
 
-<script type="text/javascript" src="<c:url value='/resources/libs/js/jquery.js'/>" ></script>
-<script type="text/javascript" src="<c:url value='/resources/libs/js/login.js'/>"></script>
+<link href="<%=path%>/resources/libs/css/import_basic.css" rel="stylesheet" type="text/css"/>
+<link href="<%=path%>/resources/libs/skins/blue/style.css" rel="stylesheet" type="text/css" id="theme" themeColor="blue"/>
+<link href="<%=path%>/resources/login/skin1/style.css" rel="stylesheet" type="text/css" id="skin"/>
+<script type="text/javascript" src="<%=path%>/resources/libs/js/jquery.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/libs/js/language/cn.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/libs/js/main.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/libs/js/login.js"></script>
 
 <!--居中显示start-->
-<script type="text/javascript" src="<c:url value='/resources/libs/js/method/center-plugin.js'/>"></script>
+<script type="text/javascript" src="<%=path%>/resources/libs/js/method/center-plugin.js"></script>
 <!--居中显示end-->
+
+<!--弹窗组件start-->
+<script type="text/javascript" src="<%=path%>/resources/libs/js/popup/drag.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/libs/js/popup/dialog.js"></script>
+<!--弹窗组件end-->
+
 <style>
 /*提示信息*/	
 #cursorMessageDiv {
@@ -34,7 +44,7 @@
 
 
 </head>
-<body >
+<body>
 	<div class="login_main">
 		<div class="login_top">
 		</div>
@@ -81,12 +91,14 @@
 
 <script type="text/javascript">
 	
+   
     
     function onImageClick(img){
 	img.src="<c:url value='/security/jcaptcha.jpg?f=JJ73Vf1JrWyBJJ1V77ZbGPNzS9y8QnhpjlChcw5rmypzNddyR9Q7!1156727646!1440740788063"+new Date().getTime()+"'/>";
 }
 	
 	$(function(){
+		
 		onImageClick(document.getElementById("kaptchaImage"));
 		
 		//居中
@@ -105,12 +117,15 @@
 			}
 		 });
 		 
-		
+		 top.Dialog.open({URL:"<%=path%>/login/tishi.jsp",Title:"职工健康管理系统知情同意及保密提示",ShowCloseButton:false});
+		 
 		 
 	})
+	
 
 	//登录
 	function login() {
+		
 		var errorMsg = "";
 		var loginName = document.getElementById("username");
 		var password = document.getElementById("password");
